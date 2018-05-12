@@ -1,6 +1,8 @@
 
 package resbar;
 
+import vistas.SplashScreen;
+
 /**
  *
  * @author mateo
@@ -8,7 +10,7 @@ package resbar;
 public class Resbar {
 
     public static void main(String[] args) {
-        // TODO code application logic here
+        SplashScreen ss = new SplashScreen();
     }
     
 }
