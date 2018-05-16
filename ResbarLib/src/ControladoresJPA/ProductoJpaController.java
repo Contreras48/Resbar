@@ -3,11 +3,11 @@
  * To change this template file, choose Tools | Templates
  * and open the template in the editor.
  */
-package ContraladoresJPA;
+package ControladoresJPA;
 
-import ContraladoresJPA.exceptions.IllegalOrphanException;
-import ContraladoresJPA.exceptions.NonexistentEntityException;
-import ContraladoresJPA.exceptions.PreexistingEntityException;
+import ControladoresJPA.exceptions.IllegalOrphanException;
+import ControladoresJPA.exceptions.NonexistentEntityException;
+import ControladoresJPA.exceptions.PreexistingEntityException;
 import java.io.Serializable;
 import javax.persistence.Query;
 import javax.persistence.EntityNotFoundException;
@@ -21,6 +21,7 @@ import java.util.List;
 import javax.persistence.EntityManager;
 import javax.persistence.EntityManagerFactory;
 import javax.persistence.Persistence;
+import javax.persistence.TypedQuery;
 
 /**
  *
@@ -222,7 +223,27 @@ public class ProductoJpaController implements Serializable {
             em.close();
         }
     }
-
+    
+    public List<Producto> findProductoByCategoria(Integer idCategoria){
+        EntityManager em = getEntityManager();
+        TypedQuery<Producto> consultaProducto = em.createQuery("Producto.findByCategoria", Producto.class);
+        consultaProducto.setParameter("idCategoria", idCategoria);
+        return consultaProducto.getResultList();
+    }
+    
+    public List<Producto> findProductoByName(String name){
+        EntityManager em = getEntityManager();
+        TypedQuery<Producto> consultaProducto = em.createQuery("Producto.findByNombre", Producto.class);
+        consultaProducto.setParameter("nombre", name);
+        return consultaProducto.getResultList();
+    }
+    
+    public Integer FindId(){
+        EntityManager em  = getEntityManager();
+        TypedQuery<Producto> consultaProductoId = em.createQuery("Producto.findId", Producto.class);
+        return consultaProductoId.getFirstResult();
+    }
+    
     public int getProductoCount() {
         EntityManager em = getEntityManager();
         try {

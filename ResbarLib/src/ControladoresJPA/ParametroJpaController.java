@@ -3,10 +3,10 @@
  * To change this template file, choose Tools | Templates
  * and open the template in the editor.
  */
-package ContraladoresJPA;
+package ControladoresJPA;
 
-import ContraladoresJPA.exceptions.NonexistentEntityException;
-import ContraladoresJPA.exceptions.PreexistingEntityException;
+import ControladoresJPA.exceptions.NonexistentEntityException;
+import ControladoresJPA.exceptions.PreexistingEntityException;
 import Entidades.Parametro;
 import java.io.Serializable;
 import java.util.List;

@@ -3,11 +3,11 @@
  * To change this template file, choose Tools | Templates
  * and open the template in the editor.
  */
-package ContraladoresJPA;
+package ControladoresJPA;
 
-import ContraladoresJPA.exceptions.IllegalOrphanException;
-import ContraladoresJPA.exceptions.NonexistentEntityException;
-import ContraladoresJPA.exceptions.PreexistingEntityException;
+import ControladoresJPA.exceptions.IllegalOrphanException;
+import ControladoresJPA.exceptions.NonexistentEntityException;
+import ControladoresJPA.exceptions.PreexistingEntityException;
 import java.io.Serializable;
 import javax.persistence.Query;
 import javax.persistence.EntityNotFoundException;
