@@ -5,8 +5,9 @@
  */
 package vistas;
 
+//import com.sun.prism.paint.Color;
 import javax.swing.UIManager;
-
+import java.awt.Color;
 /**
  *
  * @author mateo
@@ -24,6 +25,10 @@ public class DashBoard extends javax.swing.JFrame {
         setLocationRelativeTo(null);
         
         inicializarContenedor();
+        
+       // jFrame.setBackground(Color.decode("#F8F5F2"));
+       getContentPane().setBackground(Color.decode("#763626"));
+       
     }
     
     public final void inicializarContenedor(){
@@ -54,6 +59,7 @@ public class DashBoard extends javax.swing.JFrame {
         btnMinimizar = new javax.swing.JButton();
 
         setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
+        setForeground(new java.awt.Color(51, 51, 255));
         setUndecorated(true);
         setResizable(false);
 
@@ -68,7 +74,7 @@ public class DashBoard extends javax.swing.JFrame {
             .addGap(0, 0, Short.MAX_VALUE)
         );
 
-        btnInicio.setText("Inicio");
+        btnInicio.setIcon(new javax.swing.ImageIcon("C:\\Users\\cesar\\Documents\\NetBeansProjects\\Resbar\\src\\Recursos\\inicio.jpg")); // NOI18N
         btnInicio.setFocusPainted(false);
         btnInicio.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
@@ -76,7 +82,7 @@ public class DashBoard extends javax.swing.JFrame {
             }
         });
 
-        btnAdministrar.setText("Administar");
+        btnAdministrar.setIcon(new javax.swing.ImageIcon("C:\\Users\\cesar\\Documents\\NetBeansProjects\\Resbar\\src\\Recursos\\administracion.jpg")); // NOI18N
         btnAdministrar.setFocusPainted(false);
         btnAdministrar.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
@@ -84,7 +90,7 @@ public class DashBoard extends javax.swing.JFrame {
             }
         });
 
-        btnEstadisticas.setText("Estadisticas");
+        btnEstadisticas.setIcon(new javax.swing.ImageIcon("C:\\Users\\cesar\\Documents\\NetBeansProjects\\Resbar\\src\\Recursos\\estadisticas.jpg")); // NOI18N
         btnEstadisticas.setFocusPainted(false);
         btnEstadisticas.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
@@ -92,6 +98,9 @@ public class DashBoard extends javax.swing.JFrame {
             }
         });
 
+        btnCerrar.setBackground(Color.decode("#336B87")
+        );
+        btnCerrar.setFont(new java.awt.Font("Tahoma", 1, 11)); // NOI18N
         btnCerrar.setText("X");
         btnCerrar.setFocusPainted(false);
         btnCerrar.addActionListener(new java.awt.event.ActionListener() {
@@ -100,6 +109,9 @@ public class DashBoard extends javax.swing.JFrame {
             }
         });
 
+        btnMinimizar.setBackground(Color.decode("#336B87")
+        );
+        btnMinimizar.setFont(new java.awt.Font("Tahoma", 1, 14)); // NOI18N
         btnMinimizar.setText("-");
         btnMinimizar.setFocusPainted(false);
         btnMinimizar.setPreferredSize(new java.awt.Dimension(43, 25));
@@ -110,39 +122,39 @@ public class DashBoard extends javax.swing.JFrame {
         layout.setHorizontalGroup(
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(layout.createSequentialGroup()
-                .addContainerGap()
-                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                    .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, layout.createSequentialGroup()
-                        .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
-                            .addComponent(btnEstadisticas, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-                            .addComponent(btnAdministrar, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-                            .addComponent(btnInicio, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
-                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 73, Short.MAX_VALUE)
-                        .addComponent(jpContenedor, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                        .addContainerGap())
-                    .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, layout.createSequentialGroup()
-                        .addGap(0, 0, Short.MAX_VALUE)
-                        .addComponent(btnMinimizar, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                        .addComponent(btnCerrar))))
+                .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                .addComponent(btnMinimizar, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
+                .addComponent(btnCerrar, javax.swing.GroupLayout.PREFERRED_SIZE, 43, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addGap(25, 25, 25))
+            .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, layout.createSequentialGroup()
+                .addGap(28, 28, 28)
+                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING)
+                    .addComponent(btnEstadisticas, javax.swing.GroupLayout.PREFERRED_SIZE, 292, javax.swing.GroupLayout.PREFERRED_SIZE)
+                    .addComponent(btnAdministrar, javax.swing.GroupLayout.PREFERRED_SIZE, 293, javax.swing.GroupLayout.PREFERRED_SIZE)
+                    .addComponent(btnInicio, javax.swing.GroupLayout.PREFERRED_SIZE, 296, javax.swing.GroupLayout.PREFERRED_SIZE))
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 75, Short.MAX_VALUE)
+                .addComponent(jpContenedor, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addContainerGap())
         );
         layout.setVerticalGroup(
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(layout.createSequentialGroup()
                 .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                     .addGroup(layout.createSequentialGroup()
-                        .addGap(93, 93, 93)
-                        .addComponent(btnInicio)
-                        .addGap(75, 75, 75)
-                        .addComponent(btnAdministrar)
-                        .addGap(70, 70, 70)
-                        .addComponent(btnEstadisticas)
-                        .addGap(0, 443, Short.MAX_VALUE))
+                        .addGap(108, 108, 108)
+                        .addComponent(btnInicio, javax.swing.GroupLayout.PREFERRED_SIZE, 99, javax.swing.GroupLayout.PREFERRED_SIZE)
+                        .addGap(82, 82, 82)
+                        .addComponent(btnAdministrar, javax.swing.GroupLayout.PREFERRED_SIZE, 98, javax.swing.GroupLayout.PREFERRED_SIZE)
+                        .addGap(80, 80, 80)
+                        .addComponent(btnEstadisticas, javax.swing.GroupLayout.PREFERRED_SIZE, 98, javax.swing.GroupLayout.PREFERRED_SIZE)
+                        .addGap(0, 182, Short.MAX_VALUE))
                     .addGroup(layout.createSequentialGroup()
+                        .addGap(7, 7, 7)
                         .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
-                            .addComponent(btnCerrar)
-                            .addComponent(btnMinimizar, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
-                        .addGap(24, 24, 24)
+                            .addComponent(btnCerrar, javax.swing.GroupLayout.PREFERRED_SIZE, 27, javax.swing.GroupLayout.PREFERRED_SIZE)
+                            .addComponent(btnMinimizar, javax.swing.GroupLayout.PREFERRED_SIZE, 27, javax.swing.GroupLayout.PREFERRED_SIZE))
+                        .addGap(22, 22, 22)
                         .addComponent(jpContenedor, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)))
                 .addContainerGap())
         );

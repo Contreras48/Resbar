@@ -59,7 +59,10 @@ public class Estadisticas extends javax.swing.JPanel {
         rbtnAnio = new javax.swing.JRadioButton();
         rbtnDia = new javax.swing.JRadioButton();
 
+        setBackground(Color.decode("#2A3132"));
+
         jLabel1.setFont(new java.awt.Font("Dialog", 1, 16)); // NOI18N
+        jLabel1.setForeground(Color.decode("#90AFC5"));
         jLabel1.setText("Estadisticas de ventas");
 
         tblEstadisticas.setModel(new javax.swing.table.DefaultTableModel(
@@ -75,15 +78,19 @@ public class Estadisticas extends javax.swing.JPanel {
         ));
         jScrollPane1.setViewportView(tblEstadisticas);
 
+        jLabel2.setForeground(Color.decode("#90AFC5"));
         jLabel2.setText("Filtrar por:");
 
         filtroEstadisticas.add(rbtnMes);
+        rbtnMes.setForeground(Color.decode("#90AFC5"));
         rbtnMes.setText("Mes");
 
         filtroEstadisticas.add(rbtnAnio);
+        rbtnAnio.setForeground(Color.decode("#90AFC5"));
         rbtnAnio.setText("Año");
 
         filtroEstadisticas.add(rbtnDia);
+        rbtnDia.setForeground(Color.decode("#90AFC5"));
         rbtnDia.setText("Dia");
 
         javax.swing.GroupLayout layout = new javax.swing.GroupLayout(this);
