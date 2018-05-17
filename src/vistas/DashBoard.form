@@ -28,23 +28,29 @@
   <Layout>
     <DimensionLayout dim="0">
       <Group type="103" groupAlignment="0" attributes="0">
-          <Group type="102" attributes="0">
-              <EmptySpace max="32767" attributes="0"/>
-              <Component id="btnMinimizar" min="-2" max="-2" attributes="0"/>
-              <EmptySpace type="unrelated" max="-2" attributes="0"/>
-              <Component id="btnCerrar" min="-2" pref="43" max="-2" attributes="0"/>
-              <EmptySpace min="-2" pref="25" max="-2" attributes="0"/>
-          </Group>
           <Group type="102" alignment="1" attributes="0">
-              <EmptySpace min="-2" pref="28" max="-2" attributes="0"/>
-              <Group type="103" groupAlignment="1" attributes="0">
-                  <Component id="btnEstadisticas" min="-2" pref="292" max="-2" attributes="0"/>
-                  <Component id="btnAdministrar" min="-2" pref="293" max="-2" attributes="0"/>
-                  <Component id="btnInicio" min="-2" pref="296" max="-2" attributes="0"/>
-              </Group>
-              <EmptySpace pref="75" max="32767" attributes="0"/>
-              <Component id="jpContenedor" min="-2" max="-2" attributes="0"/>
               <EmptySpace max="-2" attributes="0"/>
+              <Group type="103" groupAlignment="1" attributes="0">
+                  <Group type="102" alignment="1" attributes="0">
+                      <EmptySpace min="0" pref="0" max="32767" attributes="0"/>
+                      <Component id="btnMinimizar" min="-2" max="-2" attributes="0"/>
+                      <EmptySpace type="unrelated" max="-2" attributes="0"/>
+                      <Component id="btnCerrar" min="-2" pref="43" max="-2" attributes="0"/>
+                      <EmptySpace min="-2" pref="25" max="-2" attributes="0"/>
+                  </Group>
+                  <Group type="102" alignment="1" attributes="0">
+                      <Group type="103" groupAlignment="0" attributes="0">
+                          <Component id="btnInicio" alignment="0" min="-2" pref="296" max="-2" attributes="0"/>
+                          <Group type="103" alignment="0" groupAlignment="1" max="-2" attributes="0">
+                              <Component id="btnEstadisticas" alignment="0" pref="0" max="32767" attributes="0"/>
+                              <Component id="btnAdministrar" alignment="0" min="-2" pref="293" max="-2" attributes="0"/>
+                          </Group>
+                      </Group>
+                      <EmptySpace type="unrelated" max="-2" attributes="0"/>
+                      <Component id="jpContenedor" max="32767" attributes="0"/>
+                      <EmptySpace max="-2" attributes="0"/>
+                  </Group>
+              </Group>
           </Group>
       </Group>
     </DimensionLayout>
@@ -53,13 +59,13 @@
           <Group type="102" attributes="0">
               <Group type="103" groupAlignment="0" attributes="0">
                   <Group type="102" alignment="0" attributes="0">
-                      <EmptySpace min="-2" pref="108" max="-2" attributes="0"/>
+                      <EmptySpace min="-2" pref="110" max="-2" attributes="0"/>
                       <Component id="btnInicio" min="-2" pref="99" max="-2" attributes="0"/>
-                      <EmptySpace min="-2" pref="82" max="-2" attributes="0"/>
+                      <EmptySpace min="-2" pref="79" max="-2" attributes="0"/>
                       <Component id="btnAdministrar" min="-2" pref="98" max="-2" attributes="0"/>
-                      <EmptySpace min="-2" pref="80" max="-2" attributes="0"/>
+                      <EmptySpace min="-2" pref="82" max="-2" attributes="0"/>
                       <Component id="btnEstadisticas" min="-2" pref="98" max="-2" attributes="0"/>
-                      <EmptySpace min="0" pref="182" max="32767" attributes="0"/>
+                      <EmptySpace min="0" pref="190" max="32767" attributes="0"/>
                   </Group>
                   <Group type="102" alignment="0" attributes="0">
                       <EmptySpace min="-2" pref="7" max="-2" attributes="0"/>
@@ -67,7 +73,7 @@
                           <Component id="btnCerrar" alignment="3" min="-2" pref="27" max="-2" attributes="0"/>
                           <Component id="btnMinimizar" alignment="3" min="-2" pref="27" max="-2" attributes="0"/>
                       </Group>
-                      <EmptySpace min="-2" pref="22" max="-2" attributes="0"/>
+                      <EmptySpace type="separate" max="-2" attributes="0"/>
                       <Component id="jpContenedor" max="32767" attributes="0"/>
                   </Group>
               </Group>
@@ -82,7 +88,7 @@
       <Layout>
         <DimensionLayout dim="0">
           <Group type="103" groupAlignment="0" attributes="0">
-              <EmptySpace min="0" pref="807" max="32767" attributes="0"/>
+              <EmptySpace min="0" pref="692" max="32767" attributes="0"/>
           </Group>
         </DimensionLayout>
         <DimensionLayout dim="1">
@@ -95,7 +101,7 @@
     <Component class="javax.swing.JButton" name="btnInicio">
       <Properties>
         <Property name="icon" type="javax.swing.Icon" editor="org.netbeans.modules.form.editors2.IconEditor">
-          <Image iconType="2" name="C:\Users\cesar\Documents\NetBeansProjects\Resbar\src\Recursos\inicio.jpg"/>
+          <Image iconType="3" name="/Recursos/inicio.jpg"/>
         </Property>
         <Property name="focusPainted" type="boolean" value="false"/>
       </Properties>
@@ -106,7 +112,7 @@
     <Component class="javax.swing.JButton" name="btnAdministrar">
       <Properties>
         <Property name="icon" type="javax.swing.Icon" editor="org.netbeans.modules.form.editors2.IconEditor">
-          <Image iconType="2" name="C:\Users\cesar\Documents\NetBeansProjects\Resbar\src\Recursos\administracion.jpg"/>
+          <Image iconType="3" name="/Recursos/administracion.jpg"/>
         </Property>
         <Property name="focusPainted" type="boolean" value="false"/>
       </Properties>
@@ -117,7 +123,7 @@
     <Component class="javax.swing.JButton" name="btnEstadisticas">
       <Properties>
         <Property name="icon" type="javax.swing.Icon" editor="org.netbeans.modules.form.editors2.IconEditor">
-          <Image iconType="2" name="C:\Users\cesar\Documents\NetBeansProjects\Resbar\src\Recursos\estadisticas.jpg"/>
+          <Image iconType="3" name="/Recursos/estadisticas.jpg"/>
         </Property>
         <Property name="focusPainted" type="boolean" value="false"/>
       </Properties>

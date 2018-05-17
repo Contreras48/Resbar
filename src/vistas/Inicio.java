@@ -138,7 +138,7 @@ public class Inicio extends javax.swing.JPanel {
         });
         jScrollPane1.setViewportView(tblOrdenesActivas);
 
-        btnNuevaOrden1.setIcon(new javax.swing.ImageIcon("C:\\Users\\cesar\\Documents\\NetBeansProjects\\Resbar\\src\\Recursos\\nueva.jpg")); // NOI18N
+        btnNuevaOrden1.setIcon(new javax.swing.ImageIcon(getClass().getResource("/Recursos/nueva32.jpg"))); // NOI18N
         btnNuevaOrden1.setFocusPainted(false);
         btnNuevaOrden1.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
@@ -150,8 +150,6 @@ public class Inicio extends javax.swing.JPanel {
         jLabel2.setForeground(Color.decode("#90AFC5"));
         jLabel2.setText("Buscar");
 
-        jLabel3.setIcon(new javax.swing.ImageIcon("C:\\Users\\cesar\\Documents\\NetBeansProjects\\Resbar\\src\\Recursos\\buscar.jpg")); // NOI18N
-
         javax.swing.GroupLayout layout = new javax.swing.GroupLayout(this);
         this.setLayout(layout);
         layout.setHorizontalGroup(
@@ -159,7 +157,7 @@ public class Inicio extends javax.swing.JPanel {
             .addGroup(layout.createSequentialGroup()
                 .addContainerGap()
                 .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                    .addComponent(jScrollPane1, javax.swing.GroupLayout.DEFAULT_SIZE, 787, Short.MAX_VALUE)
+                    .addComponent(jScrollPane1)
                     .addGroup(layout.createSequentialGroup()
                         .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                             .addComponent(jLabel1)
@@ -169,8 +167,8 @@ public class Inicio extends javax.swing.JPanel {
                                 .addComponent(jLabel3)
                                 .addGap(27, 27, 27)
                                 .addComponent(txtBuscar, javax.swing.GroupLayout.PREFERRED_SIZE, 357, javax.swing.GroupLayout.PREFERRED_SIZE))
-                            .addComponent(btnNuevaOrden1, javax.swing.GroupLayout.PREFERRED_SIZE, 230, javax.swing.GroupLayout.PREFERRED_SIZE))
-                        .addGap(0, 0, Short.MAX_VALUE)))
+                            .addComponent(btnNuevaOrden1, javax.swing.GroupLayout.PREFERRED_SIZE, 155, javax.swing.GroupLayout.PREFERRED_SIZE))
+                        .addGap(0, 214, Short.MAX_VALUE)))
                 .addContainerGap())
         );
         layout.setVerticalGroup(
@@ -186,20 +184,17 @@ public class Inicio extends javax.swing.JPanel {
                     .addComponent(jLabel3, javax.swing.GroupLayout.PREFERRED_SIZE, 23, javax.swing.GroupLayout.PREFERRED_SIZE))
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
                 .addComponent(jScrollPane1, javax.swing.GroupLayout.PREFERRED_SIZE, 511, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                .addComponent(btnNuevaOrden1)
-                .addContainerGap(32, Short.MAX_VALUE))
+                .addGap(18, 18, 18)
+                .addComponent(btnNuevaOrden1, javax.swing.GroupLayout.PREFERRED_SIZE, 64, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addContainerGap(21, Short.MAX_VALUE))
         );
     }// </editor-fold>//GEN-END:initComponents
 
     private void btnNuevaOrden1ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnNuevaOrden1ActionPerformed
-        MenuAgregar menu = new MenuAgregar();
-        menu.setVisible(true);
-        
+        NuevaOrden nueva = new NuevaOrden();
+        nueva.setVisible(true);
         //menu.setBackground(Color.decode("#763626"));
-        //jLabel1.setForeground(Color.decode("#90AFC5"));
-        
-        
+        //jLabel1.setForeground(Color.decode("#90AFC5"));  
     }//GEN-LAST:event_btnNuevaOrden1ActionPerformed
 
 
