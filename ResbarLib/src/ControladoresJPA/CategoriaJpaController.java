@@ -1,8 +1,4 @@
-/*
- * To change this license header, choose License Headers in Project Properties.
- * To change this template file, choose Tools | Templates
- * and open the template in the editor.
- */
+
 package ControladoresJPA;
 
 import ControladoresJPA.exceptions.IllegalOrphanException;
@@ -27,12 +23,12 @@ import javax.persistence.TypedQuery;
  * @author mateo
  */
 public class CategoriaJpaController implements Serializable {
-
+    
     public CategoriaJpaController() {
         this.emf = Persistence.createEntityManagerFactory("ResbarLibPU");
     }
-    private EntityManagerFactory emf = null;
-
+    private EntityManagerFactory emf;
+    
     public EntityManager getEntityManager() {
         return emf.createEntityManager();
     }
@@ -202,6 +198,7 @@ public class CategoriaJpaController implements Serializable {
             Root<Categoria> rt = cq.from(Categoria.class);
             cq.select(em.getCriteriaBuilder().count(rt));
             Query q = em.createQuery(cq);
+            
             return ((Long) q.getSingleResult()).intValue();
         } finally {
             em.close();
@@ -210,8 +207,20 @@ public class CategoriaJpaController implements Serializable {
     
     public Integer FindId(){
         EntityManager em  = getEntityManager();
-        TypedQuery<Producto> consultaProductoId = em.createQuery("Categoria.findId", Producto.class);
-        return consultaProductoId.getSingleResult().getIdProducto();
+        Query q = em.createNamedQuery("SELECT MAX(c.idCategoria) FROM Categoria c");
+        System.out.println("Buscando...");
+        Integer id = Integer.parseInt(q.getSingleResult().toString());
+        em.close();
+        return id;
     }
     
+    public Categoria findCategoriaByName(String name){
+        EntityManager em  = getEntityManager();
+        Query q = em.createNamedQuery("Categoria.findByNombre", Categoria.class);
+        q.setParameter("nombre", name);
+        System.out.println("Buscando...");
+        List<Categoria> lista = q.getResultList();
+        em.close();
+        return lista.get(0);
+    }
 }

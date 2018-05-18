@@ -1,8 +1,4 @@
-/*
- * To change this license header, choose License Headers in Project Properties.
- * To change this template file, choose Tools | Templates
- * and open the template in the editor.
- */
+
 package ControladoresJPA;
 
 import ControladoresJPA.exceptions.IllegalOrphanException;
@@ -138,7 +134,7 @@ public class ProductoJpaController implements Serializable {
                 }
             }
             em.getTransaction().commit();
-        } catch (Exception ex) {
+        } catch (IllegalOrphanException ex) {
             String msg = ex.getLocalizedMessage();
             if (msg == null || msg.length() == 0) {
                 Integer id = producto.getIdProducto();
@@ -240,8 +236,11 @@ public class ProductoJpaController implements Serializable {
     
     public Integer FindId(){
         EntityManager em  = getEntityManager();
-        TypedQuery<Producto> consultaProductoId = em.createQuery("Producto.findId", Producto.class);
-        return consultaProductoId.getFirstResult();
+        Query q = em.createNativeQuery("SELECT MAX(p.idProducto) FROM Producto p");
+        System.out.println("Buscando...");
+        Integer id = Integer.parseInt(q.getSingleResult().toString());
+        em.close();
+        return id;
     }
     
     public int getProductoCount() {

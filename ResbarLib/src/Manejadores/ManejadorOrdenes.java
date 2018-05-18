@@ -3,6 +3,7 @@ package Manejadores;
 
 import ControladoresJPA.DetalleOrdenJpaController;
 import ControladoresJPA.OrdenJpaController;
+import ControladoresJPA.exceptions.IllegalOrphanException;
 import ControladoresJPA.exceptions.NonexistentEntityException;
 import Entidades.DetalleOrden;
 import Entidades.DetalleOrdenPK;
@@ -22,7 +23,8 @@ public class ManejadorOrdenes {
         OrdenJpaController controladorOrden = new OrdenJpaController();
         Orden[] ordenes = null;
         try {
-            controladorOrden.findOrdenEntities().toArray(ordenes);
+            ordenes = controladorOrden.findOrdenEntities().toArray(ordenes);
+            System.out.println("Ordenes Activas");
         } catch (Exception e) {
             System.out.println(e);
         }
@@ -32,12 +34,12 @@ public class ManejadorOrdenes {
     public static void actualizar(Orden o){
         OrdenJpaController controladorOrden = new OrdenJpaController();
         DetalleOrdenJpaController controladorDetalle = new DetalleOrdenJpaController();
-        List<DetalleOrden> listaDetalle = new ArrayList<DetalleOrden>();
+        List<DetalleOrden> listaDetalle = new ArrayList<>();
         o.calcularTotal();
         if(o.getTotal().doubleValue() > 0){
             for (int i = 0; i < o.getDetalleOrdenList().size(); i++) {
                 DetalleOrdenPK detallePk = new DetalleOrdenPK(o.getIdOrden(), o.getDetalleOrdenList().get(i).getProducto().getIdProducto());
-                DetalleOrden detatalle = controladorDetalle.findDetalleOrden(detallePk);
+                listaDetalle.add(controladorDetalle.findDetalleOrden(detallePk));
                 try {
                     controladorDetalle.destroy(detallePk);
                 } catch (NonexistentEntityException ex) {
@@ -46,7 +48,6 @@ public class ManejadorOrdenes {
             }
             try {
                 controladorOrden.edit(o);
-                
                 for (int i = 0; i < listaDetalle.size(); i++) {
                     controladorDetalle.create(listaDetalle.get(i));
                 }
@@ -59,7 +60,31 @@ public class ManejadorOrdenes {
         }
     }
     
-    public static void insertar(Orden o){
+    public static Orden[] obtener(String nombre, String filtro){
+        OrdenJpaController controladorOrden = new OrdenJpaController();
+        List<Orden> ordenes = new ArrayList<>();
+        Orden[] listaOrdenes = null;
+        try {
+            switch(filtro){
+                case "Mesa":
+                   ordenes.add(controladorOrden.findProductoByMesa(nombre));
+                   break;
+                case "Cliente":
+                    ordenes = controladorOrden.findProductoByCliente(nombre);
+                    break;
+                case "Mesero":
+                    ordenes = controladorOrden.findProductoByMesero(nombre);
+                    break;
+                case "Comentario":
+                    ordenes = controladorOrden.findProductoByComentario(nombre);
+            }
+        } catch (Exception e) {
+            System.out.println(e);
+        }
+        return ordenes.toArray(listaOrdenes);
+    }
+    
+    public static void insertar(Orden o, DetalleOrden[] dOrden){
         OrdenJpaController controladorOrden = new OrdenJpaController();
         DetalleOrdenJpaController controladorDetalle = new DetalleOrdenJpaController();
         
@@ -68,7 +93,9 @@ public class ManejadorOrdenes {
             if(o.getTotal().doubleValue() > 0){
                 try {
                     controladorOrden.create(o);
-                    //falta crear objeto DetalleOrden
+                    for (DetalleOrden dOrden1 : dOrden) {
+                        controladorDetalle.create(dOrden1);
+                    }
                 } catch (Exception ex) {
                     Logger.getLogger(ManejadorOrdenes.class.getName()).log(Level.SEVERE, null, ex);
                 }
@@ -86,7 +113,19 @@ public class ManejadorOrdenes {
                 controladorDetalle.destroy(detallePk);
             }
             controladorOrden.destroy(o.getIdOrden());
-        } catch (Exception e) {
+        } catch (IllegalOrphanException | NonexistentEntityException e) {
         }
+    }
+    
+    public static Integer ObtenerId(){
+        OrdenJpaController controladorOrden = new OrdenJpaController();
+        Integer id = 0;
+        try {
+            id = controladorOrden.FindId();
+            System.out.println(id);
+        } catch (Exception e) {
+            System.out.println(e);
+        }
+        return id+1;
     }
 }

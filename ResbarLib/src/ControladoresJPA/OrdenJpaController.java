@@ -1,8 +1,4 @@
-/*
- * To change this license header, choose License Headers in Project Properties.
- * To change this template file, choose Tools | Templates
- * and open the template in the editor.
- */
+
 package ControladoresJPA;
 
 import ControladoresJPA.exceptions.IllegalOrphanException;
@@ -20,6 +16,7 @@ import java.util.List;
 import javax.persistence.EntityManager;
 import javax.persistence.EntityManagerFactory;
 import javax.persistence.Persistence;
+import javax.persistence.TypedQuery;
 
 /**
  *
@@ -205,6 +202,40 @@ public class OrdenJpaController implements Serializable {
         } finally {
             em.close();
         }
+    }
+    
+    public List<Orden> findProductoByMesero(String name){
+        EntityManager em = getEntityManager();
+        TypedQuery<Orden> consultaOrden = em.createQuery("Orden.findByMesero", Orden.class);
+        consultaOrden.setParameter("nombre", name);
+        return consultaOrden.getResultList();
+    }
+    
+    public Orden findProductoByMesa(String name){
+        EntityManager em = getEntityManager();
+        TypedQuery<Orden> consultaOrden = em.createQuery("Orden.findByMesa", Orden.class);
+        consultaOrden.setParameter("nombre", name);
+        return consultaOrden.getSingleResult();
+    }
+    
+    public List<Orden> findProductoByCliente(String name){
+        EntityManager em = getEntityManager();
+        TypedQuery<Orden> consultaOrden = em.createQuery("Orden.findByCliente", Orden.class);
+        consultaOrden.setParameter("nombre", name);
+        return consultaOrden.getResultList();
+    }
+    
+    public List<Orden> findProductoByComentario(String name){
+        EntityManager em = getEntityManager();
+        TypedQuery<Orden> consultaOrden = em.createQuery("Orden.findByComentario", Orden.class);
+        consultaOrden.setParameter("nombre", name);
+        return consultaOrden.getResultList();
+    }
+    
+    public Integer FindId(){
+        EntityManager em  = getEntityManager();
+        TypedQuery<Orden> consultaOrdenId = em.createQuery("Orden.findId", Orden.class);
+        return consultaOrdenId.getFirstResult();
     }
     
 }

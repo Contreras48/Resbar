@@ -34,7 +34,7 @@ public class ManejadorParametros {
         ParametroJpaController controladorParametro = new ParametroJpaController();
         Parametro p = null;
         try {
-            controladorParametro.findParametro(idParametro);
+            p = controladorParametro.findParametro(idParametro);
         } catch (Exception e) {
             System.out.println(e);
         }

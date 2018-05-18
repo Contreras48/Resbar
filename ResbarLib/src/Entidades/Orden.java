@@ -32,15 +32,16 @@ import javax.xml.bind.annotation.XmlTransient;
 @XmlRootElement
 @NamedQueries({
     @NamedQuery(name = "Orden.findAll", query = "SELECT o FROM Orden o WHERE o.estado = true")
-    , @NamedQuery(name = "Orden.findAllName", query = "SELECT o FROM Orden o WHERE o.estado = true AND o.cliente like CONCAT('%',:cliente,'%')")
     , @NamedQuery(name = "Orden.findByIdOrden", query = "SELECT o FROM Orden o WHERE o.idOrden = :idOrden")
-    , @NamedQuery(name = "Orden.findByMesero", query = "SELECT o FROM Orden o WHERE o.mesero = :mesero")
+    , @NamedQuery(name = "Orden.findByMesero", query = "SELECT o FROM Orden o WHERE o.estado = true AND o.mesero like CONCAT(:mesero,'%')")
     , @NamedQuery(name = "Orden.findByMesa", query = "SELECT o FROM Orden o WHERE o.mesa = :mesa")
-    , @NamedQuery(name = "Orden.findByCliente", query = "SELECT o FROM Orden o WHERE o.cliente = :cliente")
-    , @NamedQuery(name = "Orden.findByFecha", query = "SELECT o FROM Orden o WHERE o.fecha = :fecha")
-    , @NamedQuery(name = "Orden.findByComentario", query = "SELECT o FROM Orden o WHERE o.comentario = :comentario")
+    , @NamedQuery(name = "Orden.findByCliente", query = "SELECT o FROM Orden o WHERE o.estado = true AND o.cliente like CONCAT(:cliente,'%')")
+    , @NamedQuery(name = "Orden.findByFecha", query = "SELECT o FROM Orden o WHERE o.fecha = :fecha AND o.estado = false")
+    , @NamedQuery(name = "Orden.findByRangoFecha", query = "SELECT o FROM Orden o WHERE o.fecha = :fecha AND o.estado = false")
+    , @NamedQuery(name = "Orden.findByComentario", query = "SELECT o FROM Orden o WHERE o.estado = true AND o.comentario like CONCAT(:comentario,'%')")
     , @NamedQuery(name = "Orden.findByTotal", query = "SELECT o FROM Orden o WHERE o.total = :total")
-    , @NamedQuery(name = "Orden.findByEstado", query = "SELECT o FROM Orden o WHERE o.estado = :estado")})
+    , @NamedQuery(name = "Orden.findByEstado", query = "SELECT o FROM Orden o WHERE o.estado = :estado")
+    , @NamedQuery(name = "Orden.findId", query = "SELECT MAX(o.idOrden) FROM Orden o")})
 public class Orden implements Serializable {
 
     private static final long serialVersionUID = 1L;
@@ -226,11 +227,22 @@ public class Orden implements Serializable {
     public void eliminarProducto(Producto p, double cant){
         DetalleOrdenJpaController controladorD = new DetalleOrdenJpaController();
         DetalleOrdenPK detallePk = new DetalleOrdenPK(getIdOrden(), p.getIdProducto());
-        try {
-            controladorD.destroy(detallePk);
-        } catch (NonexistentEntityException ex) {
-            Logger.getLogger(Orden.class.getName()).log(Level.SEVERE, null, ex);
+        DetalleOrden detalle = controladorD.findDetalleOrden(detallePk);
+        for (int i = 0; i < getDetalleOrdenList().size(); i++) {
+            if(getDetalleOrdenList().get(i).equals(detalle)){
+                if(cant > getDetalleOrdenList().get(i).getCantidad().doubleValue()){
+                    try {
+                        controladorD.destroy(detallePk);
+                        System.out.println("Producto borrado");
+                    } catch (NonexistentEntityException e) {
+                        System.out.println(e);
+                    }
+                }else{
+                    getDetalleOrdenList().get(i).setCantidad(new BigDecimal(getDetalleOrdenList().get(i).getCantidad().doubleValue()-cant));
+                }
+            }
         }
+        calcularTotal();
     }
     
 }

@@ -2,7 +2,10 @@
 package Manejadores;
 
 import ControladoresJPA.ProductoJpaController;
+import ControladoresJPA.exceptions.IllegalOrphanException;
+import ControladoresJPA.exceptions.NonexistentEntityException;
 import Entidades.Producto;
+import java.util.List;
 
 /**
  *
@@ -14,7 +17,10 @@ public class ManejadorProductos {
         ProductoJpaController controladorProducto = new ProductoJpaController();
         Producto[] productos = null;
         try {
-            productos = controladorProducto.findProductoByCategoria(idCategoria).toArray(productos);
+            List<Producto> lista = controladorProducto.findProductoByCategoria(idCategoria);
+            productos = new Producto[lista.size()];
+            lista.toArray(productos);
+            System.out.println("busqueda exitosa");
         } catch (Exception e) {
             System.out.println(e);
         }
@@ -25,7 +31,10 @@ public class ManejadorProductos {
         ProductoJpaController controladorProducto = new ProductoJpaController();
         Producto[] productos = null;
         try {
-            productos = controladorProducto.findProductoByName(nombre).toArray(productos);
+            List<Producto> lista = controladorProducto.findProductoByName(nombre);
+            productos = new Producto[lista.size()];
+            lista.toArray(productos);
+            System.out.println("Busqueda exitosa");
         } catch (Exception e) {
             System.out.println(e);
         }
@@ -57,7 +66,7 @@ public class ManejadorProductos {
         try {
             controladorProducto.destroy(p.getIdProducto());
             System.out.println("Producto eliminado");
-        } catch (Exception e) {
+        } catch (IllegalOrphanException | NonexistentEntityException e) {
             System.out.println(e);
         }
     }
@@ -81,6 +90,23 @@ public class ManejadorProductos {
             id = controladorProducto.FindId();
         } catch (Exception e) {
         }
+        if(id == null){
+            id = 0;
+        }
         return id+1;
+    }
+    
+    public static Producto[] obtenerProductos(){
+        ProductoJpaController controladorProducto = new ProductoJpaController();
+        Producto[] productos = null;
+        try {
+            List<Producto> lista = controladorProducto.findProductoEntities();
+            productos = new Producto[lista.size()];
+            lista.toArray(productos);
+            System.out.println("Productos Cargados");
+        } catch (Exception e) {
+            System.out.println(e);
+        }
+        return productos;
     }
 }
