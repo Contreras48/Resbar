@@ -78,19 +78,17 @@ public class Estadisticas extends javax.swing.JPanel {
         ));
         jScrollPane1.setViewportView(tblEstadisticas);
 
+        jLabel2.setFont(new java.awt.Font("Tahoma", 1, 12)); // NOI18N
         jLabel2.setForeground(Color.decode("#90AFC5"));
         jLabel2.setText("Filtrar por:");
 
         filtroEstadisticas.add(rbtnMes);
-        rbtnMes.setForeground(Color.decode("#90AFC5"));
         rbtnMes.setText("Mes");
 
         filtroEstadisticas.add(rbtnAnio);
-        rbtnAnio.setForeground(Color.decode("#90AFC5"));
         rbtnAnio.setText("Año");
 
         filtroEstadisticas.add(rbtnDia);
-        rbtnDia.setForeground(Color.decode("#90AFC5"));
         rbtnDia.setText("Dia");
 
         javax.swing.GroupLayout layout = new javax.swing.GroupLayout(this);
@@ -124,9 +122,9 @@ public class Estadisticas extends javax.swing.JPanel {
                 .addGap(33, 33, 33)
                 .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
                     .addComponent(jLabel2)
-                    .addComponent(rbtnMes)
-                    .addComponent(rbtnAnio)
-                    .addComponent(rbtnDia))
+                    .addComponent(rbtnMes, javax.swing.GroupLayout.PREFERRED_SIZE, 20, javax.swing.GroupLayout.PREFERRED_SIZE)
+                    .addComponent(rbtnAnio, javax.swing.GroupLayout.PREFERRED_SIZE, 20, javax.swing.GroupLayout.PREFERRED_SIZE)
+                    .addComponent(rbtnDia, javax.swing.GroupLayout.PREFERRED_SIZE, 20, javax.swing.GroupLayout.PREFERRED_SIZE))
                 .addGap(18, 18, 18)
                 .addComponent(jScrollPane1, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
                 .addContainerGap(172, Short.MAX_VALUE))

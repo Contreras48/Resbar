@@ -57,9 +57,9 @@
               <EmptySpace min="-2" pref="33" max="-2" attributes="0"/>
               <Group type="103" groupAlignment="3" attributes="0">
                   <Component id="jLabel2" alignment="3" min="-2" max="-2" attributes="0"/>
-                  <Component id="rbtnMes" alignment="3" min="-2" max="-2" attributes="0"/>
-                  <Component id="rbtnAnio" alignment="3" min="-2" max="-2" attributes="0"/>
-                  <Component id="rbtnDia" alignment="3" min="-2" max="-2" attributes="0"/>
+                  <Component id="rbtnMes" alignment="3" min="-2" pref="20" max="-2" attributes="0"/>
+                  <Component id="rbtnAnio" alignment="3" min="-2" pref="20" max="-2" attributes="0"/>
+                  <Component id="rbtnDia" alignment="3" min="-2" pref="20" max="-2" attributes="0"/>
               </Group>
               <EmptySpace type="separate" max="-2" attributes="0"/>
               <Component id="jScrollPane1" min="-2" max="-2" attributes="0"/>
@@ -130,6 +130,9 @@
     </Container>
     <Component class="javax.swing.JLabel" name="jLabel2">
       <Properties>
+        <Property name="font" type="java.awt.Font" editor="org.netbeans.beaninfo.editors.FontEditor">
+          <Font name="Tahoma" size="12" style="1"/>
+        </Property>
         <Property name="foreground" type="java.awt.Color" editor="org.netbeans.modules.form.RADConnectionPropertyEditor">
           <Connection code="Color.decode(&quot;#90AFC5&quot;)" type="code"/>
         </Property>
@@ -141,9 +144,6 @@
         <Property name="buttonGroup" type="javax.swing.ButtonGroup" editor="org.netbeans.modules.form.RADComponent$ButtonGroupPropertyEditor">
           <ComponentRef name="filtroEstadisticas"/>
         </Property>
-        <Property name="foreground" type="java.awt.Color" editor="org.netbeans.modules.form.RADConnectionPropertyEditor">
-          <Connection code="Color.decode(&quot;#90AFC5&quot;)" type="code"/>
-        </Property>
         <Property name="text" type="java.lang.String" value="Mes"/>
       </Properties>
     </Component>
@@ -152,9 +152,6 @@
         <Property name="buttonGroup" type="javax.swing.ButtonGroup" editor="org.netbeans.modules.form.RADComponent$ButtonGroupPropertyEditor">
           <ComponentRef name="filtroEstadisticas"/>
         </Property>
-        <Property name="foreground" type="java.awt.Color" editor="org.netbeans.modules.form.RADConnectionPropertyEditor">
-          <Connection code="Color.decode(&quot;#90AFC5&quot;)" type="code"/>
-        </Property>
         <Property name="text" type="java.lang.String" value="A&#xf1;o"/>
       </Properties>
     </Component>
@@ -162,9 +159,6 @@
       <Properties>
         <Property name="buttonGroup" type="javax.swing.ButtonGroup" editor="org.netbeans.modules.form.RADComponent$ButtonGroupPropertyEditor">
           <ComponentRef name="filtroEstadisticas"/>
-        </Property>
-        <Property name="foreground" type="java.awt.Color" editor="org.netbeans.modules.form.RADConnectionPropertyEditor">
-          <Connection code="Color.decode(&quot;#90AFC5&quot;)" type="code"/>
         </Property>
         <Property name="text" type="java.lang.String" value="Dia"/>
       </Properties>
