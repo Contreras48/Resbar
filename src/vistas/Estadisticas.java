@@ -7,15 +7,24 @@ package vistas;
 
 import Personalizacion.RenderColor;
 import java.awt.Color;
+import java.util.Calendar;
+import java.util.Date;
 import java.util.Enumeration;
+import java.util.GregorianCalendar;
+import javax.swing.DefaultComboBoxModel;
+import javax.swing.JOptionPane;
 import javax.swing.table.TableColumn;
 import javax.swing.table.TableColumnModel;
+import resbar.Validacion;
 
 /**
  *
  * @author mateo
  */
 public class Estadisticas extends javax.swing.JPanel {
+    Validacion validar = new Validacion();
+    DefaultComboBoxModel<String> modelo;
+    
 
     /**
      * Creates new form Estadisticas
@@ -23,6 +32,11 @@ public class Estadisticas extends javax.swing.JPanel {
     public Estadisticas() {
         initComponents();
         personalizarComponentes();
+        modelo= new DefaultComboBoxModel();
+        cmbDe.setModel(modelo);
+        cmbHasta.setModel(modelo);
+        llenarDia();
+        rbtnDia.setSelected(true);
     }
     
     public final void personalizarComponentes(){
@@ -40,6 +54,35 @@ public class Estadisticas extends javax.swing.JPanel {
 //        tcm.getColumn(3).setPreferredWidth(200);
 //        tcm.getColumn(4).setPreferredWidth(100);
     }
+    
+    public void llenarMes(){
+        modelo.removeAllElements();
+        for (int i = 0; i < 12; i++) {
+            modelo.addElement(String.valueOf(i+1));
+        }
+    }
+    
+    public void llenarDia(){
+        modelo.removeAllElements();
+        Calendar cal = new GregorianCalendar();
+        int dia = cal.getActualMaximum(Calendar.DAY_OF_MONTH);
+        
+        for (int i = 0; i <dia; i++) {
+            
+           modelo.addElement(String.valueOf(i+1));
+        }
+    
+    }
+    
+    public void llenarAño(){
+        modelo.removeAllElements();
+        int año=2018;
+        for (int i = 0; i < 5; i++) {
+            modelo.addElement(String.valueOf(año));
+            año=año-1;
+        }
+    }
+   
 
     /**
      * This method is called from within the constructor to initialize the form.
@@ -58,6 +101,11 @@ public class Estadisticas extends javax.swing.JPanel {
         rbtnMes = new javax.swing.JRadioButton();
         rbtnAnio = new javax.swing.JRadioButton();
         rbtnDia = new javax.swing.JRadioButton();
+        jLabel3 = new javax.swing.JLabel();
+        jLabel4 = new javax.swing.JLabel();
+        jButton1 = new javax.swing.JButton();
+        cmbDe = new javax.swing.JComboBox<>();
+        cmbHasta = new javax.swing.JComboBox<>();
 
         setBackground(Color.decode("#2A3132"));
 
@@ -67,13 +115,13 @@ public class Estadisticas extends javax.swing.JPanel {
 
         tblEstadisticas.setModel(new javax.swing.table.DefaultTableModel(
             new Object [][] {
-                {null, null, null, null},
-                {null, null, null, null},
-                {null, null, null, null},
-                {null, null, null, null}
+                {null, null},
+                {null, null},
+                {null, null},
+                {null, null}
             },
             new String [] {
-                "Title 1", "Title 2", "Title 3", "Title 4"
+                "Fecha/mes", "Total"
             }
         ));
         jScrollPane1.setViewportView(tblEstadisticas);
@@ -84,12 +132,47 @@ public class Estadisticas extends javax.swing.JPanel {
 
         filtroEstadisticas.add(rbtnMes);
         rbtnMes.setText("Mes");
+        rbtnMes.addChangeListener(new javax.swing.event.ChangeListener() {
+            public void stateChanged(javax.swing.event.ChangeEvent evt) {
+                rbtnMesStateChanged(evt);
+            }
+        });
 
         filtroEstadisticas.add(rbtnAnio);
         rbtnAnio.setText("Año");
+        rbtnAnio.addChangeListener(new javax.swing.event.ChangeListener() {
+            public void stateChanged(javax.swing.event.ChangeEvent evt) {
+                rbtnAnioStateChanged(evt);
+            }
+        });
 
         filtroEstadisticas.add(rbtnDia);
         rbtnDia.setText("Dia");
+        rbtnDia.addChangeListener(new javax.swing.event.ChangeListener() {
+            public void stateChanged(javax.swing.event.ChangeEvent evt) {
+                rbtnDiaStateChanged(evt);
+            }
+        });
+
+        jLabel3.setFont(new java.awt.Font("Tahoma", 1, 12)); // NOI18N
+        jLabel3.setForeground(Color.decode("#90AFC5"));
+        jLabel3.setText("De:");
+
+        jLabel4.setFont(new java.awt.Font("Tahoma", 1, 12)); // NOI18N
+        jLabel4.setForeground(Color.decode("#90AFC5"));
+        jLabel4.setText("Hasta:");
+
+        jButton1.setFont(new java.awt.Font("Tahoma", 1, 12)); // NOI18N
+        jButton1.setText("Filtrar");
+        jButton1.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                jButton1ActionPerformed(evt);
+            }
+        });
+
+        cmbDe.setModel(new javax.swing.DefaultComboBoxModel<>(new String[] { "Item 1", "Item 2", "Item 3", "Item 4" }));
+
+        cmbHasta.setModel(new javax.swing.DefaultComboBoxModel<>(new String[] { "Item 1", "Item 2", "Item 3", "Item 4" }));
 
         javax.swing.GroupLayout layout = new javax.swing.GroupLayout(this);
         this.setLayout(layout);
@@ -98,7 +181,9 @@ public class Estadisticas extends javax.swing.JPanel {
             .addGroup(layout.createSequentialGroup()
                 .addContainerGap()
                 .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                    .addComponent(jScrollPane1, javax.swing.GroupLayout.DEFAULT_SIZE, 783, Short.MAX_VALUE)
+                    .addGroup(layout.createSequentialGroup()
+                        .addComponent(jScrollPane1, javax.swing.GroupLayout.DEFAULT_SIZE, 783, Short.MAX_VALUE)
+                        .addContainerGap())
                     .addGroup(layout.createSequentialGroup()
                         .addComponent(jLabel2)
                         .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
@@ -107,8 +192,17 @@ public class Estadisticas extends javax.swing.JPanel {
                         .addComponent(rbtnMes)
                         .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
                         .addComponent(rbtnAnio)
-                        .addGap(0, 0, Short.MAX_VALUE)))
-                .addContainerGap())
+                        .addGap(36, 36, 36)
+                        .addComponent(jLabel3)
+                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
+                        .addComponent(cmbDe, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                        .addComponent(jLabel4)
+                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
+                        .addComponent(cmbHasta, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                        .addGap(63, 63, 63)
+                        .addComponent(jButton1)
+                        .addGap(193, 193, 193))))
             .addGroup(layout.createSequentialGroup()
                 .addGap(266, 266, 266)
                 .addComponent(jLabel1)
@@ -119,23 +213,56 @@ public class Estadisticas extends javax.swing.JPanel {
             .addGroup(layout.createSequentialGroup()
                 .addGap(19, 19, 19)
                 .addComponent(jLabel1)
-                .addGap(33, 33, 33)
+                .addGap(32, 32, 32)
                 .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
                     .addComponent(jLabel2)
                     .addComponent(rbtnMes, javax.swing.GroupLayout.PREFERRED_SIZE, 20, javax.swing.GroupLayout.PREFERRED_SIZE)
                     .addComponent(rbtnAnio, javax.swing.GroupLayout.PREFERRED_SIZE, 20, javax.swing.GroupLayout.PREFERRED_SIZE)
-                    .addComponent(rbtnDia, javax.swing.GroupLayout.PREFERRED_SIZE, 20, javax.swing.GroupLayout.PREFERRED_SIZE))
+                    .addComponent(rbtnDia, javax.swing.GroupLayout.PREFERRED_SIZE, 20, javax.swing.GroupLayout.PREFERRED_SIZE)
+                    .addComponent(jButton1, javax.swing.GroupLayout.PREFERRED_SIZE, 20, javax.swing.GroupLayout.PREFERRED_SIZE)
+                    .addComponent(jLabel3)
+                    .addComponent(jLabel4)
+                    .addComponent(cmbDe, javax.swing.GroupLayout.PREFERRED_SIZE, 20, javax.swing.GroupLayout.PREFERRED_SIZE)
+                    .addComponent(cmbHasta, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
                 .addGap(18, 18, 18)
                 .addComponent(jScrollPane1, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addContainerGap(172, Short.MAX_VALUE))
+                .addContainerGap(170, Short.MAX_VALUE))
         );
     }// </editor-fold>//GEN-END:initComponents
 
+    private void jButton1ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton1ActionPerformed
+        
+    }//GEN-LAST:event_jButton1ActionPerformed
+
+    private void rbtnDiaStateChanged(javax.swing.event.ChangeEvent evt) {//GEN-FIRST:event_rbtnDiaStateChanged
+        
+        if(rbtnDia.isSelected()==true){
+            llenarDia();
+        }
+    }//GEN-LAST:event_rbtnDiaStateChanged
+
+    private void rbtnMesStateChanged(javax.swing.event.ChangeEvent evt) {//GEN-FIRST:event_rbtnMesStateChanged
+        if(rbtnMes.isSelected()==true){
+            llenarMes();
+        }
+    }//GEN-LAST:event_rbtnMesStateChanged
+
+    private void rbtnAnioStateChanged(javax.swing.event.ChangeEvent evt) {//GEN-FIRST:event_rbtnAnioStateChanged
+        if(rbtnAnio.isSelected()==true){
+            llenarAño();
+        }
+    }//GEN-LAST:event_rbtnAnioStateChanged
+
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
+    private javax.swing.JComboBox<String> cmbDe;
+    private javax.swing.JComboBox<String> cmbHasta;
     private javax.swing.ButtonGroup filtroEstadisticas;
+    private javax.swing.JButton jButton1;
     private javax.swing.JLabel jLabel1;
     private javax.swing.JLabel jLabel2;
+    private javax.swing.JLabel jLabel3;
+    private javax.swing.JLabel jLabel4;
     private javax.swing.JScrollPane jScrollPane1;
     private javax.swing.JRadioButton rbtnAnio;
     private javax.swing.JRadioButton rbtnDia;

@@ -99,7 +99,7 @@ public class Inicio extends javax.swing.JPanel {
         jLabel1 = new javax.swing.JLabel();
         jScrollPane1 = new javax.swing.JScrollPane();
         tblOrdenesActivas = new javax.swing.JTable();
-        txtBuscar = new RedondearBorde("/Recursos/buscar.png");
+        txtBuscar = new RedondearBorde("");
         btnNuevaOrden1 = new javax.swing.JButton();
         jLabel2 = new javax.swing.JLabel();
         jLabel3 = new javax.swing.JLabel();
@@ -153,6 +153,7 @@ public class Inicio extends javax.swing.JPanel {
         jLabel2.setForeground(Color.decode("#90AFC5"));
         jLabel2.setText("Buscar");
 
+        jLabel3.setBackground(new java.awt.Color(0, 0, 0));
         jLabel3.setIcon(new javax.swing.ImageIcon("C:\\Users\\cesar\\Documents\\NetBeansProjects\\Resbar\\src\\Recursos\\buscar.jpg")); // NOI18N
         jLabel3.setMaximumSize(new java.awt.Dimension(32, 28));
         jLabel3.setMinimumSize(new java.awt.Dimension(30, 26));

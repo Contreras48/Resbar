@@ -71,7 +71,7 @@ public class Administrar extends javax.swing.JPanel {
 
         jtpContenedorAdministrar = new javax.swing.JTabbedPane();
         jPanel1 = new javax.swing.JPanel();
-        txtBuscarProducto = new RedondearBorde("/Recursos/buscar.png");
+        txtBuscarProducto = new RedondearBorde("");
         jScrollPane1 = new javax.swing.JScrollPane();
         tblProducto = new javax.swing.JTable();
         jLabel2 = new javax.swing.JLabel();

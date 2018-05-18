@@ -124,7 +124,7 @@
           <SubComponents>
             <Component class="javax.swing.JTextField" name="txtBuscarProducto">
               <AuxValues>
-                <AuxValue name="JavaCodeGenerator_CreateCodeCustom" type="java.lang.String" value="new RedondearBorde(&quot;/Recursos/buscar.png&quot;)"/>
+                <AuxValue name="JavaCodeGenerator_CreateCodeCustom" type="java.lang.String" value="new RedondearBorde(&quot;&quot;)"/>
               </AuxValues>
             </Component>
             <Container class="javax.swing.JScrollPane" name="jScrollPane1">
