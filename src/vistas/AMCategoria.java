@@ -5,12 +5,10 @@
  */
 package vistas;
 
+import Entidades.Categoria;
+import Manejadores.*;
 import Personalizacion.RedondearBorde;
-import com.sun.javafx.tk.Toolkit;
 import java.awt.Color;
-import java.awt.event.KeyEvent;
-import javax.swing.JLabel;
-import javax.swing.JOptionPane;
 import javax.swing.UIManager;
 import resbar.Validacion;
 
@@ -19,19 +17,38 @@ import resbar.Validacion;
  * @author mateo
  */
 public class AMCategoria extends javax.swing.JFrame {
-
+    String accion = "";
     /**
      * Creates new form AMCategoria
      * @param mensaje
+     * @param c
      */
     public AMCategoria(String mensaje) {
         initComponents();
         setLocationRelativeTo(null);
+        accion = "Modificar categoria";
         txtId.setEditable(false);
-        lblEtiqueta.setText(mensaje);
+        lblEtiqueta.setText(accion);
+        verificarAccion(accion);
+        
     }
     
-  
+    private void calcularId(){
+        txtId.setText(String.valueOf(ManejadorCategorias.obtenerId()));
+    }
+    
+    private void verificarAccion(String valor){
+        if(valor.equals("Agregar categoria")){
+            calcularId();
+        }else{
+            txtId.setText("3");
+        }
+    }
+    
+    private void refrescar(){
+        calcularId();
+        txtNombre.setText("");
+    }
 
     /**
      * This method is called from within the constructor to initialize the form.
@@ -175,6 +192,8 @@ public class AMCategoria extends javax.swing.JFrame {
     }// </editor-fold>//GEN-END:initComponents
 
     private void btnCancelarActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnCancelarActionPerformed
+        Administrar admi = new Administrar();
+        admi.cargarDatosTabla();
         this.dispose();
     }//GEN-LAST:event_btnCancelarActionPerformed
 
@@ -185,6 +204,18 @@ public class AMCategoria extends javax.swing.JFrame {
         boolean label= validar.ValidarNulos(cadena);
             if(label==true){
                 lblNombre.setText("campo obligatorio");
+            }else{
+                Categoria c = new Categoria(Integer.parseInt(txtId.getText()), txtNombre.getText());
+                if(accion.equals("Agregar categoria")){ 
+                    ManejadorCategorias.insertar(c);
+                }else{
+                    System.out.println(txtId.getText());
+                    System.out.println(txtNombre.getText());
+                    ManejadorCategorias.actualizar(c);
+                    accion = "Agregar categoria";
+                }
+                calcularId();
+                txtNombre.setText("");
             }
         txtNombre.setText("");
         txtNombre.requestFocus();
@@ -196,7 +227,8 @@ public class AMCategoria extends javax.swing.JFrame {
 
     private void txtNombreKeyTyped(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_txtNombreKeyTyped
         Validacion validar= new Validacion();
-        validar.soloDecimal(txtNombre);
+//        validar.soloDecimal(txtNombre);
+        validar.sololetras(txtNombre);
     }//GEN-LAST:event_txtNombreKeyTyped
 
     /**
@@ -239,7 +271,7 @@ public class AMCategoria extends javax.swing.JFrame {
     private javax.swing.JPanel jpFondo;
     private javax.swing.JLabel lblEtiqueta;
     private javax.swing.JLabel lblNombre;
-    private javax.swing.JTextField txtId;
-    private javax.swing.JTextField txtNombre;
+    public javax.swing.JTextField txtId;
+    public javax.swing.JTextField txtNombre;
     // End of variables declaration//GEN-END:variables
 }

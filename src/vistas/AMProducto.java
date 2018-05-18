@@ -5,8 +5,12 @@
  */
 package vistas;
 
+import Entidades.Categoria;
+import Entidades.Producto;
+import Manejadores.*;
 import Personalizacion.RedondearBorde;
 import java.awt.Color;
+import java.math.BigDecimal;
 import javax.swing.DefaultComboBoxModel;
 import javax.swing.JOptionPane;
 import javax.swing.UIManager;
@@ -17,8 +21,9 @@ import resbar.Validacion;
  * @author mateo
  */
 public class AMProducto extends javax.swing.JFrame {
-    String[] categorias = {"SELECCIONAR", "Bebidas", "Bocas", "Entradas", "Plato fuerte", "Postres", "Sopas"};
-    DefaultComboBoxModel<String> modelo = new DefaultComboBoxModel(categorias);
+    Categoria[] categorias;
+    DefaultComboBoxModel<String> modelo;
+    String accion;
     /**
      * Creates new form AMProducto
      * @param mensaje
@@ -28,9 +33,13 @@ public class AMProducto extends javax.swing.JFrame {
         setLocationRelativeTo(null);
         
         lblEtiqueta.setText(mensaje);
+        modelo = new DefaultComboBoxModel<>(new String[0]);
+        cargarComBoBox();
         cmbCategoria.setModel(modelo);
         txtNombre.requestFocus();
         txtId.setEditable(false);
+        accion = "Agregar producto";
+        verificarAccion(accion);
     }
     
     public void Limpiar(){
@@ -38,6 +47,49 @@ public class AMProducto extends javax.swing.JFrame {
         txtPrecio.setText("");
         cmbCategoria.setSelectedIndex(0);
         txtNombre.requestFocus();
+    }
+    
+    private void cargarComBoBox(){
+        categorias = ManejadorCategorias.obtener(true);
+        modelo.addElement("SELECCIONAR");
+        for (Categoria categoria : categorias) {
+            modelo.addElement(categoria.getNombre());
+        }
+    }
+    
+    private void calcularId(){
+        txtId.setText(String.valueOf(ManejadorProductos.obtenerId()));
+    }
+    
+    private void verificarAccion(String valor){
+        if(valor.equals("Agregar producto")){
+            calcularId();
+        }
+    }
+    
+    private void refrescar(){
+        calcularId();
+        txtNombre.setText("");
+    }
+    
+    private void guardar(){
+        int id = Integer.parseInt(txtId.getText());
+        String nombre = txtNombre.getText();
+        Categoria c = ManejadorCategorias.buscar(String.valueOf(cmbCategoria.getSelectedItem()));
+        double precio = Double.parseDouble(txtPrecio.getText());
+        char area;                                                      
+        if(cmbCategoria.getSelectedItem().equals("Bebidas")){
+            area = 'B';
+        }else{
+            area = 'C';
+        }
+        
+        Producto p = new Producto(id, nombre, new BigDecimal(precio).ZERO, area, c);
+        if(accion.equals("Agregar producto")){
+            ManejadorProductos.insertar(p);
+        }else{
+            ManejadorProductos.actualizar(p);
+        }
     }
 
     /**
@@ -112,7 +164,6 @@ public class AMProducto extends javax.swing.JFrame {
             }
         });
 
-        btnCancelar.setIcon(new javax.swing.ImageIcon("C:\\Users\\cesar\\Documents\\NetBeansProjects\\Resbar\\src\\Recursos\\atras16.jpg")); // NOI18N
         btnCancelar.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
                 btnCancelarActionPerformed(evt);
@@ -208,10 +259,11 @@ public class AMProducto extends javax.swing.JFrame {
                     .addComponent(txtNombre, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
                     .addComponent(lblNombre, javax.swing.GroupLayout.PREFERRED_SIZE, 20, javax.swing.GroupLayout.PREFERRED_SIZE))
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
-                .addGroup(jpFondoLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
-                    .addComponent(jLabel3)
-                    .addComponent(cmbCategoria, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                    .addComponent(lblCategoria, javax.swing.GroupLayout.PREFERRED_SIZE, 20, javax.swing.GroupLayout.PREFERRED_SIZE))
+                .addGroup(jpFondoLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                    .addComponent(lblCategoria, javax.swing.GroupLayout.Alignment.TRAILING, javax.swing.GroupLayout.PREFERRED_SIZE, 20, javax.swing.GroupLayout.PREFERRED_SIZE)
+                    .addGroup(jpFondoLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
+                        .addComponent(jLabel3)
+                        .addComponent(cmbCategoria, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)))
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
                 .addGroup(jpFondoLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                     .addGroup(jpFondoLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
@@ -253,20 +305,34 @@ public class AMProducto extends javax.swing.JFrame {
         lblCategoria.setText("");
         
         Validacion validar = new Validacion();
+        boolean campo1;
         String cadena= txtNombre.getText();
         boolean label= validar.ValidarNulos(cadena);
             if(label==true){
                lblNombre.setText("campo obligatorio");
+               campo1 = false;
+            }else{
+                campo1 = true;
             }
             
         cadena= txtPrecio.getText();
+        boolean campo2, campo3;
         label= validar.ValidarNulos(cadena);
             if(label==true){
-            lblPrecio.setText("campo obligatorio");
+                lblPrecio.setText("campo obligatorio");
+                campo2 = false;
+            }else{
+                campo2 = true;
             }
             if(cmbCategoria.getSelectedIndex()==0){
                 lblCategoria.setText("campo obligatorio");
+                campo3 = false;
+            }else{
+                campo3 = true;
+            }
             
+            if(campo1 && campo2 && campo3){
+                guardar();
             }
      
         Limpiar();
@@ -324,7 +390,7 @@ public class AMProducto extends javax.swing.JFrame {
     // Variables declaration - do not modify//GEN-BEGIN:variables
     private javax.swing.JButton btnCancelar;
     private javax.swing.JButton btnGuardar;
-    private javax.swing.JComboBox<String> cmbCategoria;
+    public javax.swing.JComboBox<String> cmbCategoria;
     private javax.swing.JLabel jLabel1;
     private javax.swing.JLabel jLabel2;
     private javax.swing.JLabel jLabel3;
@@ -336,8 +402,8 @@ public class AMProducto extends javax.swing.JFrame {
     private javax.swing.JLabel lblEtiqueta;
     private javax.swing.JLabel lblNombre;
     private javax.swing.JLabel lblPrecio;
-    private javax.swing.JTextField txtId;
-    private javax.swing.JTextField txtNombre;
-    private javax.swing.JTextField txtPrecio;
+    public javax.swing.JTextField txtId;
+    public javax.swing.JTextField txtNombre;
+    public javax.swing.JTextField txtPrecio;
     // End of variables declaration//GEN-END:variables
 }

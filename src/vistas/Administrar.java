@@ -5,6 +5,9 @@
  */
 package vistas;
 
+import Entidades.Categoria;
+import Entidades.Producto;
+import Manejadores.*;
 import Personalizacion.RedondearBorde;
 import Personalizacion.RenderColor;
 import java.awt.Color;
@@ -21,14 +24,10 @@ import javax.swing.table.TableColumnModel;
 public class Administrar extends javax.swing.JPanel {
     int[] anchoProducto = {50, 300, 300, 50};
     int[] anchoCategoria = {50, 600};
-    String[] titulosCategoria = {"Id", "Nombre"};
-    String[][] datosCategoria = {{"001", "Bebidas"}, {"002", "Bocas"}, {"003", "Entredas"}, {"004", "Plato fuerte"}, {"005", "Postre"}, {"006", "Sopas"}};
+    String[] titulosCategoria = {"Id", "Nombre"}; 
     String[] titulosProducto = {"Id", "Nombre", "Categoria", "Precio"};
-    String[][] datosProducto = {{"001", "Pepsi", "Bebidas", "$0.75"},
-                                {"002", "Café", "Bebidas", "$0.75"},
-                                {"003", "Tres leches", "Postre", "$1.50"},
-                                {"004", "Pastel de Chocolate", "Postre", "$1.75"},
-                                {"005", "Pollo asado", "Plato fuerte", "$2.00"}};
+    Categoria[] datosCategoria;
+    Producto[] datosProducto;
     DefaultTableModel modeloCategoria;
     DefaultTableModel modeloProducto;
 
@@ -37,16 +36,16 @@ public class Administrar extends javax.swing.JPanel {
      */
     public Administrar() {
         initComponents();
-        modeloProducto = new DefaultTableModel(datosProducto, titulosProducto);
+        modeloProducto = new DefaultTableModel(new Object[0][0], titulosProducto);
         tblProducto.setModel(modeloProducto);
-        modeloCategoria = new DefaultTableModel(datosCategoria, titulosCategoria);
+        modeloCategoria = new DefaultTableModel(new Object[0][0], titulosCategoria);
         tblCategoria.setModel(modeloCategoria);
         personalizarComponentes(tblProducto, anchoProducto);
         personalizarComponentes(tblCategoria, anchoCategoria);
+        cargarDatosTabla();
     }
     
-    public final void personalizarComponentes(JTable tabla, int[] ancho){
-        //Tabla Productos
+    private void personalizarComponentes(JTable tabla, int[] ancho){
         Enumeration<TableColumn> en = tabla.getColumnModel().getColumns();
         while (en.hasMoreElements()) {
             TableColumn tc = en.nextElement();
@@ -59,7 +58,69 @@ public class Administrar extends javax.swing.JPanel {
             tcm.getColumn(i).setPreferredWidth(ancho[i]);
         }
     }
-
+    
+    private void limpiarTabla(JTable tabla, int identificador){
+        if(identificador == 0){
+            for (int i = 0; i < tabla.getRowCount(); i++) {
+                modeloProducto.removeRow(i);
+            }
+        }else{
+            for (int i = 0; i < tabla.getRowCount(); i++) {
+                modeloCategoria.removeRow(i);
+            }
+        }
+    }
+    
+    public final void cargarDatosTabla(){
+        datosCategoria = ManejadorCategorias.obtener(true);
+        datosProducto = ManejadorProductos.obtenerProductos();
+        limpiarTabla(tblCategoria, 1);
+        limpiarTabla(tblProducto, 0);
+        
+        for (int i = 0; i < datosProducto.length; i++) {
+            Object[] datos = null;
+            modeloProducto.addRow(datos);
+            modeloProducto.setValueAt(datosProducto[i].getIdProducto(), i, 0);
+            modeloProducto.setValueAt(datosProducto[i].getNombre(), i, 1);
+            modeloProducto.setValueAt(datosProducto[i].getIdCategoria().getNombre(), i, 2);
+            modeloProducto.setValueAt(datosProducto[i].getPrecio(), i, 3);
+        }
+        for (int i = 0; i < datosCategoria.length; i++) {
+            Object[] datos = null;
+            modeloCategoria.addRow(datos);
+            modeloCategoria.setValueAt(datosCategoria[i].getIdCategoria(), i, 0);
+            modeloCategoria.setValueAt(datosCategoria[i].getNombre(), i, 1);
+        }
+    }
+    
+    private void modificarProdcuto(){
+        int row = tblCategoria.getSelectedRow();
+        String id = String.valueOf(tblCategoria.getValueAt(row, 0));
+        String nombre = String.valueOf(tblCategoria.getValueAt(row, 1));
+        String categoria = String.valueOf(tblCategoria.getValueAt(row, 2));
+        String precio = String.valueOf(tblCategoria.getValueAt(row, 3));
+        
+        AMProducto amp;
+        amp = new AMProducto("Modificar producto");
+        amp.txtId.setText(id);
+        amp.txtNombre.setText(nombre);
+        amp.cmbCategoria.setSelectedItem(categoria);
+        amp.txtPrecio.setText(precio);
+        amp.setVisible(true);
+    }
+    
+    private void modificarCategoria(){
+        int row = tblCategoria.getSelectedRow();
+        String id = String.valueOf(tblCategoria.getValueAt(row, 0));
+        String nombre = String.valueOf(tblCategoria.getValueAt(row, 1));
+        
+        AMCategoria amc;
+        amc = new AMCategoria("Modificar categoria");
+        amc.txtId.setText(id);
+        amc.txtNombre.setText(nombre);
+        amc.setVisible(true);
+    }
+    
     /**
      * This method is called from within the constructor to initialize the form.
      * WARNING: Do NOT modify this code. The content of this method is always
@@ -263,28 +324,21 @@ public class Administrar extends javax.swing.JPanel {
         if(pestaña == 0){
             amp = new AMProducto("Agregar producto");
             amp.setVisible(true);
-            
-            
             amp.setBackground(Color.decode("#2A3132"));
         }else{
             amc = new AMCategoria("Agregar categoria");
             amc.setVisible(true);
-            
             amc.setBackground(Color.decode("#2A3132"));
         }
     }//GEN-LAST:event_btnNuevoActionPerformed
 
     private void btnModificarActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnModificarActionPerformed
-        AMProducto amp;
-        AMCategoria amc;
         int pestaña = jtpContenedorAdministrar.getSelectedIndex();
         
         if(pestaña == 0){
-            amp = new AMProducto("Modificar producto");
-            amp.setVisible(true);
+            modificarProdcuto();
         }else{
-            amc = new AMCategoria("Modificar categoria");
-            amc.setVisible(true);
+            modificarCategoria();
         }
     }//GEN-LAST:event_btnModificarActionPerformed
 

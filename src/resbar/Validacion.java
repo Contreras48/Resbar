@@ -5,10 +5,8 @@
  */
 package resbar;
 
-import static com.sun.javafx.tk.Toolkit.getToolkit;
 import java.awt.event.KeyAdapter;
 import java.awt.event.KeyEvent;
-import javax.swing.JOptionPane;
 import javax.swing.JTextField;
 
 
