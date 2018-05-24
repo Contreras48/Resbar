@@ -120,7 +120,7 @@ public class AMProducto extends javax.swing.JFrame {
             }
         });
 
-        btnCancelar.setIcon(new javax.swing.ImageIcon("C:\\Users\\cesar\\Documents\\NetBeansProjects\\Resbar\\src\\Recursos\\atras16.jpg")); // NOI18N
+        btnCancelar.setIcon(new javax.swing.ImageIcon(getClass().getResource("/Recursos/atras16.jpg"))); // NOI18N
         btnCancelar.setMaximumSize(new java.awt.Dimension(40, 38));
         btnCancelar.setMinimumSize(new java.awt.Dimension(40, 38));
         btnCancelar.setPreferredSize(new java.awt.Dimension(40, 38));
