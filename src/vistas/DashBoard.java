@@ -128,6 +128,11 @@ public class DashBoard extends javax.swing.JFrame {
         btnMinimizar.setFocusPainted(false);
         btnMinimizar.setPreferredSize(new java.awt.Dimension(43, 25));
         btnMinimizar.setRequestFocusEnabled(false);
+        btnMinimizar.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                btnMinimizarActionPerformed(evt);
+            }
+        });
 
         javax.swing.GroupLayout layout = new javax.swing.GroupLayout(getContentPane());
         getContentPane().setLayout(layout);
@@ -210,6 +215,10 @@ public class DashBoard extends javax.swing.JFrame {
         jpContenedor.revalidate();
         jpContenedor.repaint();
     }//GEN-LAST:event_btnEstadisticasActionPerformed
+
+    private void btnMinimizarActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnMinimizarActionPerformed
+this.setExtendedState(ICONIFIED);
+    }//GEN-LAST:event_btnMinimizarActionPerformed
 
     /**
      * @param args the command line arguments
