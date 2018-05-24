@@ -59,6 +59,7 @@ public class DashBoard extends javax.swing.JFrame {
         btnMinimizar = new javax.swing.JButton();
 
         setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
+        setBackground(Color.decode("#763626"));
         setForeground(new java.awt.Color(51, 51, 255));
         setUndecorated(true);
         setPreferredSize(new java.awt.Dimension(1024, 768));

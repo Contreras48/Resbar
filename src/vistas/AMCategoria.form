@@ -37,7 +37,7 @@
     <Container class="javax.swing.JPanel" name="jpFondo">
       <Properties>
         <Property name="background" type="java.awt.Color" editor="org.netbeans.modules.form.RADConnectionPropertyEditor">
-          <Connection code="Color.decode(&quot;#2A3132&quot;)" type="code"/>
+          <Connection code="Color.decode(&quot;#336B87&quot;)" type="code"/>
         </Property>
         <Property name="border" type="javax.swing.border.Border" editor="org.netbeans.modules.form.editors2.BorderEditor">
           <Border info="org.netbeans.modules.form.compat2.border.LineBorderInfo">
@@ -124,7 +124,7 @@
               <Font name="Tahoma" size="16" style="1"/>
             </Property>
             <Property name="foreground" type="java.awt.Color" editor="org.netbeans.modules.form.RADConnectionPropertyEditor">
-              <Connection code="Color.decode(&quot;#90AFC5&quot;)" type="code"/>
+              <Connection code="Color.decode(&quot;#FFFFFF&quot;)" type="code"/>
             </Property>
             <Property name="text" type="java.lang.String" value="Nueva Categoria"/>
           </Properties>
@@ -190,7 +190,7 @@
               <Font name="Tahoma" size="12" style="1"/>
             </Property>
             <Property name="foreground" type="java.awt.Color" editor="org.netbeans.modules.form.RADConnectionPropertyEditor">
-              <Connection code="Color.decode(&quot;#90AFC5&quot;)" type="code"/>
+              <Connection code="Color.decode(&quot;#FFFFFF&quot;)" type="code"/>
             </Property>
             <Property name="text" type="java.lang.String" value="Id:"/>
           </Properties>
@@ -201,7 +201,7 @@
               <Font name="Tahoma" size="12" style="1"/>
             </Property>
             <Property name="foreground" type="java.awt.Color" editor="org.netbeans.modules.form.RADConnectionPropertyEditor">
-              <Connection code="Color.decode(&quot;#90AFC5&quot;)" type="code"/>
+              <Connection code="Color.decode(&quot;#FFFFFF&quot;)" type="code"/>
             </Property>
             <Property name="text" type="java.lang.String" value="Nombre:"/>
           </Properties>

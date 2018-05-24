@@ -59,11 +59,11 @@ public class AMCategoria extends javax.swing.JFrame {
         setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
         setUndecorated(true);
 
-        jpFondo.setBackground(Color.decode("#2A3132"));
+        jpFondo.setBackground(Color.decode("#336B87"));
         jpFondo.setBorder(javax.swing.BorderFactory.createLineBorder(new java.awt.Color(0, 0, 0)));
 
         lblEtiqueta.setFont(new java.awt.Font("Tahoma", 1, 16)); // NOI18N
-        lblEtiqueta.setForeground(Color.decode("#90AFC5"));
+        lblEtiqueta.setForeground(Color.decode("#FFFFFF"));
         lblEtiqueta.setText("Nueva Categoria");
 
         btnGuardar.setBackground(new java.awt.Color(0, 0, 0));
@@ -99,11 +99,11 @@ public class AMCategoria extends javax.swing.JFrame {
         });
 
         jLabel1.setFont(new java.awt.Font("Tahoma", 1, 12)); // NOI18N
-        jLabel1.setForeground(Color.decode("#90AFC5"));
+        jLabel1.setForeground(Color.decode("#FFFFFF"));
         jLabel1.setText("Id:");
 
         jLabel2.setFont(new java.awt.Font("Tahoma", 1, 12)); // NOI18N
-        jLabel2.setForeground(Color.decode("#90AFC5"));
+        jLabel2.setForeground(Color.decode("#FFFFFF"));
         jLabel2.setText("Nombre:");
 
         jLabel3.setFont(new java.awt.Font("Tahoma", 1, 13)); // NOI18N
