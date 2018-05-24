@@ -217,7 +217,10 @@ public class DashBoard extends javax.swing.JFrame {
     }//GEN-LAST:event_btnEstadisticasActionPerformed
 
     private void btnMinimizarActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnMinimizarActionPerformed
-this.setExtendedState(ICONIFIED);
+ /**
+     se agrega un codigo al boton minimizar para minimizar el Jframe del DASHBORH
+     */
+        this.setExtendedState(ICONIFIED);
     }//GEN-LAST:event_btnMinimizarActionPerformed
 
     /**
