@@ -27,7 +27,7 @@ public class DashBoard extends javax.swing.JFrame {
         inicializarContenedor();
         
        // jFrame.setBackground(Color.decode("#F8F5F2"));
-       getContentPane().setBackground(Color.decode("#763626"));
+       getContentPane().setBackground(Color.decode("#008080"));
        
     }
     
