@@ -8,7 +8,14 @@ package vistas;
 import javax.swing.UIManager;
 import Personalizacion.RedondearBorde;
 import java.awt.Color;
+import java.awt.event.ActionEvent;
+import java.awt.event.ActionListener;
+import java.text.SimpleDateFormat;
+import java.util.Calendar;
+import java.util.Date;
 import javax.swing.JOptionPane;
+import javax.swing.Timer;
+import javax.swing.table.DefaultTableModel;
 import resbar.Validacion;
 
 /**
@@ -17,19 +24,52 @@ import resbar.Validacion;
  */
 public class NuevaOrden extends javax.swing.JFrame {
 
+    DefaultTableModel modelo;
+    Object[] titulos = {"Productooo", "Cantidad"};
+    Object[][] bebidas = {{"Pepsi", "-----", ""}};
+//            , {"Café", "---", ""}};
     /**
      * Creates new form NuevaOrden
      */
     public NuevaOrden() {
         initComponents();
-        setLocationRelativeTo(null);
-        //setAlwaysOnTop(true);
+        this.setLocationRelativeTo(null);
+        //Hora
+        Timer tiempo=new Timer(100, new NuevaOrden.horas());
+        tiempo.start();
+        //Fecha
+        Date sistFecha=new Date();
+        SimpleDateFormat formato=new SimpleDateFormat("dd/MM/YYYY");
+        lblFecha.setText(formato.format(sistFecha));        
         
-           txtMesa.requestFocus();
-           txtId.setEditable(false);
-           txtFecha.setEditable(false);
+//        setLocationRelativeTo(null);
+//        //setAlwaysOnTop(true);
+//        
+//           txtMesa.requestFocus();
+//           txtId.setEditable(false);
+//           txtFecha.setEditable(false);
+           
+           modelo= new DefaultTableModel(bebidas, titulos);
+        tblDetalleOrden.setModel(modelo);
     }
-
+    
+        class horas implements ActionListener{
+    
+        public void actionPerformed(ActionEvent e){
+            Date sistHora=new Date();
+            String pmAm="hh:mm:ss a";
+            SimpleDateFormat format=new SimpleDateFormat(pmAm);
+            Calendar hoy=Calendar.getInstance();
+            lblHora.setText(String.format(format.format(sistHora),hoy));
+            
+                  
+        }
+        
+        
+        
+        
+}
+        
     /**
      * This method is called from within the constructor to initialize the form.
      * WARNING: Do NOT modify this code. The content of this method is always
@@ -42,29 +82,26 @@ public class NuevaOrden extends javax.swing.JFrame {
         jpFondo = new javax.swing.JPanel();
         txtMesero = new RedondearBorde(null);
         jScrollPane1 = new javax.swing.JScrollPane();
-        jTable1 = new javax.swing.JTable();
+        tblDetalleOrden = new javax.swing.JTable();
         txtCliente = new RedondearBorde(null);
-        jLabel6 = new javax.swing.JLabel();
-        jLabel1 = new javax.swing.JLabel();
         btnVolver = new javax.swing.JButton();
         btnEliminarOrden = new javax.swing.JButton();
         jLabel3 = new javax.swing.JLabel();
         lblTotal = new javax.swing.JLabel();
         jLabel7 = new javax.swing.JLabel();
-        txtFecha = new RedondearBorde(null);
         btnAgregagarProducto = new javax.swing.JButton();
         txtMesa = new RedondearBorde(null);
         btnAceptar = new javax.swing.JButton();
         jLabel2 = new javax.swing.JLabel();
         jLabel5 = new javax.swing.JLabel();
         jLabel4 = new javax.swing.JLabel();
-        txtId = new RedondearBorde(null);
         jLabel8 = new javax.swing.JLabel();
         jLabel9 = new javax.swing.JLabel();
         lblMesa = new javax.swing.JLabel();
         lblMesero = new javax.swing.JLabel();
         lblCliente = new javax.swing.JLabel();
         lblFecha = new javax.swing.JLabel();
+        lblHora = new javax.swing.JLabel();
 
         setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
         setUndecorated(true);
@@ -78,27 +115,21 @@ public class NuevaOrden extends javax.swing.JFrame {
             }
         });
 
-        jTable1.setModel(new javax.swing.table.DefaultTableModel(
+        tblDetalleOrden.setModel(new javax.swing.table.DefaultTableModel(
             new Object [][] {
 
             },
             new String [] {
-                "Producto", "Cantidad", "Precio", "Total"
+
             }
         ));
-        jScrollPane1.setViewportView(jTable1);
+        jScrollPane1.setViewportView(tblDetalleOrden);
 
         txtCliente.addKeyListener(new java.awt.event.KeyAdapter() {
             public void keyTyped(java.awt.event.KeyEvent evt) {
                 txtClienteKeyTyped(evt);
             }
         });
-
-        jLabel6.setForeground(Color.decode("#90AFC5"));
-        jLabel6.setText("fecha:");
-
-        jLabel1.setForeground(Color.decode("#90AFC5"));
-        jLabel1.setText("Id orden:");
 
         btnVolver.setIcon(new javax.swing.ImageIcon(getClass().getResource("/Recursos/atras16.jpg"))); // NOI18N
         btnVolver.addActionListener(new java.awt.event.ActionListener() {
@@ -114,6 +145,7 @@ public class NuevaOrden extends javax.swing.JFrame {
 
         lblTotal.setText("$0.0");
 
+        jLabel7.setForeground(Color.decode("#90AFC5"));
         jLabel7.setText("Detalle Orden");
 
         btnAgregagarProducto.setIcon(new javax.swing.ImageIcon(getClass().getResource("/Recursos/agregar32.jpg"))); // NOI18N
@@ -159,91 +191,77 @@ public class NuevaOrden extends javax.swing.JFrame {
 
         lblFecha.setForeground(Color.decode("#90AFC5"));
 
+        lblHora.setForeground(Color.decode("#90AFC5"));
+
         javax.swing.GroupLayout jpFondoLayout = new javax.swing.GroupLayout(jpFondo);
         jpFondo.setLayout(jpFondoLayout);
         jpFondoLayout.setHorizontalGroup(
             jpFondoLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(jpFondoLayout.createSequentialGroup()
+                .addContainerGap()
                 .addGroup(jpFondoLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                    .addComponent(jScrollPane1)
                     .addGroup(jpFondoLayout.createSequentialGroup()
-                        .addContainerGap()
-                        .addGroup(jpFondoLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                            .addComponent(jScrollPane1, javax.swing.GroupLayout.DEFAULT_SIZE, 686, Short.MAX_VALUE)
-                            .addGroup(jpFondoLayout.createSequentialGroup()
-                                .addGap(22, 22, 22)
-                                .addComponent(btnVolver, javax.swing.GroupLayout.PREFERRED_SIZE, 40, javax.swing.GroupLayout.PREFERRED_SIZE)
-                                .addGap(56, 56, 56)
-                                .addComponent(btnAceptar, javax.swing.GroupLayout.PREFERRED_SIZE, 39, javax.swing.GroupLayout.PREFERRED_SIZE)
-                                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-                                .addComponent(btnEliminarOrden, javax.swing.GroupLayout.PREFERRED_SIZE, 40, javax.swing.GroupLayout.PREFERRED_SIZE)
-                                .addGap(82, 82, 82)
-                                .addGroup(jpFondoLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                                    .addGroup(jpFondoLayout.createSequentialGroup()
-                                        .addComponent(jLabel9)
-                                        .addGap(64, 64, 64)
-                                        .addComponent(jLabel5)
-                                        .addGap(42, 42, 42)
-                                        .addComponent(lblTotal, javax.swing.GroupLayout.PREFERRED_SIZE, 60, javax.swing.GroupLayout.PREFERRED_SIZE))
-                                    .addComponent(btnAgregagarProducto, javax.swing.GroupLayout.PREFERRED_SIZE, 63, javax.swing.GroupLayout.PREFERRED_SIZE))
-                                .addGap(11, 11, 11))))
-                    .addGroup(jpFondoLayout.createSequentialGroup()
+                        .addGap(22, 22, 22)
+                        .addComponent(btnVolver, javax.swing.GroupLayout.PREFERRED_SIZE, 40, javax.swing.GroupLayout.PREFERRED_SIZE)
+                        .addGap(56, 56, 56)
+                        .addComponent(btnAceptar, javax.swing.GroupLayout.PREFERRED_SIZE, 39, javax.swing.GroupLayout.PREFERRED_SIZE)
+                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                        .addComponent(btnEliminarOrden, javax.swing.GroupLayout.PREFERRED_SIZE, 40, javax.swing.GroupLayout.PREFERRED_SIZE)
+                        .addGap(82, 82, 82)
                         .addGroup(jpFondoLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                             .addGroup(jpFondoLayout.createSequentialGroup()
-                                .addContainerGap()
+                                .addComponent(jLabel9)
+                                .addGap(64, 64, 64)
+                                .addComponent(jLabel5)
+                                .addGap(42, 42, 42)
+                                .addComponent(lblTotal, javax.swing.GroupLayout.PREFERRED_SIZE, 60, javax.swing.GroupLayout.PREFERRED_SIZE))
+                            .addComponent(btnAgregagarProducto, javax.swing.GroupLayout.PREFERRED_SIZE, 63, javax.swing.GroupLayout.PREFERRED_SIZE))
+                        .addGap(11, 11, 11))
+                    .addGroup(jpFondoLayout.createSequentialGroup()
+                        .addComponent(jLabel8)
+                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                        .addComponent(lblFecha, javax.swing.GroupLayout.PREFERRED_SIZE, 101, javax.swing.GroupLayout.PREFERRED_SIZE)
+                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                        .addComponent(lblHora, javax.swing.GroupLayout.PREFERRED_SIZE, 103, javax.swing.GroupLayout.PREFERRED_SIZE))
+                    .addGroup(jpFondoLayout.createSequentialGroup()
+                        .addGroup(jpFondoLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                            .addGroup(jpFondoLayout.createSequentialGroup()
+                                .addComponent(jLabel2)
+                                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                                .addComponent(txtMesa, javax.swing.GroupLayout.PREFERRED_SIZE, 37, javax.swing.GroupLayout.PREFERRED_SIZE)
+                                .addGap(18, 18, 18)
+                                .addComponent(lblMesa, javax.swing.GroupLayout.PREFERRED_SIZE, 97, javax.swing.GroupLayout.PREFERRED_SIZE))
+                            .addGroup(jpFondoLayout.createSequentialGroup()
                                 .addGroup(jpFondoLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                                    .addComponent(jLabel3)
+                                    .addComponent(jLabel4))
+                                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
+                                .addGroup(jpFondoLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
                                     .addGroup(jpFondoLayout.createSequentialGroup()
-                                        .addGroup(jpFondoLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING, false)
-                                            .addGroup(javax.swing.GroupLayout.Alignment.LEADING, jpFondoLayout.createSequentialGroup()
-                                                .addComponent(jLabel2)
-                                                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                                                .addComponent(txtMesa))
-                                            .addGroup(javax.swing.GroupLayout.Alignment.LEADING, jpFondoLayout.createSequentialGroup()
-                                                .addComponent(jLabel1)
-                                                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                                                .addComponent(txtId, javax.swing.GroupLayout.PREFERRED_SIZE, 40, javax.swing.GroupLayout.PREFERRED_SIZE)))
+                                        .addComponent(txtCliente, javax.swing.GroupLayout.PREFERRED_SIZE, 203, javax.swing.GroupLayout.PREFERRED_SIZE)
                                         .addGap(18, 18, 18)
-                                        .addComponent(lblMesa, javax.swing.GroupLayout.PREFERRED_SIZE, 97, javax.swing.GroupLayout.PREFERRED_SIZE))
+                                        .addComponent(lblCliente, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
                                     .addGroup(jpFondoLayout.createSequentialGroup()
-                                        .addGroup(jpFondoLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                                            .addComponent(jLabel3)
-                                            .addComponent(jLabel4)
-                                            .addComponent(jLabel6))
-                                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
-                                        .addGroup(jpFondoLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
-                                            .addGroup(jpFondoLayout.createSequentialGroup()
-                                                .addComponent(txtFecha, javax.swing.GroupLayout.PREFERRED_SIZE, 203, javax.swing.GroupLayout.PREFERRED_SIZE)
-                                                .addGap(18, 18, 18)
-                                                .addComponent(lblFecha, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
-                                            .addGroup(jpFondoLayout.createSequentialGroup()
-                                                .addComponent(txtCliente, javax.swing.GroupLayout.PREFERRED_SIZE, 203, javax.swing.GroupLayout.PREFERRED_SIZE)
-                                                .addGap(18, 18, 18)
-                                                .addComponent(lblCliente, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
-                                            .addGroup(jpFondoLayout.createSequentialGroup()
-                                                .addComponent(txtMesero, javax.swing.GroupLayout.PREFERRED_SIZE, 200, javax.swing.GroupLayout.PREFERRED_SIZE)
-                                                .addGap(18, 18, 18)
-                                                .addComponent(lblMesero, javax.swing.GroupLayout.PREFERRED_SIZE, 115, javax.swing.GroupLayout.PREFERRED_SIZE))))))
-                            .addGroup(jpFondoLayout.createSequentialGroup()
-                                .addGap(292, 292, 292)
-                                .addComponent(jLabel8)))
+                                        .addComponent(txtMesero, javax.swing.GroupLayout.PREFERRED_SIZE, 200, javax.swing.GroupLayout.PREFERRED_SIZE)
+                                        .addGap(18, 18, 18)
+                                        .addComponent(lblMesero, javax.swing.GroupLayout.PREFERRED_SIZE, 115, javax.swing.GroupLayout.PREFERRED_SIZE))))
+                            .addComponent(jLabel7))
                         .addGap(0, 0, Short.MAX_VALUE)))
                 .addContainerGap())
-            .addGroup(jpFondoLayout.createSequentialGroup()
-                .addGap(291, 291, 291)
-                .addComponent(jLabel7)
-                .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
         );
         jpFondoLayout.setVerticalGroup(
             jpFondoLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, jpFondoLayout.createSequentialGroup()
                 .addContainerGap()
-                .addComponent(jLabel8)
-                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                .addGroup(jpFondoLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
-                    .addComponent(jLabel1)
-                    .addComponent(txtId, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
-                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
                 .addGroup(jpFondoLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                    .addComponent(lblMesa, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                    .addComponent(lblHora, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                    .addGroup(jpFondoLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
+                        .addComponent(jLabel8)
+                        .addComponent(lblFecha, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)))
+                .addGap(20, 20, 20)
+                .addGroup(jpFondoLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                    .addComponent(lblMesa, javax.swing.GroupLayout.DEFAULT_SIZE, 20, Short.MAX_VALUE)
                     .addGroup(jpFondoLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
                         .addComponent(jLabel2)
                         .addComponent(txtMesa, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)))
@@ -252,19 +270,13 @@ public class NuevaOrden extends javax.swing.JFrame {
                     .addGroup(jpFondoLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
                         .addComponent(txtMesero, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
                         .addComponent(jLabel3))
-                    .addComponent(lblMesero, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
+                    .addComponent(lblMesero, javax.swing.GroupLayout.DEFAULT_SIZE, 21, Short.MAX_VALUE))
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
                 .addGroup(jpFondoLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
                     .addComponent(txtCliente, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
                     .addComponent(jLabel4)
                     .addComponent(lblCliente, javax.swing.GroupLayout.PREFERRED_SIZE, 20, javax.swing.GroupLayout.PREFERRED_SIZE))
-                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                .addGroup(jpFondoLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                    .addComponent(lblFecha, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-                    .addGroup(jpFondoLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
-                        .addComponent(txtFecha, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                        .addComponent(jLabel6)))
-                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                .addGap(35, 35, 35)
                 .addComponent(jLabel7)
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
                 .addComponent(jScrollPane1, javax.swing.GroupLayout.PREFERRED_SIZE, 164, javax.swing.GroupLayout.PREFERRED_SIZE)
@@ -302,15 +314,6 @@ public class NuevaOrden extends javax.swing.JFrame {
         pack();
     }// </editor-fold>//GEN-END:initComponents
 
-    private void btnVolverActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnVolverActionPerformed
-        this.dispose();
-    }//GEN-LAST:event_btnVolverActionPerformed
-
-    private void btnAgregagarProductoActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnAgregagarProductoActionPerformed
-        MenuAgregar p = new MenuAgregar();
-        p.setVisible(true);
-    }//GEN-LAST:event_btnAgregagarProductoActionPerformed
-
     private void btnAceptarActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnAceptarActionPerformed
         lblCliente.setText("");
         lblFecha.setText("");
@@ -318,67 +321,76 @@ public class NuevaOrden extends javax.swing.JFrame {
         lblMesero.setText("");
         boolean label;
         String cadena= txtCliente.getText();
-        
+
         Validacion validar= new Validacion();
         label= validar.ValidarNulos(cadena);
         if(label==true){
             lblCliente.setText("campo obligatorio");
         }
-        
-        cadena= txtFecha.getText();
+
+        //        cadena= txtFecha.getText();
         label=validar.ValidarNulos(cadena);
-         if(label==true){
-             lblFecha.setText("campo obligatorio");
+        if(label==true){
+            lblFecha.setText("campo obligatorio");
         }
-         
-         cadena= txtMesa.getText();
+
+        cadena= txtMesa.getText();
         label=validar.ValidarNulos(cadena);
-          if(label==true){
-              lblMesa.setText("campo obligatorio");
+        if(label==true){
+            lblMesa.setText("campo obligatorio");
         }
-          
-          cadena= txtMesero.getText();
+
+        cadena= txtMesero.getText();
         label=validar.ValidarNulos(cadena);
-           if(label==true){
-               lblMesero.setText("campo obligatorio");
+        if(label==true){
+            lblMesero.setText("campo obligatorio");
         }
-           
-           txtCliente.setText("");
-           txtFecha.setText("");
-           txtMesa.setText("");
-           txtMesero.setText("");
-           txtMesa.requestFocus();
+
+        txtCliente.setText("");
+        //           txtFecha.setText("");
+        txtMesa.setText("");
+        txtMesero.setText("");
+        txtMesa.requestFocus();
     }//GEN-LAST:event_btnAceptarActionPerformed
 
     private void txtMesaKeyTyped(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_txtMesaKeyTyped
         char validar= evt.getKeyChar();
         if(Character.isLetter(validar)){
-        
+
             getToolkit().beep();
             evt.consume();
             JOptionPane.showMessageDialog(rootPane, "ingrese solo numeros");
         }
     }//GEN-LAST:event_txtMesaKeyTyped
 
-    private void txtMeseroKeyTyped(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_txtMeseroKeyTyped
-        char validar= evt.getKeyChar();
-        if(Character.isDigit(validar)){
-        
-            getToolkit().beep();
-            evt.consume();
-            JOptionPane.showMessageDialog(rootPane, "ingrese solo letras y espacios");
-        }
-    }//GEN-LAST:event_txtMeseroKeyTyped
+    private void btnAgregagarProductoActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnAgregagarProductoActionPerformed
+        MenuAgregar p = new MenuAgregar();
+        p.setVisible(true);
+    }//GEN-LAST:event_btnAgregagarProductoActionPerformed
+
+    private void btnVolverActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnVolverActionPerformed
+        this.dispose();
+    }//GEN-LAST:event_btnVolverActionPerformed
 
     private void txtClienteKeyTyped(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_txtClienteKeyTyped
         char validar= evt.getKeyChar();
         if(Character.isDigit(validar)){
-        
+
             getToolkit().beep();
             evt.consume();
             JOptionPane.showMessageDialog(rootPane, "ingrese solo letras y espacios");
         }
     }//GEN-LAST:event_txtClienteKeyTyped
+
+    private void txtMeseroKeyTyped(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_txtMeseroKeyTyped
+        char validar= evt.getKeyChar();
+        if(Character.isDigit(validar)){
+
+            getToolkit().beep();
+            evt.consume();
+            JOptionPane.showMessageDialog(rootPane, "ingrese solo letras y espacios");
+        }
+    }//GEN-LAST:event_txtMeseroKeyTyped
 
     /**
      * @param args the command line arguments
@@ -415,26 +427,23 @@ public class NuevaOrden extends javax.swing.JFrame {
     private javax.swing.JButton btnAgregagarProducto;
     private javax.swing.JButton btnEliminarOrden;
     private javax.swing.JButton btnVolver;
-    private javax.swing.JLabel jLabel1;
     private javax.swing.JLabel jLabel2;
     private javax.swing.JLabel jLabel3;
     private javax.swing.JLabel jLabel4;
     private javax.swing.JLabel jLabel5;
-    private javax.swing.JLabel jLabel6;
     private javax.swing.JLabel jLabel7;
     private javax.swing.JLabel jLabel8;
     private javax.swing.JLabel jLabel9;
     private javax.swing.JScrollPane jScrollPane1;
-    private javax.swing.JTable jTable1;
     private javax.swing.JPanel jpFondo;
     private javax.swing.JLabel lblCliente;
     private javax.swing.JLabel lblFecha;
+    private javax.swing.JLabel lblHora;
     private javax.swing.JLabel lblMesa;
     private javax.swing.JLabel lblMesero;
     private javax.swing.JLabel lblTotal;
+    private javax.swing.JTable tblDetalleOrden;
     private javax.swing.JTextField txtCliente;
-    private javax.swing.JTextField txtFecha;
-    private javax.swing.JTextField txtId;
     private javax.swing.JTextField txtMesa;
     private javax.swing.JTextField txtMesero;
     // End of variables declaration//GEN-END:variables
