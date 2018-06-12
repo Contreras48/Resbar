@@ -110,7 +110,7 @@ public class Inicio extends javax.swing.JPanel {
         jLabel1.setFont(new java.awt.Font("Dialog", 1, 16)); // NOI18N
         jLabel1.setForeground(Color.decode("#90AFC5")
         );
-        jLabel1.setText("Ordenes activas");
+        jLabel1.setText("Ordenes activassssssssssssssssssssss");
 
         tblOrdenesActivas.setBackground(Color.decode("#90AFC5")
         );
@@ -186,7 +186,7 @@ public class Inicio extends javax.swing.JPanel {
                 .addComponent(jScrollPane1, javax.swing.GroupLayout.PREFERRED_SIZE, 511, javax.swing.GroupLayout.PREFERRED_SIZE)
                 .addGap(18, 18, 18)
                 .addComponent(btnNuevaOrden1, javax.swing.GroupLayout.PREFERRED_SIZE, 64, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addContainerGap(21, Short.MAX_VALUE))
+                .addContainerGap(25, Short.MAX_VALUE))
         );
     }// </editor-fold>//GEN-END:initComponents
 
