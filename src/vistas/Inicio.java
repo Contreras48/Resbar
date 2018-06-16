@@ -41,6 +41,7 @@ public class Inicio extends javax.swing.JPanel {
         modelo = new DefaultTableModel(datos, titulosColumnas);
         tblOrdenesActivas.setModel(modelo);
         personalizarComponentes();
+        
     }
     
     public final void personalizarComponentes(){
@@ -66,8 +67,8 @@ public class Inicio extends javax.swing.JPanel {
         JPopupMenu popupMenu = new JPopupMenu ();
         
         JMenuItem menuItem1 = new JMenuItem("Agregar Productos", new ImageIcon(getClass().getResource("/Recursos/modificarProductos.png")));
-        JMenuItem menuItem2 = new JMenuItem("Imprimir", new ImageIcon(getClass().getResource("/Recursos/imprimir.png")));
-        JMenuItem menuItem3 = new JMenuItem("Modificar Orden", new ImageIcon(getClass().getResource("/Recursos/modificarOrden.png")));
+        JMenuItem menuItem2 = new JMenuItem("Imprimir Cuenta", new ImageIcon(getClass().getResource("/Recursos/imprimir.png")));
+        JMenuItem menuItem3 = new JMenuItem("Modificar Cuenta", new ImageIcon(getClass().getResource("/Recursos/modificarOrden.png")));
         JMenuItem menuItem4 = new JMenuItem("Cobrar", new ImageIcon(getClass().getResource("/Recursos/cobrar.png")));
         
         menuItem1.addActionListener((ActionEvent e) -> {            
@@ -78,6 +79,11 @@ public class Inicio extends javax.swing.JPanel {
         menuItem3.addActionListener((ActionEvent e) -> {            
             NuevaOrden nvo = new NuevaOrden();
             nvo.setVisible(true);   
+        });
+        
+        menuItem4.addActionListener((ActionEvent e) -> {            
+            Cobrar co = new Cobrar();
+            co.setVisible(true);   
         });
         
         popupMenu.add(menuItem1);
@@ -168,7 +174,7 @@ public class Inicio extends javax.swing.JPanel {
                                 .addGap(27, 27, 27)
                                 .addComponent(txtBuscar, javax.swing.GroupLayout.PREFERRED_SIZE, 357, javax.swing.GroupLayout.PREFERRED_SIZE))
                             .addComponent(btnNuevaOrden1, javax.swing.GroupLayout.PREFERRED_SIZE, 155, javax.swing.GroupLayout.PREFERRED_SIZE))
-                        .addGap(0, 214, Short.MAX_VALUE)))
+                        .addGap(0, 329, Short.MAX_VALUE)))
                 .addContainerGap())
         );
         layout.setVerticalGroup(

@@ -8,6 +8,7 @@ package vistas;
 import Personalizacion.RedondearBorde;
 import java.awt.Color;
 import javax.swing.DefaultComboBoxModel;
+import javax.swing.ImageIcon;
 import javax.swing.JOptionPane;
 import javax.swing.UIManager;
 import resbar.Validacion;
@@ -31,6 +32,9 @@ public class AMProducto extends javax.swing.JFrame {
         cmbCategoria.setModel(modelo);
         txtNombre.requestFocus();
         txtId.setEditable(false);
+        this.setResizable(false);
+        setIconImage(new ImageIcon(getClass().getResource("/Recursos/restaur.png")).getImage());
+        this.setResizable(false);
     }
     
     public void Limpiar(){
@@ -67,8 +71,8 @@ public class AMProducto extends javax.swing.JFrame {
         lblPrecio = new javax.swing.JLabel();
         lblCategoria = new javax.swing.JLabel();
 
-        setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
-        setUndecorated(true);
+        setDefaultCloseOperation(javax.swing.WindowConstants.DISPOSE_ON_CLOSE);
+        setTitle("Nuevo | Producto");
 
         jpFondo.setBackground(Color.decode("#2A3132"));
         jpFondo.setBorder(javax.swing.BorderFactory.createLineBorder(new java.awt.Color(0, 0, 0)));

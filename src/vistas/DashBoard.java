@@ -9,6 +9,7 @@ package vistas;
 //import Personalizacion.RedondearBorde;
 import javax.swing.UIManager;
 import java.awt.Color;
+import javax.swing.ImageIcon;
 /**
  *
  * @author mateo
@@ -29,6 +30,8 @@ public class DashBoard extends javax.swing.JFrame {
         
        // jFrame.setBackground(Color.decode("#F8F5F2"));
        getContentPane().setBackground(Color.decode("#008080"));
+       setIconImage(new ImageIcon(getClass().getResource("/Recursos/restaur.png")).getImage());
+       this.setResizable(false);
        
     }
     
@@ -56,12 +59,10 @@ public class DashBoard extends javax.swing.JFrame {
         btnInicio = new javax.swing.JButton();
         btnAdministrar = new javax.swing.JButton();
         btnEstadisticas = new javax.swing.JButton();
-        btnCerrar = new javax.swing.JButton();
-        btnMinimizar = new javax.swing.JButton();
 
         setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
+        setTitle("Inicio");
         setForeground(new java.awt.Color(51, 51, 255));
-        setUndecorated(true);
         setResizable(false);
 
         javax.swing.GroupLayout jpContenedorLayout = new javax.swing.GroupLayout(jpContenedor);
@@ -99,47 +100,20 @@ public class DashBoard extends javax.swing.JFrame {
             }
         });
 
-        btnCerrar.setBackground(Color.decode("#336B87")
-        );
-        btnCerrar.setFont(new java.awt.Font("Tahoma", 1, 11)); // NOI18N
-        btnCerrar.setText("X");
-        btnCerrar.setFocusPainted(false);
-        btnCerrar.addActionListener(new java.awt.event.ActionListener() {
-            public void actionPerformed(java.awt.event.ActionEvent evt) {
-                btnCerrarActionPerformed(evt);
-            }
-        });
-
-        btnMinimizar.setBackground(Color.decode("#336B87")
-        );
-        btnMinimizar.setFont(new java.awt.Font("Tahoma", 1, 14)); // NOI18N
-        btnMinimizar.setText("-");
-        btnMinimizar.setFocusPainted(false);
-        btnMinimizar.setPreferredSize(new java.awt.Dimension(43, 25));
-        btnMinimizar.setRequestFocusEnabled(false);
-
         javax.swing.GroupLayout layout = new javax.swing.GroupLayout(getContentPane());
         getContentPane().setLayout(layout);
         layout.setHorizontalGroup(
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, layout.createSequentialGroup()
                 .addContainerGap()
-                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING)
-                    .addGroup(layout.createSequentialGroup()
-                        .addGap(0, 0, Short.MAX_VALUE)
-                        .addComponent(btnMinimizar, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
-                        .addComponent(btnCerrar, javax.swing.GroupLayout.PREFERRED_SIZE, 43, javax.swing.GroupLayout.PREFERRED_SIZE)
-                        .addGap(25, 25, 25))
-                    .addGroup(layout.createSequentialGroup()
-                        .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                            .addComponent(btnInicio, javax.swing.GroupLayout.PREFERRED_SIZE, 296, javax.swing.GroupLayout.PREFERRED_SIZE)
-                            .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING, false)
-                                .addComponent(btnEstadisticas, javax.swing.GroupLayout.Alignment.LEADING, javax.swing.GroupLayout.PREFERRED_SIZE, 0, Short.MAX_VALUE)
-                                .addComponent(btnAdministrar, javax.swing.GroupLayout.Alignment.LEADING, javax.swing.GroupLayout.PREFERRED_SIZE, 293, javax.swing.GroupLayout.PREFERRED_SIZE)))
-                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
-                        .addComponent(jpContenedor, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-                        .addContainerGap())))
+                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                    .addComponent(btnInicio, javax.swing.GroupLayout.PREFERRED_SIZE, 296, javax.swing.GroupLayout.PREFERRED_SIZE)
+                    .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING, false)
+                        .addComponent(btnEstadisticas, javax.swing.GroupLayout.Alignment.LEADING, javax.swing.GroupLayout.PREFERRED_SIZE, 0, Short.MAX_VALUE)
+                        .addComponent(btnAdministrar, javax.swing.GroupLayout.Alignment.LEADING, javax.swing.GroupLayout.PREFERRED_SIZE, 293, javax.swing.GroupLayout.PREFERRED_SIZE)))
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
+                .addComponent(jpContenedor, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                .addContainerGap())
         );
         layout.setVerticalGroup(
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
@@ -154,11 +128,7 @@ public class DashBoard extends javax.swing.JFrame {
                         .addComponent(btnEstadisticas, javax.swing.GroupLayout.PREFERRED_SIZE, 98, javax.swing.GroupLayout.PREFERRED_SIZE)
                         .addGap(0, 190, Short.MAX_VALUE))
                     .addGroup(layout.createSequentialGroup()
-                        .addGap(7, 7, 7)
-                        .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
-                            .addComponent(btnCerrar, javax.swing.GroupLayout.PREFERRED_SIZE, 27, javax.swing.GroupLayout.PREFERRED_SIZE)
-                            .addComponent(btnMinimizar, javax.swing.GroupLayout.PREFERRED_SIZE, 27, javax.swing.GroupLayout.PREFERRED_SIZE))
-                        .addGap(18, 18, 18)
+                        .addGap(53, 53, 53)
                         .addComponent(jpContenedor, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)))
                 .addContainerGap())
         );
@@ -187,10 +157,6 @@ public class DashBoard extends javax.swing.JFrame {
         jpContenedor.revalidate();
         jpContenedor.repaint();
     }//GEN-LAST:event_btnAdministrarActionPerformed
-
-    private void btnCerrarActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnCerrarActionPerformed
-        System.exit(0);
-    }//GEN-LAST:event_btnCerrarActionPerformed
 
     private void btnEstadisticasActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnEstadisticasActionPerformed
         p3 = new Estadisticas();
@@ -238,10 +204,8 @@ public class DashBoard extends javax.swing.JFrame {
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
     private javax.swing.JButton btnAdministrar;
-    private javax.swing.JButton btnCerrar;
     private javax.swing.JButton btnEstadisticas;
     private javax.swing.JButton btnInicio;
-    private javax.swing.JButton btnMinimizar;
     private javax.swing.JPanel jpContenedor;
     // End of variables declaration//GEN-END:variables
 }

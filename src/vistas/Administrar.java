@@ -9,6 +9,7 @@ import Personalizacion.RedondearBorde;
 import Personalizacion.RenderColor;
 import java.awt.Color;
 import java.util.Enumeration;
+import javax.swing.DefaultListModel;
 import javax.swing.JTable;
 import javax.swing.table.DefaultTableModel;
 import javax.swing.table.TableColumn;
@@ -19,6 +20,7 @@ import javax.swing.table.TableColumnModel;
  * @author mateo
  */
 public class Administrar extends javax.swing.JPanel {
+    
     int[] anchoProducto = {50, 300, 300, 50};
     int[] anchoCategoria = {50, 600};
     String[] titulosCategoria = {"Id", "Nombre"};
@@ -38,13 +40,41 @@ public class Administrar extends javax.swing.JPanel {
     public Administrar() {
         initComponents();
         modeloProducto = new DefaultTableModel(datosProducto, titulosProducto);
-        tblProducto.setModel(modeloProducto);
+        
+        ListaCategoria();
+        tblAdminProductos.setModel(modeloProducto);
         modeloCategoria = new DefaultTableModel(datosCategoria, titulosCategoria);
-        tblCategoria.setModel(modeloCategoria);
-        personalizarComponentes(tblProducto, anchoProducto);
-        personalizarComponentes(tblCategoria, anchoCategoria);
+        tblAdminProductos.setModel(modeloCategoria);
+        personalizarComponentes(tblAdminProductos, anchoProducto);
+        personalizarComponentes(tblAdminProductos, anchoCategoria);
+//        this.setResizable(false);
     }
-    
+    public void ListaCategoria(){
+        DefaultListModel modeloLista= new DefaultListModel();       
+        this.lstAdminCategorias.setModel(modeloLista);        
+        modeloLista.addElement("Entradas");
+        modeloLista.addElement("plato Fuerte");        
+        modeloLista.addElement("Sopas");
+        modeloLista.addElement("Bebidas");
+        modeloLista.addElement("Bocas");
+        modeloLista.addElement("Postres");
+        modeloLista.addElement("------------------------");  
+        modeloLista.addElement("--------------"); 
+        modeloLista.addElement("--------------"); 
+        modeloLista.addElement("--------------"); 
+        modeloLista.addElement("--------------"); 
+        modeloLista.addElement("--------------"); 
+        modeloLista.addElement("--------------"); 
+        modeloLista.addElement("--------------"); 
+        modeloLista.addElement("--------------"); 
+        modeloLista.addElement("--------------"); 
+        modeloLista.addElement("--------------"); 
+        modeloLista.addElement("--------------"); 
+        modeloLista.addElement("--------------"); 
+        modeloLista.addElement("--------------"); 
+        
+        
+       }
     public final void personalizarComponentes(JTable tabla, int[] ancho){
         //Tabla Productos
         Enumeration<TableColumn> en = tabla.getColumnModel().getColumns();
@@ -69,121 +99,17 @@ public class Administrar extends javax.swing.JPanel {
     // <editor-fold defaultstate="collapsed" desc="Generated Code">//GEN-BEGIN:initComponents
     private void initComponents() {
 
-        jtpContenedorAdministrar = new javax.swing.JTabbedPane();
-        jPanel1 = new javax.swing.JPanel();
-        txtBuscarProducto = new RedondearBorde("/Recursos/buscar.png");
-        jScrollPane1 = new javax.swing.JScrollPane();
-        tblProducto = new javax.swing.JTable();
-        jLabel2 = new javax.swing.JLabel();
-        jLabel3 = new javax.swing.JLabel();
-        jPanel2 = new javax.swing.JPanel();
-        jTextField1 = new RedondearBorde("/Recursos/buscar.png");
-        jScrollPane2 = new javax.swing.JScrollPane();
-        tblCategoria = new javax.swing.JTable();
         btnNuevo = new javax.swing.JButton();
         btnModificar = new javax.swing.JButton();
         btnEliminar = new javax.swing.JButton();
         jLabel1 = new javax.swing.JLabel();
+        jScrollPane1 = new javax.swing.JScrollPane();
+        lstAdminCategorias = new javax.swing.JList<>();
+        jLabel5 = new javax.swing.JLabel();
+        jScrollPane2 = new javax.swing.JScrollPane();
+        tblAdminProductos = new javax.swing.JTable();
 
         setBackground(Color.decode("#2A3132"));
-
-        tblProducto.setBackground(Color.decode("#90AFC5"));
-        tblProducto.setModel(new javax.swing.table.DefaultTableModel(
-            new Object [][] {
-                {null, null, null, null},
-                {null, null, null, null},
-                {null, null, null, null},
-                {null, null, null, null}
-            },
-            new String [] {
-                "ID", "Nombre", "Categoria", "Precio"
-            }
-        ));
-        jScrollPane1.setViewportView(tblProducto);
-
-        jLabel2.setForeground(Color.decode("#90AFC5"));
-        jLabel2.setText("Buscar");
-
-        jLabel3.setIcon(new javax.swing.ImageIcon(getClass().getResource("/Recursos/buscar.jpg"))); // NOI18N
-
-        javax.swing.GroupLayout jPanel1Layout = new javax.swing.GroupLayout(jPanel1);
-        jPanel1.setLayout(jPanel1Layout);
-        jPanel1Layout.setHorizontalGroup(
-            jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGroup(jPanel1Layout.createSequentialGroup()
-                .addContainerGap()
-                .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                    .addComponent(jScrollPane1, javax.swing.GroupLayout.DEFAULT_SIZE, 639, Short.MAX_VALUE)
-                    .addGroup(jPanel1Layout.createSequentialGroup()
-                        .addGap(21, 21, 21)
-                        .addComponent(jLabel2)
-                        .addGap(18, 18, 18)
-                        .addComponent(jLabel3)
-                        .addGap(28, 28, 28)
-                        .addComponent(txtBuscarProducto, javax.swing.GroupLayout.PREFERRED_SIZE, 330, javax.swing.GroupLayout.PREFERRED_SIZE)
-                        .addGap(0, 0, Short.MAX_VALUE)))
-                .addContainerGap())
-        );
-        jPanel1Layout.setVerticalGroup(
-            jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGroup(jPanel1Layout.createSequentialGroup()
-                .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                    .addGroup(jPanel1Layout.createSequentialGroup()
-                        .addContainerGap()
-                        .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                            .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, jPanel1Layout.createSequentialGroup()
-                                .addComponent(jLabel2)
-                                .addGap(10, 10, 10))
-                            .addComponent(txtBuscarProducto, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)))
-                    .addComponent(jLabel3, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
-                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                .addComponent(jScrollPane1, javax.swing.GroupLayout.DEFAULT_SIZE, 443, Short.MAX_VALUE)
-                .addGap(32, 32, 32))
-        );
-
-        jtpContenedorAdministrar.addTab("Productos", jPanel1);
-
-        jTextField1.setText("Buscar categoria");
-
-        tblCategoria.setBackground(Color.decode("#90AFC5")
-        );
-        tblCategoria.setModel(new javax.swing.table.DefaultTableModel(
-            new Object [][] {
-                {null, null},
-                {null, null},
-                {null, null},
-                {null, null}
-            },
-            new String [] {
-                "ID", "Nombre"
-            }
-        ));
-        jScrollPane2.setViewportView(tblCategoria);
-
-        javax.swing.GroupLayout jPanel2Layout = new javax.swing.GroupLayout(jPanel2);
-        jPanel2.setLayout(jPanel2Layout);
-        jPanel2Layout.setHorizontalGroup(
-            jPanel2Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGroup(jPanel2Layout.createSequentialGroup()
-                .addContainerGap()
-                .addGroup(jPanel2Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                    .addGroup(jPanel2Layout.createSequentialGroup()
-                        .addComponent(jTextField1, javax.swing.GroupLayout.PREFERRED_SIZE, 330, javax.swing.GroupLayout.PREFERRED_SIZE)
-                        .addGap(0, 0, Short.MAX_VALUE))
-                    .addComponent(jScrollPane2, javax.swing.GroupLayout.DEFAULT_SIZE, 639, Short.MAX_VALUE))
-                .addContainerGap())
-        );
-        jPanel2Layout.setVerticalGroup(
-            jPanel2Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGroup(jPanel2Layout.createSequentialGroup()
-                .addContainerGap()
-                .addComponent(jTextField1, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
-                .addComponent(jScrollPane2, javax.swing.GroupLayout.DEFAULT_SIZE, 465, Short.MAX_VALUE)
-                .addContainerGap())
-        );
-
-        jtpContenedorAdministrar.addTab("Categorias", jPanel2);
 
         btnNuevo.setIcon(new javax.swing.ImageIcon(getClass().getResource("/Recursos/nueva32.jpg"))); // NOI18N
         btnNuevo.setFocusPainted(false);
@@ -213,6 +139,23 @@ public class Administrar extends javax.swing.JPanel {
         jLabel1.setForeground(Color.decode("#90AFC5"));
         jLabel1.setText("Administrar");
 
+        jScrollPane1.setViewportView(lstAdminCategorias);
+
+        jLabel5.setFont(new java.awt.Font("Tahoma", 1, 11)); // NOI18N
+        jLabel5.setForeground(Color.decode("#90AFC5"));
+        jLabel5.setText("Categorias");
+
+        tblAdminProductos.setBackground(Color.decode("#90AFC5"));
+        tblAdminProductos.setModel(new javax.swing.table.DefaultTableModel(
+            new Object [][] {
+
+            },
+            new String [] {
+
+            }
+        ));
+        jScrollPane2.setViewportView(tblAdminProductos);
+
         javax.swing.GroupLayout layout = new javax.swing.GroupLayout(this);
         this.setLayout(layout);
         layout.setHorizontalGroup(
@@ -220,27 +163,39 @@ public class Administrar extends javax.swing.JPanel {
             .addGroup(layout.createSequentialGroup()
                 .addContainerGap()
                 .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                    .addComponent(jtpContenedorAdministrar)
+                    .addComponent(jLabel1)
+                    .addGroup(layout.createSequentialGroup()
+                        .addComponent(btnNuevo, javax.swing.GroupLayout.PREFERRED_SIZE, 160, javax.swing.GroupLayout.PREFERRED_SIZE)
+                        .addGap(18, 18, 18)
+                        .addComponent(btnModificar, javax.swing.GroupLayout.PREFERRED_SIZE, 167, javax.swing.GroupLayout.PREFERRED_SIZE)
+                        .addGap(18, 18, 18)
+                        .addComponent(btnEliminar, javax.swing.GroupLayout.PREFERRED_SIZE, 200, javax.swing.GroupLayout.PREFERRED_SIZE))
                     .addGroup(layout.createSequentialGroup()
                         .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                            .addComponent(jLabel1)
-                            .addGroup(layout.createSequentialGroup()
-                                .addComponent(btnNuevo, javax.swing.GroupLayout.PREFERRED_SIZE, 160, javax.swing.GroupLayout.PREFERRED_SIZE)
-                                .addGap(18, 18, 18)
-                                .addComponent(btnModificar, javax.swing.GroupLayout.PREFERRED_SIZE, 167, javax.swing.GroupLayout.PREFERRED_SIZE)
-                                .addGap(18, 18, 18)
-                                .addComponent(btnEliminar, javax.swing.GroupLayout.PREFERRED_SIZE, 200, javax.swing.GroupLayout.PREFERRED_SIZE)))
-                        .addGap(0, 0, Short.MAX_VALUE)))
-                .addContainerGap())
+                            .addComponent(jScrollPane1, javax.swing.GroupLayout.PREFERRED_SIZE, 115, javax.swing.GroupLayout.PREFERRED_SIZE)
+                            .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, layout.createSequentialGroup()
+                                .addComponent(jLabel5, javax.swing.GroupLayout.PREFERRED_SIZE, 89, javax.swing.GroupLayout.PREFERRED_SIZE)
+                                .addGap(13, 13, 13)))
+                        .addGap(18, 18, 18)
+                        .addComponent(jScrollPane2, javax.swing.GroupLayout.PREFERRED_SIZE, 665, javax.swing.GroupLayout.PREFERRED_SIZE)))
+                .addContainerGap(22, Short.MAX_VALUE))
         );
         layout.setVerticalGroup(
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, layout.createSequentialGroup()
                 .addContainerGap()
                 .addComponent(jLabel1)
-                .addGap(18, 18, 18)
-                .addComponent(jtpContenedorAdministrar, javax.swing.GroupLayout.PREFERRED_SIZE, 547, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addGap(18, 18, 18)
+                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                    .addGroup(layout.createSequentialGroup()
+                        .addGap(42, 42, 42)
+                        .addComponent(jLabel5)
+                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                        .addComponent(jScrollPane1, javax.swing.GroupLayout.PREFERRED_SIZE, 322, javax.swing.GroupLayout.PREFERRED_SIZE)
+                        .addGap(199, 199, 199))
+                    .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, layout.createSequentialGroup()
+                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                        .addComponent(jScrollPane2, javax.swing.GroupLayout.PREFERRED_SIZE, 527, javax.swing.GroupLayout.PREFERRED_SIZE)
+                        .addGap(33, 33, 33)))
                 .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
                     .addComponent(btnModificar, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
                     .addComponent(btnNuevo, javax.swing.GroupLayout.PREFERRED_SIZE, 68, javax.swing.GroupLayout.PREFERRED_SIZE)
@@ -258,34 +213,34 @@ public class Administrar extends javax.swing.JPanel {
        
         AMProducto amp;
         AMCategoria amc;
-        int pestaña = jtpContenedorAdministrar.getSelectedIndex();
+//        int pestaña = jtpContenedorAdministrar.getSelectedIndex();
         
-        if(pestaña == 0){
-            amp = new AMProducto("Agregar producto");
-            amp.setVisible(true);
-            
-            
-            amp.setBackground(Color.decode("#2A3132"));
-        }else{
-            amc = new AMCategoria("Agregar categoria");
-            amc.setVisible(true);
-            
-            amc.setBackground(Color.decode("#2A3132"));
-        }
+//        if(pestaña == 0){
+//            amp = new AMProducto("Agregar producto");
+//            amp.setVisible(true);
+//            
+//            
+//            amp.setBackground(Color.decode("#2A3132"));
+//        }else{
+//            amc = new AMCategoria("Agregar categoria");
+//            amc.setVisible(true);
+//            
+//            amc.setBackground(Color.decode("#2A3132"));
+//        }
     }//GEN-LAST:event_btnNuevoActionPerformed
 
     private void btnModificarActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnModificarActionPerformed
-        AMProducto amp;
-        AMCategoria amc;
-        int pestaña = jtpContenedorAdministrar.getSelectedIndex();
-        
-        if(pestaña == 0){
-            amp = new AMProducto("Modificar producto");
-            amp.setVisible(true);
-        }else{
-            amc = new AMCategoria("Modificar categoria");
-            amc.setVisible(true);
-        }
+//        AMProducto amp;
+//        AMCategoria amc;
+//        int pestaña = jtpContenedorAdministrar.getSelectedIndex();
+//        
+//        if(pestaña == 0){
+//            amp = new AMProducto("Modificar producto");
+//            amp.setVisible(true);
+//        }else{
+//            amc = new AMCategoria("Modificar categoria");
+//            amc.setVisible(true);
+//        }
     }//GEN-LAST:event_btnModificarActionPerformed
 
 
@@ -294,16 +249,10 @@ public class Administrar extends javax.swing.JPanel {
     private javax.swing.JButton btnModificar;
     private javax.swing.JButton btnNuevo;
     private javax.swing.JLabel jLabel1;
-    private javax.swing.JLabel jLabel2;
-    private javax.swing.JLabel jLabel3;
-    private javax.swing.JPanel jPanel1;
-    private javax.swing.JPanel jPanel2;
+    private javax.swing.JLabel jLabel5;
     private javax.swing.JScrollPane jScrollPane1;
     private javax.swing.JScrollPane jScrollPane2;
-    private javax.swing.JTextField jTextField1;
-    private javax.swing.JTabbedPane jtpContenedorAdministrar;
-    private javax.swing.JTable tblCategoria;
-    private javax.swing.JTable tblProducto;
-    private javax.swing.JTextField txtBuscarProducto;
+    private javax.swing.JList<String> lstAdminCategorias;
+    private javax.swing.JTable tblAdminProductos;
     // End of variables declaration//GEN-END:variables
 }

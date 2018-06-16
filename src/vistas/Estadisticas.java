@@ -8,6 +8,7 @@ package vistas;
 import Personalizacion.RenderColor;
 import java.awt.Color;
 import java.util.Enumeration;
+import javax.swing.ImageIcon;
 import javax.swing.table.TableColumn;
 import javax.swing.table.TableColumnModel;
 
@@ -23,6 +24,8 @@ public class Estadisticas extends javax.swing.JPanel {
     public Estadisticas() {
         initComponents();
         personalizarComponentes();
+//        setIconImage(new ImageIcon(getClass().getResource("/Recursos/restaur.png")).getImage());
+//                this.setResizable(false);
     }
     
     public final void personalizarComponentes(){

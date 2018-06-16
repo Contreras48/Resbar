@@ -11,6 +11,8 @@ import Personalizacion.RedondearBorde;
 import Personalizacion.RenderColor;
 import java.awt.Color;
 import java.util.Enumeration;
+import javax.swing.DefaultListModel;
+import javax.swing.ImageIcon;
 import javax.swing.table.DefaultTableModel;
 import javax.swing.table.TableColumn;
 import javax.swing.table.TableColumnModel;
@@ -21,12 +23,15 @@ import javax.swing.table.TableColumnModel;
  */
 public class MenuAgregar extends javax.swing.JFrame {
     DefaultTableModel modelo;
+    DefaultListModel modeloLista; 
     Object[] titulos = {"Nombre", "Precio", "Cantidad"};
     Object[][] bebidas = {{"Pepsi", "$0.75", ""},
                           {"Café", "$0.75", ""}};
     Object[][] postres = {{"Tres leches", "$1.50", ""},
                           {"Pastel de Chocolate", "$1.75", ""}};
     Object[][] PlatoFuerte = {{"Pollo asado", "$2.00", ""}};
+    
+//    modeloLista.
 
     /**
      * Creates new form Productos
@@ -37,16 +42,16 @@ public class MenuAgregar extends javax.swing.JFrame {
         
         modelo= new DefaultTableModel(bebidas, titulos);
         tblMenuProductos.setModel(modelo);
+        modeloLista=new DefaultListModel();
+        lstCategorias.setModel(modeloLista);
+        ListaCategoria();
         perzonalizarComponentes();
+        setIconImage(new ImageIcon(getClass().getResource("/Recursos/restaur.png")).getImage());
+        this.setResizable(false);
     }
     
     public final void perzonalizarComponentes(){
-//        Enumeration<TableColumn> en = tblMenuProductos.getColumnModel().getColumns();
-//        while (en.hasMoreElements()) {
-//            TableColumn tc = en.nextElement();
-//            tc.setCellRenderer(new RenderColor(new Color(179, 210, 238)));
-//        }
-        
+      
         TableColumn agregarColumn;
         agregarColumn = tblMenuProductos.getColumnModel().getColumn(2);
         agregarColumn.setCellEditor(new MiEditor(tblMenuProductos));
@@ -59,6 +64,30 @@ public class MenuAgregar extends javax.swing.JFrame {
         tcm.getColumn(2).setPreferredWidth(50);
     }
     
+    public void ListaCategoria(){
+        DefaultListModel modeloLista= new DefaultListModel();       
+        this.lstCategorias.setModel(modeloLista);        
+        modeloLista.addElement("Entradas");
+        modeloLista.addElement("plato Fuerte");        
+        modeloLista.addElement("Sopas");
+        modeloLista.addElement("Bebidas");
+        modeloLista.addElement("Bocas");
+        modeloLista.addElement("Postres");
+        modeloLista.addElement("------------------------");  
+        modeloLista.addElement("--------------"); 
+        modeloLista.addElement("--------------"); 
+        modeloLista.addElement("--------------"); 
+        modeloLista.addElement("--------------"); 
+        modeloLista.addElement("--------------"); 
+        modeloLista.addElement("--------------"); 
+        modeloLista.addElement("--------------"); 
+        modeloLista.addElement("--------------"); 
+        modeloLista.addElement("--------------"); 
+        modeloLista.addElement("--------------"); 
+        modeloLista.addElement("--------------"); 
+        modeloLista.addElement("--------------"); 
+        modeloLista.addElement("--------------");  
+       }
     public void limpiarModelo(){
         for (int i = modelo.getRowCount(); i > 0; i--) {
             modelo.removeRow(i-1);  
@@ -75,45 +104,25 @@ public class MenuAgregar extends javax.swing.JFrame {
     private void initComponents() {
 
         jpFondo = new javax.swing.JPanel();
-        btnEntradas = new javax.swing.JButton();
-        btnPlatoFuerte = new javax.swing.JButton();
         btnContinuar = new javax.swing.JButton();
-        btnBebidas = new javax.swing.JButton();
         txtBuscarProducto = new RedondearBorde("/Recursos/buscar.png");
         jScrollPane2 = new javax.swing.JScrollPane();
         tblMenuProductos = new javax.swing.JTable();
-        btnBocas = new javax.swing.JButton();
-        btnPostres = new javax.swing.JButton();
-        jLabel1 = new javax.swing.JLabel();
-        btnSopas = new javax.swing.JButton();
         jLabel2 = new javax.swing.JLabel();
         jLabel3 = new javax.swing.JLabel();
         jLabel4 = new javax.swing.JLabel();
         jScrollPane1 = new javax.swing.JScrollPane();
-        jList1 = new javax.swing.JList<>();
+        lstCategorias = new javax.swing.JList<>();
+        jLabel5 = new javax.swing.JLabel();
 
-        setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
-        setUndecorated(true);
-        setPreferredSize(new java.awt.Dimension(1024, 768));
+        setDefaultCloseOperation(javax.swing.WindowConstants.DISPOSE_ON_CLOSE);
+        setTitle("Menu | Agregar");
+        setAutoRequestFocus(false);
         setResizable(false);
 
         jpFondo.setBackground(Color.decode("#2A3132")
         );
         jpFondo.setBorder(javax.swing.BorderFactory.createLineBorder(new java.awt.Color(0, 0, 0)));
-
-        btnEntradas.setText("Entradas");
-        btnEntradas.addActionListener(new java.awt.event.ActionListener() {
-            public void actionPerformed(java.awt.event.ActionEvent evt) {
-                btnEntradasActionPerformed(evt);
-            }
-        });
-
-        btnPlatoFuerte.setText("Plato fuerte");
-        btnPlatoFuerte.addActionListener(new java.awt.event.ActionListener() {
-            public void actionPerformed(java.awt.event.ActionEvent evt) {
-                btnPlatoFuerteActionPerformed(evt);
-            }
-        });
 
         btnContinuar.setIcon(new javax.swing.ImageIcon(getClass().getResource("/Recursos/guardar16.jpg"))); // NOI18N
         btnContinuar.addActionListener(new java.awt.event.ActionListener() {
@@ -122,51 +131,16 @@ public class MenuAgregar extends javax.swing.JFrame {
             }
         });
 
-        btnBebidas.setText("Bebidas");
-        btnBebidas.addActionListener(new java.awt.event.ActionListener() {
-            public void actionPerformed(java.awt.event.ActionEvent evt) {
-                btnBebidasActionPerformed(evt);
-            }
-        });
-
         tblMenuProductos.setBackground(Color.decode("#90AFC5"));
         tblMenuProductos.setModel(new javax.swing.table.DefaultTableModel(
             new Object [][] {
-                {null, null, null},
-                {null, null, null},
-                {null, null, null},
-                {null, null, null}
+
             },
             new String [] {
-                "Nombre", "Precio", "Cantidad"
+
             }
         ));
         jScrollPane2.setViewportView(tblMenuProductos);
-
-        btnBocas.setText("Bocas");
-        btnBocas.addActionListener(new java.awt.event.ActionListener() {
-            public void actionPerformed(java.awt.event.ActionEvent evt) {
-                btnBocasActionPerformed(evt);
-            }
-        });
-
-        btnPostres.setText("Postres");
-        btnPostres.addActionListener(new java.awt.event.ActionListener() {
-            public void actionPerformed(java.awt.event.ActionEvent evt) {
-                btnPostresActionPerformed(evt);
-            }
-        });
-
-        jLabel1.setFont(new java.awt.Font("Dialog", 1, 16)); // NOI18N
-        jLabel1.setForeground(Color.decode("#90AFC5"));
-        jLabel1.setText("Menu Agregar");
-
-        btnSopas.setText("Sopas");
-        btnSopas.addActionListener(new java.awt.event.ActionListener() {
-            public void actionPerformed(java.awt.event.ActionEvent evt) {
-                btnSopasActionPerformed(evt);
-            }
-        });
 
         jLabel2.setFont(new java.awt.Font("Tahoma", 1, 11)); // NOI18N
         jLabel2.setForeground(Color.decode("#90AFC5"));
@@ -177,79 +151,60 @@ public class MenuAgregar extends javax.swing.JFrame {
         jLabel4.setForeground(Color.decode("#90AFC5"));
         jLabel4.setText("Agregar a la Orden");
 
-        jList1.setModel(new javax.swing.AbstractListModel<String>() {
-            String[] strings = { "Item 1", "Item 2", "Item 3", "Item 4", "Item 5", "Item 6", "Item 7", "Item 8", "Item 9", "Item 10", "Item 11", "Item 12", "Item 13", "Item 14", "Item 15" };
-            public int getSize() { return strings.length; }
-            public String getElementAt(int i) { return strings[i]; }
-        });
-        jScrollPane1.setViewportView(jList1);
+        jScrollPane1.setViewportView(lstCategorias);
+
+        jLabel5.setFont(new java.awt.Font("Tahoma", 1, 11)); // NOI18N
+        jLabel5.setForeground(Color.decode("#90AFC5"));
+        jLabel5.setText("Categorias");
 
         javax.swing.GroupLayout jpFondoLayout = new javax.swing.GroupLayout(jpFondo);
         jpFondo.setLayout(jpFondoLayout);
         jpFondoLayout.setHorizontalGroup(
             jpFondoLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(jpFondoLayout.createSequentialGroup()
+                .addGap(41, 41, 41)
                 .addGroup(jpFondoLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                    .addComponent(jScrollPane1, javax.swing.GroupLayout.PREFERRED_SIZE, 115, javax.swing.GroupLayout.PREFERRED_SIZE)
+                    .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, jpFondoLayout.createSequentialGroup()
+                        .addComponent(jLabel5, javax.swing.GroupLayout.PREFERRED_SIZE, 89, javax.swing.GroupLayout.PREFERRED_SIZE)
+                        .addGap(13, 13, 13)))
+                .addGap(18, 18, 18)
+                .addGroup(jpFondoLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
                     .addGroup(jpFondoLayout.createSequentialGroup()
-                        .addGap(237, 237, 237)
-                        .addComponent(jLabel1))
-                    .addGroup(jpFondoLayout.createSequentialGroup()
-                        .addGap(89, 89, 89)
                         .addComponent(jLabel2, javax.swing.GroupLayout.PREFERRED_SIZE, 68, javax.swing.GroupLayout.PREFERRED_SIZE)
                         .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                        .addComponent(jLabel3)
+                        .addComponent(jLabel3, javax.swing.GroupLayout.PREFERRED_SIZE, 39, javax.swing.GroupLayout.PREFERRED_SIZE)
                         .addGap(23, 23, 23)
-                        .addComponent(txtBuscarProducto, javax.swing.GroupLayout.PREFERRED_SIZE, 250, javax.swing.GroupLayout.PREFERRED_SIZE))
-                    .addGroup(jpFondoLayout.createSequentialGroup()
-                        .addGap(41, 41, 41)
-                        .addGroup(jpFondoLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
-                            .addComponent(btnPlatoFuerte, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-                            .addComponent(btnEntradas, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-                            .addComponent(btnBebidas, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-                            .addComponent(btnPostres, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-                            .addComponent(btnBocas, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-                            .addComponent(btnSopas, javax.swing.GroupLayout.PREFERRED_SIZE, 119, javax.swing.GroupLayout.PREFERRED_SIZE)
-                            .addComponent(jScrollPane1, javax.swing.GroupLayout.PREFERRED_SIZE, 115, javax.swing.GroupLayout.PREFERRED_SIZE))
-                        .addGap(14, 14, 14)
-                        .addGroup(jpFondoLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                            .addGroup(jpFondoLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING, false)
-                                .addComponent(btnContinuar, javax.swing.GroupLayout.Alignment.LEADING, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-                                .addComponent(jLabel4, javax.swing.GroupLayout.Alignment.LEADING))
-                            .addComponent(jScrollPane2, javax.swing.GroupLayout.PREFERRED_SIZE, 808, javax.swing.GroupLayout.PREFERRED_SIZE))))
+                        .addComponent(txtBuscarProducto))
+                    .addComponent(btnContinuar, javax.swing.GroupLayout.PREFERRED_SIZE, 120, javax.swing.GroupLayout.PREFERRED_SIZE)
+                    .addComponent(jLabel4)
+                    .addComponent(jScrollPane2, javax.swing.GroupLayout.PREFERRED_SIZE, 808, javax.swing.GroupLayout.PREFERRED_SIZE))
                 .addContainerGap(40, Short.MAX_VALUE))
         );
         jpFondoLayout.setVerticalGroup(
             jpFondoLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(jpFondoLayout.createSequentialGroup()
-                .addGap(11, 11, 11)
-                .addComponent(jLabel1)
-                .addGap(15, 15, 15)
-                .addGroup(jpFondoLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                    .addComponent(jLabel3, javax.swing.GroupLayout.PREFERRED_SIZE, 29, javax.swing.GroupLayout.PREFERRED_SIZE)
-                    .addComponent(jLabel2)
-                    .addComponent(txtBuscarProducto, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
-                .addGap(18, 18, 18)
                 .addGroup(jpFondoLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                     .addGroup(jpFondoLayout.createSequentialGroup()
-                        .addComponent(btnBebidas)
-                        .addGap(6, 6, 6)
-                        .addComponent(btnBocas)
-                        .addGap(6, 6, 6)
-                        .addComponent(btnEntradas)
-                        .addGap(6, 6, 6)
-                        .addComponent(btnPlatoFuerte)
-                        .addGap(6, 6, 6)
-                        .addComponent(btnPostres)
-                        .addGap(6, 6, 6)
-                        .addComponent(btnSopas)
-                        .addGap(28, 28, 28)
-                        .addComponent(jScrollPane1, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
+                        .addGap(27, 27, 27)
+                        .addGroup(jpFondoLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                            .addComponent(txtBuscarProducto, javax.swing.GroupLayout.PREFERRED_SIZE, 37, javax.swing.GroupLayout.PREFERRED_SIZE)
+                            .addComponent(jLabel3)))
+                    .addGroup(jpFondoLayout.createSequentialGroup()
+                        .addGap(38, 38, 38)
+                        .addComponent(jLabel2)))
+                .addGap(26, 26, 26)
+                .addGroup(jpFondoLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                    .addGroup(jpFondoLayout.createSequentialGroup()
+                        .addComponent(jLabel5)
+                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                        .addComponent(jScrollPane1, javax.swing.GroupLayout.PREFERRED_SIZE, 322, javax.swing.GroupLayout.PREFERRED_SIZE))
                     .addComponent(jScrollPane2, javax.swing.GroupLayout.PREFERRED_SIZE, 474, javax.swing.GroupLayout.PREFERRED_SIZE))
-                .addGap(40, 40, 40)
-                .addComponent(btnContinuar, javax.swing.GroupLayout.PREFERRED_SIZE, 49, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addGap(18, 18, 18)
+                .addComponent(btnContinuar, javax.swing.GroupLayout.PREFERRED_SIZE, 75, javax.swing.GroupLayout.PREFERRED_SIZE)
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
                 .addComponent(jLabel4)
-                .addContainerGap(90, Short.MAX_VALUE))
+                .addContainerGap(86, Short.MAX_VALUE))
         );
 
         javax.swing.GroupLayout layout = new javax.swing.GroupLayout(getContentPane());
@@ -265,39 +220,6 @@ public class MenuAgregar extends javax.swing.JFrame {
 
         pack();
     }// </editor-fold>//GEN-END:initComponents
-
-    private void btnEntradasActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnEntradasActionPerformed
-        limpiarModelo();
-    }//GEN-LAST:event_btnEntradasActionPerformed
-
-    private void btnPlatoFuerteActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnPlatoFuerteActionPerformed
-        limpiarModelo();
-        for (Object[] PlatoFuerte1 : PlatoFuerte) {
-            modelo.addRow(PlatoFuerte1);
-        }
-    }//GEN-LAST:event_btnPlatoFuerteActionPerformed
-
-    private void btnBebidasActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnBebidasActionPerformed
-        limpiarModelo();
-        for (Object[] bebida : bebidas) {
-            modelo.addRow(bebida);
-        }
-    }//GEN-LAST:event_btnBebidasActionPerformed
-
-    private void btnBocasActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnBocasActionPerformed
-        limpiarModelo();
-    }//GEN-LAST:event_btnBocasActionPerformed
-
-    private void btnPostresActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnPostresActionPerformed
-        limpiarModelo();
-        for (Object[] postre : postres) {
-            modelo.addRow(postre);
-        }
-    }//GEN-LAST:event_btnPostresActionPerformed
-
-    private void btnSopasActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnSopasActionPerformed
-        limpiarModelo();
-    }//GEN-LAST:event_btnSopasActionPerformed
 
     private void btnContinuarActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnContinuarActionPerformed
         NuevaOrden no =new NuevaOrden();
@@ -343,21 +265,15 @@ public class MenuAgregar extends javax.swing.JFrame {
     }
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
-    private javax.swing.JButton btnBebidas;
-    private javax.swing.JButton btnBocas;
     private javax.swing.JButton btnContinuar;
-    private javax.swing.JButton btnEntradas;
-    private javax.swing.JButton btnPlatoFuerte;
-    private javax.swing.JButton btnPostres;
-    private javax.swing.JButton btnSopas;
-    private javax.swing.JLabel jLabel1;
     private javax.swing.JLabel jLabel2;
     private javax.swing.JLabel jLabel3;
     private javax.swing.JLabel jLabel4;
-    private javax.swing.JList<String> jList1;
+    private javax.swing.JLabel jLabel5;
     private javax.swing.JScrollPane jScrollPane1;
     private javax.swing.JScrollPane jScrollPane2;
     private javax.swing.JPanel jpFondo;
+    private javax.swing.JList<String> lstCategorias;
     private javax.swing.JTable tblMenuProductos;
     private javax.swing.JTextField txtBuscarProducto;
     // End of variables declaration//GEN-END:variables

@@ -9,6 +9,7 @@ import Personalizacion.RedondearBorde;
 import com.sun.javafx.tk.Toolkit;
 import java.awt.Color;
 import java.awt.event.KeyEvent;
+import javax.swing.ImageIcon;
 import javax.swing.JLabel;
 import javax.swing.JOptionPane;
 import javax.swing.UIManager;
@@ -29,6 +30,9 @@ public class AMCategoria extends javax.swing.JFrame {
         setLocationRelativeTo(null);
         txtId.setEditable(false);
         lblEtiqueta.setText(mensaje);
+        this.setResizable(false);
+        setIconImage(new ImageIcon(getClass().getResource("/Recursos/restaur.png")).getImage());
+        this.setResizable(false);
     }
     
   
@@ -54,8 +58,8 @@ public class AMCategoria extends javax.swing.JFrame {
         jLabel4 = new javax.swing.JLabel();
         lblNombre = new javax.swing.JLabel();
 
-        setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
-        setUndecorated(true);
+        setDefaultCloseOperation(javax.swing.WindowConstants.DISPOSE_ON_CLOSE);
+        setTitle("Nueva | Categoria");
 
         jpFondo.setBackground(Color.decode("#2A3132"));
         jpFondo.setBorder(javax.swing.BorderFactory.createLineBorder(new java.awt.Color(0, 0, 0)));
