@@ -42,11 +42,11 @@ public class Administrar extends javax.swing.JPanel {
         modeloProducto = new DefaultTableModel(datosProducto, titulosProducto);
         
 //        ListaCategoria();
-//        tblAdminProductos.setModel(modeloProducto);
-//        modeloCategoria = new DefaultTableModel(datosCategoria, titulosCategoria);
-//        tblAdminProductos.setModel(modeloCategoria);
-//        personalizarComponentes(tblAdminProductos, anchoProducto);
-//        personalizarComponentes(tblAdminProductos, anchoCategoria);
+        tblProducto.setModel(modeloProducto);
+        modeloCategoria = new DefaultTableModel(datosCategoria, titulosCategoria);
+        tblProducto.setModel(modeloCategoria);
+        personalizarComponentes(tblProducto, anchoProducto);
+        personalizarComponentes(tblProducto, anchoCategoria);
 ////        this.setResizable(false);
     }
     public final void personalizarComponentes(JTable tabla, int[] ancho){
