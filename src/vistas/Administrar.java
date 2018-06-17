@@ -148,6 +148,11 @@ public class Administrar extends javax.swing.JPanel {
 
             }
         ));
+        tblProducto.addMouseListener(new java.awt.event.MouseAdapter() {
+            public void mouseClicked(java.awt.event.MouseEvent evt) {
+                tblProductoMouseClicked(evt);
+            }
+        });
         jScrollPane2.setViewportView(tblProducto);
 
         jLabel2.setForeground(Color.decode("#90AFC5"));
@@ -267,6 +272,7 @@ public class Administrar extends javax.swing.JPanel {
 //        popupMenu.add(menuItem3);
 //        popupMenu.add(menuItem4);
         lstAdminCategorias.setComponentPopupMenu(popupMenu);
+        tblProducto.setComponentPopupMenu(popupMenu);
 //    }
     }//GEN-LAST:event_lstAdminCategoriasMouseClicked
 
@@ -275,6 +281,37 @@ public class Administrar extends javax.swing.JPanel {
         nuProd.setVisible(true);
         
     }//GEN-LAST:event_jButton1ActionPerformed
+
+    private void tblProductoMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_tblProductoMouseClicked
+        JPopupMenu popupMenu = new JPopupMenu ();
+        
+        JMenuItem menuItem1 = new JMenuItem("Modificar Producto", new ImageIcon(getClass().getResource("/Recursos/modificarProductos.png")));
+        JMenuItem menuItem2 = new JMenuItem("Eliminar Producto", new ImageIcon(getClass().getResource("/Recursos/imprimir.png")));
+//        JMenuItem menuItem3 = new JMenuItem("Modificar Cuenta", new ImageIcon(getClass().getResource("/Recursos/modificarOrden.png")));
+//        JMenuItem menuItem4 = new JMenuItem("Cobrar", new ImageIcon(getClass().getResource("/Recursos/cobrar.png")));
+        
+        menuItem1.addActionListener((ActionEvent e) -> {            
+//            MenuAgregar p = new MenuAgregar();
+//            p.setVisible(true);   
+        });
+        
+        menuItem2.addActionListener((ActionEvent e) -> {            
+//            NuevaOrden nvo = new NuevaOrden();
+//            nvo.setVisible(true);   
+        });
+        
+//        menuItem4.addActionListener((ActionEvent e) -> {            
+//            Cobrar co = new Cobrar();
+//            co.setVisible(true);   
+//        });
+//        
+        popupMenu.add(menuItem1);
+        popupMenu.add(menuItem2);
+//        popupMenu.add(menuItem3);
+//        popupMenu.add(menuItem4);
+//        lstAdminCategorias.setComponentPopupMenu(popupMenu);
+        tblProducto.setComponentPopupMenu(popupMenu);
+    }//GEN-LAST:event_tblProductoMouseClicked
 
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
