@@ -229,7 +229,9 @@ public class Administrar extends javax.swing.JPanel {
     }//GEN-LAST:event_btnEliminarActionPerformed
 
     private void btnNuevoActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnNuevoActionPerformed
-
+           AMCategoria nc = new AMCategoria();
+           nc.setVisible(true);
+          
 
        
 //        AMProducto amp;

@@ -78,7 +78,7 @@
         <Property name="foreground" type="java.awt.Color" editor="org.netbeans.modules.form.RADConnectionPropertyEditor">
           <Connection code="Color.decode(&quot;#90AFC5&quot;)&#xd;&#xa;" type="code"/>
         </Property>
-        <Property name="text" type="java.lang.String" value="Ordenes activassssssssssssssssssssss"/>
+        <Property name="text" type="java.lang.String" value="Ordenes activas"/>
       </Properties>
     </Component>
     <Container class="javax.swing.JScrollPane" name="jScrollPane1">

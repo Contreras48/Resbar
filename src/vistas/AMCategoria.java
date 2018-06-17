@@ -25,11 +25,11 @@ public class AMCategoria extends javax.swing.JFrame {
      * Creates new form AMCategoria
      * @param mensaje
      */
-    public AMCategoria(String mensaje) {
+    public AMCategoria() {
         initComponents();
         setLocationRelativeTo(null);
 //        txtId.setEditable(false);
-        lblEtiqueta.setText(mensaje);
+//        lblEtiqueta.setText(mensaje);
         this.setResizable(false);
         setIconImage(new ImageIcon(getClass().getResource("/Recursos/restaur.png")).getImage());
         this.setResizable(false);
@@ -51,7 +51,6 @@ public class AMCategoria extends javax.swing.JFrame {
     private void initComponents() {
 
         jpFondo = new javax.swing.JPanel();
-        lblEtiqueta = new javax.swing.JLabel();
         btnGuardar = new javax.swing.JButton();
         txtNombre = new RedondearBorde(null);
         btnCancelar = new javax.swing.JButton();
@@ -65,8 +64,6 @@ public class AMCategoria extends javax.swing.JFrame {
 
         jpFondo.setBackground(Color.decode("#2A3132"));
         jpFondo.setBorder(javax.swing.BorderFactory.createLineBorder(new java.awt.Color(0, 0, 0)));
-
-        lblEtiqueta.setText("jLabel1");
 
         btnGuardar.setIcon(new javax.swing.ImageIcon(getClass().getResource("/Recursos/guardar16.jpg"))); // NOI18N
         btnGuardar.addMouseListener(new java.awt.event.MouseAdapter() {
@@ -98,9 +95,11 @@ public class AMCategoria extends javax.swing.JFrame {
         jLabel2.setText("Nombre:");
 
         jLabel3.setFont(new java.awt.Font("Tahoma", 1, 13)); // NOI18N
-        jLabel3.setText("Atras");
+        jLabel3.setForeground(Color.decode("#90AFC5"));
+        jLabel3.setText("Cancelar");
 
         jLabel4.setFont(new java.awt.Font("Tahoma", 1, 13)); // NOI18N
+        jLabel4.setForeground(Color.decode("#90AFC5"));
         jLabel4.setText("Guardar");
 
         lblNombre.setForeground(Color.decode("#90AFC5"));
@@ -111,39 +110,27 @@ public class AMCategoria extends javax.swing.JFrame {
             jpFondoLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(jpFondoLayout.createSequentialGroup()
                 .addContainerGap()
-                .addGroup(jpFondoLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                    .addComponent(lblEtiqueta)
+                .addComponent(jLabel2)
+                .addGap(35, 35, 35)
+                .addGroup(jpFondoLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
+                    .addComponent(txtNombre, javax.swing.GroupLayout.PREFERRED_SIZE, 349, javax.swing.GroupLayout.PREFERRED_SIZE)
                     .addGroup(jpFondoLayout.createSequentialGroup()
-                        .addComponent(jLabel2)
-                        .addGap(35, 35, 35)
                         .addGroup(jpFondoLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                            .addGroup(jpFondoLayout.createSequentialGroup()
-                                .addGroup(jpFondoLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                                    .addGroup(jpFondoLayout.createSequentialGroup()
-                                        .addGroup(jpFondoLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                                            .addComponent(lblNombre, javax.swing.GroupLayout.PREFERRED_SIZE, 104, javax.swing.GroupLayout.PREFERRED_SIZE)
-                                            .addGroup(jpFondoLayout.createSequentialGroup()
-                                                .addGap(12, 12, 12)
-                                                .addComponent(jLabel3)))
-                                        .addGap(148, 148, 148)
-                                        .addComponent(jLabel4))
-                                    .addComponent(txtNombre, javax.swing.GroupLayout.PREFERRED_SIZE, 349, javax.swing.GroupLayout.PREFERRED_SIZE))
-                                .addGap(0, 21, Short.MAX_VALUE))
-                            .addGroup(jpFondoLayout.createSequentialGroup()
-                                .addComponent(btnCancelar, javax.swing.GroupLayout.PREFERRED_SIZE, 63, javax.swing.GroupLayout.PREFERRED_SIZE)
-                                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-                                .addComponent(btnGuardar, javax.swing.GroupLayout.PREFERRED_SIZE, 63, javax.swing.GroupLayout.PREFERRED_SIZE)
-                                .addGap(55, 55, 55)))))
-                .addContainerGap(47, Short.MAX_VALUE))
+                            .addComponent(lblNombre, javax.swing.GroupLayout.PREFERRED_SIZE, 104, javax.swing.GroupLayout.PREFERRED_SIZE)
+                            .addComponent(btnCancelar, javax.swing.GroupLayout.PREFERRED_SIZE, 63, javax.swing.GroupLayout.PREFERRED_SIZE)
+                            .addComponent(jLabel3))
+                        .addGap(148, 148, 148)
+                        .addGroup(jpFondoLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                            .addComponent(btnGuardar, javax.swing.GroupLayout.PREFERRED_SIZE, 63, javax.swing.GroupLayout.PREFERRED_SIZE)
+                            .addComponent(jLabel4))))
+                .addContainerGap(92, Short.MAX_VALUE))
         );
         jpFondoLayout.setVerticalGroup(
             jpFondoLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(jpFondoLayout.createSequentialGroup()
-                .addContainerGap()
-                .addComponent(lblEtiqueta)
                 .addGroup(jpFondoLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                     .addGroup(jpFondoLayout.createSequentialGroup()
-                        .addGap(18, 18, 18)
+                        .addGap(45, 45, 45)
                         .addGroup(jpFondoLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
                             .addComponent(jLabel2)
                             .addComponent(txtNombre, javax.swing.GroupLayout.PREFERRED_SIZE, 30, javax.swing.GroupLayout.PREFERRED_SIZE))
@@ -152,30 +139,24 @@ public class AMCategoria extends javax.swing.JFrame {
                         .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
                         .addComponent(jLabel4))
                     .addGroup(jpFondoLayout.createSequentialGroup()
-                        .addGap(49, 49, 49)
+                        .addGap(76, 76, 76)
                         .addComponent(lblNombre, javax.swing.GroupLayout.PREFERRED_SIZE, 20, javax.swing.GroupLayout.PREFERRED_SIZE)
                         .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
                         .addComponent(btnCancelar)
                         .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
                         .addComponent(jLabel3)))
-                .addContainerGap(34, Short.MAX_VALUE))
+                .addContainerGap(58, Short.MAX_VALUE))
         );
 
         javax.swing.GroupLayout layout = new javax.swing.GroupLayout(getContentPane());
         getContentPane().setLayout(layout);
         layout.setHorizontalGroup(
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGroup(layout.createSequentialGroup()
-                .addContainerGap()
-                .addComponent(jpFondo, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
+            .addComponent(jpFondo, javax.swing.GroupLayout.Alignment.TRAILING, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
         );
         layout.setVerticalGroup(
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGroup(layout.createSequentialGroup()
-                .addContainerGap()
-                .addComponent(jpFondo, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-                .addContainerGap())
+            .addComponent(jpFondo, javax.swing.GroupLayout.Alignment.TRAILING, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
         );
 
         pack();
@@ -186,15 +167,15 @@ public class AMCategoria extends javax.swing.JFrame {
     }//GEN-LAST:event_btnCancelarActionPerformed
 
     private void btnGuardarActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnGuardarActionPerformed
-        lblNombre.setText("");
-        Validacion validar = new Validacion();
-        String cadena= txtNombre.getText();
-        boolean label= validar.ValidarNulos(cadena);
-            if(label==true){
-                lblNombre.setText("campo obligatorio");
-            }
-        txtNombre.setText("");
-        txtNombre.requestFocus();
+//        lblNombre.setText("");
+//        Validacion validar = new Validacion();
+//        String cadena= txtNombre.getText();
+//        boolean label= validar.ValidarNulos(cadena);
+//            if(label==true){
+//                lblNombre.setText("campo obligatorio");
+//            }
+//        txtNombre.setText("");
+//        txtNombre.requestFocus();
     }//GEN-LAST:event_btnGuardarActionPerformed
 
     private void btnGuardarMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_btnGuardarMouseClicked
@@ -202,8 +183,8 @@ public class AMCategoria extends javax.swing.JFrame {
     }//GEN-LAST:event_btnGuardarMouseClicked
 
     private void txtNombreKeyTyped(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_txtNombreKeyTyped
-        Validacion validar= new Validacion();
-        validar.soloDecimal(txtNombre);
+//        Validacion validar= new Validacion();
+//        validar.soloDecimal(txtNombre);
     }//GEN-LAST:event_txtNombreKeyTyped
 
     /**
@@ -229,11 +210,11 @@ public class AMCategoria extends javax.swing.JFrame {
         //</editor-fold>
 
         /* Create and display the form */
-        java.awt.EventQueue.invokeLater(new Runnable() {
-            public void run() {
-                new AMCategoria("").setVisible(true);
-            }
-        });
+//        java.awt.EventQueue.invokeLater(new Runnable() {
+//            public void run() {
+//                new AMCategoria("").setVisible(true);
+//            }
+//        });
     }
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
@@ -243,7 +224,6 @@ public class AMCategoria extends javax.swing.JFrame {
     private javax.swing.JLabel jLabel3;
     private javax.swing.JLabel jLabel4;
     private javax.swing.JPanel jpFondo;
-    private javax.swing.JLabel lblEtiqueta;
     private javax.swing.JLabel lblNombre;
     private javax.swing.JTextField txtNombre;
     // End of variables declaration//GEN-END:variables

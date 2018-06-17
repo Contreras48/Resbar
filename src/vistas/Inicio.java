@@ -116,7 +116,7 @@ public class Inicio extends javax.swing.JPanel {
         jLabel1.setFont(new java.awt.Font("Dialog", 1, 16)); // NOI18N
         jLabel1.setForeground(Color.decode("#90AFC5")
         );
-        jLabel1.setText("Ordenes activassssssssssssssssssssss");
+        jLabel1.setText("Ordenes activas");
 
         tblOrdenesActivas.setBackground(Color.decode("#90AFC5")
         );
