@@ -8,8 +8,12 @@ package vistas;
 import Personalizacion.RedondearBorde;
 import Personalizacion.RenderColor;
 import java.awt.Color;
+import java.awt.event.ActionEvent;
 import java.util.Enumeration;
 import javax.swing.DefaultListModel;
+import javax.swing.ImageIcon;
+import javax.swing.JMenuItem;
+import javax.swing.JPopupMenu;
 import javax.swing.JTable;
 import javax.swing.table.DefaultTableModel;
 import javax.swing.table.TableColumn;
@@ -124,6 +128,11 @@ public class Administrar extends javax.swing.JPanel {
         jLabel1.setForeground(Color.decode("#90AFC5"));
         jLabel1.setText("Administrar");
 
+        lstAdminCategorias.addMouseListener(new java.awt.event.MouseAdapter() {
+            public void mouseClicked(java.awt.event.MouseEvent evt) {
+                lstAdminCategoriasMouseClicked(evt);
+            }
+        });
         jScrollPane1.setViewportView(lstAdminCategorias);
 
         jLabel5.setFont(new java.awt.Font("Tahoma", 1, 11)); // NOI18N
@@ -143,6 +152,12 @@ public class Administrar extends javax.swing.JPanel {
 
         jLabel2.setForeground(Color.decode("#90AFC5"));
         jLabel2.setText("Administrar Categoria");
+
+        jButton1.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                jButton1ActionPerformed(evt);
+            }
+        });
 
         jLabel3.setForeground(Color.decode("#90AFC5"));
         jLabel3.setText("Administrar Productos");
@@ -221,6 +236,45 @@ public class Administrar extends javax.swing.JPanel {
 //            amc.setBackground(Color.decode("#2A3132"));
 //        }
     }//GEN-LAST:event_btnNuevoActionPerformed
+
+    private void lstAdminCategoriasMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_lstAdminCategoriasMouseClicked
+//         public void poputTable(){
+    
+        JPopupMenu popupMenu = new JPopupMenu ();
+        
+        JMenuItem menuItem1 = new JMenuItem("Modificar Categoria", new ImageIcon(getClass().getResource("/Recursos/modificarProductos.png")));
+        JMenuItem menuItem2 = new JMenuItem("Eliminar Categoria", new ImageIcon(getClass().getResource("/Recursos/imprimir.png")));
+//        JMenuItem menuItem3 = new JMenuItem("Modificar Cuenta", new ImageIcon(getClass().getResource("/Recursos/modificarOrden.png")));
+//        JMenuItem menuItem4 = new JMenuItem("Cobrar", new ImageIcon(getClass().getResource("/Recursos/cobrar.png")));
+        
+        menuItem1.addActionListener((ActionEvent e) -> {            
+//            MenuAgregar p = new MenuAgregar();
+//            p.setVisible(true);   
+        });
+        
+        menuItem2.addActionListener((ActionEvent e) -> {            
+//            NuevaOrden nvo = new NuevaOrden();
+//            nvo.setVisible(true);   
+        });
+        
+//        menuItem4.addActionListener((ActionEvent e) -> {            
+//            Cobrar co = new Cobrar();
+//            co.setVisible(true);   
+//        });
+//        
+        popupMenu.add(menuItem1);
+        popupMenu.add(menuItem2);
+//        popupMenu.add(menuItem3);
+//        popupMenu.add(menuItem4);
+        lstAdminCategorias.setComponentPopupMenu(popupMenu);
+//    }
+    }//GEN-LAST:event_lstAdminCategoriasMouseClicked
+
+    private void jButton1ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton1ActionPerformed
+        AMProducto nuProd = new AMProducto();
+        nuProd.setVisible(true);
+        
+    }//GEN-LAST:event_jButton1ActionPerformed
 
 
     // Variables declaration - do not modify//GEN-BEGIN:variables

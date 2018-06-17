@@ -45,19 +45,19 @@ public class Inicio extends javax.swing.JPanel {
     }
     
     public final void personalizarComponentes(){
-        Enumeration<TableColumn> en = tblOrdenesActivas.getColumnModel().getColumns();
-        while (en.hasMoreElements()) {
-            TableColumn tc = en.nextElement();
-            tc.setCellRenderer(new RenderColor(new Color(179, 210, 238)));
-        }
+//        Enumeration<TableColumn> en = tblOrdenesActivas.getColumnModel().getColumns();
+//        while (en.hasMoreElements()) {
+//            TableColumn tc = en.nextElement();
+//            tc.setCellRenderer(new RenderColor(new Color(179, 210, 238)));
+//        }
         
-        tblOrdenesActivas.setRowHeight(20);
-        TableColumnModel tcm = tblOrdenesActivas.getColumnModel();
-        tcm.getColumn(0).setPreferredWidth(50);
-        tcm.getColumn(1).setPreferredWidth(30);
-        tcm.getColumn(2).setPreferredWidth(200);
-        tcm.getColumn(3).setPreferredWidth(200);
-        tcm.getColumn(4).setPreferredWidth(100);
+//        tblOrdenesActivas.setRowHeight(20);
+//        TableColumnModel tcm = tblOrdenesActivas.getColumnModel();
+//        tcm.getColumn(0).setPreferredWidth(50);
+//        tcm.getColumn(1).setPreferredWidth(30);
+//        tcm.getColumn(2).setPreferredWidth(200);
+//        tcm.getColumn(3).setPreferredWidth(200);
+//        tcm.getColumn(4).setPreferredWidth(100);
         
         poputTable();
     }
