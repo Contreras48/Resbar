@@ -75,7 +75,7 @@ public class DashBoard extends javax.swing.JFrame {
         );
         jpContenedorLayout.setVerticalGroup(
             jpContenedorLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGap(0, 0, Short.MAX_VALUE)
+            .addGap(0, 703, Short.MAX_VALUE)
         );
 
         getContentPane().add(jpContenedor, new org.netbeans.lib.awtextra.AbsoluteConstraints(316, 53, -1, 703));
