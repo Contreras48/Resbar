@@ -90,26 +90,51 @@ año();
     private void initComponents() {
 
         filtroEstadisticas = new javax.swing.ButtonGroup();
-        jLabel1 = new javax.swing.JLabel();
+        jLabel10 = new javax.swing.JLabel();
+        jLabel9 = new javax.swing.JLabel();
+        jLabel8 = new javax.swing.JLabel();
+        jLabel6 = new javax.swing.JLabel();
         jScrollPane1 = new javax.swing.JScrollPane();
         tblEstadisticas = new javax.swing.JTable();
-        jLabel2 = new javax.swing.JLabel();
+        jLabel7 = new javax.swing.JLabel();
         rbtnMes = new javax.swing.JRadioButton();
         rbtnAnio = new javax.swing.JRadioButton();
         rbtnDia = new javax.swing.JRadioButton();
-        jLabel3 = new javax.swing.JLabel();
         cmbDia = new javax.swing.JComboBox<>();
         cmbMes = new javax.swing.JComboBox<>();
-        jLabel4 = new javax.swing.JLabel();
         cmbAño = new javax.swing.JComboBox<>();
-        jLabel5 = new javax.swing.JLabel();
+        lblEstadisticas = new javax.swing.JLabel();
 
         setBackground(Color.decode("#2A3132"));
+        setLayout(new org.netbeans.lib.awtextra.AbsoluteLayout());
 
-        jLabel1.setFont(new java.awt.Font("Dialog", 1, 16)); // NOI18N
-        jLabel1.setForeground(Color.decode("#90AFC5"));
-        jLabel1.setText("Estadisticas de ventas");
+        jLabel10.setBackground(new java.awt.Color(255, 255, 255));
+        jLabel10.setFont(new java.awt.Font("Rockwell", 1, 14)); // NOI18N
+        jLabel10.setForeground(Color.decode("#AF4425"));
+        jLabel10.setText("Seleccione:");
+        add(jLabel10, new org.netbeans.lib.awtextra.AbsoluteConstraints(420, 80, -1, 40));
 
+        jLabel9.setBackground(new java.awt.Color(255, 255, 255));
+        jLabel9.setFont(new java.awt.Font("Rockwell", 1, 14)); // NOI18N
+        jLabel9.setForeground(Color.decode("#AF4425"));
+        jLabel9.setText("Seleccione:");
+        add(jLabel9, new org.netbeans.lib.awtextra.AbsoluteConstraints(210, 80, -1, 40));
+
+        jLabel8.setBackground(new java.awt.Color(255, 255, 255));
+        jLabel8.setFont(new java.awt.Font("Rockwell", 1, 14)); // NOI18N
+        jLabel8.setForeground(Color.decode("#AF4425"));
+        jLabel8.setText("Seleccione:");
+        add(jLabel8, new org.netbeans.lib.awtextra.AbsoluteConstraints(10, 88, -1, 30));
+
+        jLabel6.setBackground(new java.awt.Color(255, 255, 255));
+        jLabel6.setFont(new java.awt.Font("Rockwell", 1, 36)); // NOI18N
+        jLabel6.setForeground(Color.decode("#662E1C"));
+        jLabel6.setText("Estadisticas de Ventas");
+        add(jLabel6, new org.netbeans.lib.awtextra.AbsoluteConstraints(280, 10, 400, 30));
+
+        tblEstadisticas.setBackground(Color.decode("#AF4425"));
+        tblEstadisticas.setFont(new java.awt.Font("Rockwell", 1, 14)); // NOI18N
+        tblEstadisticas.setForeground(new java.awt.Color(255, 255, 255));
         tblEstadisticas.setModel(new javax.swing.table.DefaultTableModel(
             new Object [][] {
                 {null, null, null, null},
@@ -121,95 +146,55 @@ año();
                 "Title 1", "Title 2", "Title 3", "Title 4"
             }
         ));
+        tblEstadisticas.setSelectionBackground(Color.decode("#EBDCB2"));
         jScrollPane1.setViewportView(tblEstadisticas);
 
-        jLabel2.setForeground(Color.decode("#90AFC5"));
-        jLabel2.setText("Filtrar por:");
+        add(jScrollPane1, new org.netbeans.lib.awtextra.AbsoluteConstraints(10, 207, 668, 339));
+
+        jLabel7.setBackground(new java.awt.Color(255, 255, 255));
+        jLabel7.setFont(new java.awt.Font("Rockwell", 1, 18)); // NOI18N
+        jLabel7.setForeground(Color.decode("#662E1C"));
+        jLabel7.setText("Filtrar Estadisticas Por:");
+        add(jLabel7, new org.netbeans.lib.awtextra.AbsoluteConstraints(10, 60, -1, -1));
 
         filtroEstadisticas.add(rbtnMes);
-        rbtnMes.setForeground(Color.decode("#90AFC5"));
+        rbtnMes.setFont(new java.awt.Font("Rockwell", 1, 14)); // NOI18N
+        rbtnMes.setForeground(Color.decode("#662E1C"));
         rbtnMes.setText("Mes");
+        rbtnMes.setOpaque(false);
+        add(rbtnMes, new org.netbeans.lib.awtextra.AbsoluteConstraints(230, 120, -1, -1));
 
         filtroEstadisticas.add(rbtnAnio);
-        rbtnAnio.setForeground(Color.decode("#90AFC5"));
+        rbtnAnio.setFont(new java.awt.Font("Rockwell", 1, 14)); // NOI18N
+        rbtnAnio.setForeground(Color.decode("#662E1C"));
         rbtnAnio.setText("Año");
+        rbtnAnio.setOpaque(false);
+        add(rbtnAnio, new org.netbeans.lib.awtextra.AbsoluteConstraints(450, 120, -1, -1));
 
         filtroEstadisticas.add(rbtnDia);
-        rbtnDia.setForeground(Color.decode("#90AFC5"));
+        rbtnDia.setFont(new java.awt.Font("Rockwell", 1, 14)); // NOI18N
+        rbtnDia.setForeground(Color.decode("#662E1C"));
         rbtnDia.setText("Dia");
+        rbtnDia.setOpaque(false);
+        add(rbtnDia, new org.netbeans.lib.awtextra.AbsoluteConstraints(20, 120, -1, -1));
 
-        jLabel3.setForeground(Color.decode("#90AFC5"));
-        jLabel3.setText("Dia");
+        cmbDia.setBackground(Color.decode("#C9A66B"));
+        cmbDia.setFont(new java.awt.Font("Rockwell", 1, 14)); // NOI18N
+        cmbDia.setForeground(Color.decode("#662E1C"));
+        add(cmbDia, new org.netbeans.lib.awtextra.AbsoluteConstraints(90, 120, 97, 34));
 
-        jLabel4.setForeground(Color.decode("#90AFC5"));
-        jLabel4.setText("Mes");
+        cmbMes.setBackground(Color.decode("#C9A66B"));
+        cmbMes.setFont(new java.awt.Font("Rockwell", 1, 14)); // NOI18N
+        cmbMes.setForeground(Color.decode("#662E1C"));
+        add(cmbMes, new org.netbeans.lib.awtextra.AbsoluteConstraints(290, 120, 106, 34));
 
-        jLabel5.setForeground(Color.decode("#90AFC5"));
-        jLabel5.setText("Año");
+        cmbAño.setBackground(Color.decode("#C9A66B"));
+        cmbAño.setFont(new java.awt.Font("Rockwell", 1, 14)); // NOI18N
+        cmbAño.setForeground(Color.decode("#662E1C"));
+        add(cmbAño, new org.netbeans.lib.awtextra.AbsoluteConstraints(510, 120, 101, 34));
 
-        javax.swing.GroupLayout layout = new javax.swing.GroupLayout(this);
-        this.setLayout(layout);
-        layout.setHorizontalGroup(
-            layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGroup(layout.createSequentialGroup()
-                .addContainerGap()
-                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                    .addComponent(jScrollPane1, javax.swing.GroupLayout.DEFAULT_SIZE, 668, Short.MAX_VALUE)
-                    .addGroup(layout.createSequentialGroup()
-                        .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                            .addComponent(jLabel1)
-                            .addGroup(layout.createSequentialGroup()
-                                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                                    .addGroup(layout.createSequentialGroup()
-                                        .addGap(35, 35, 35)
-                                        .addComponent(jLabel3)
-                                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
-                                        .addComponent(cmbDia, javax.swing.GroupLayout.PREFERRED_SIZE, 97, javax.swing.GroupLayout.PREFERRED_SIZE)
-                                        .addGap(27, 27, 27)
-                                        .addComponent(jLabel4))
-                                    .addGroup(layout.createSequentialGroup()
-                                        .addComponent(jLabel2)
-                                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
-                                        .addComponent(rbtnDia)))
-                                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                                    .addGroup(layout.createSequentialGroup()
-                                        .addComponent(cmbMes, javax.swing.GroupLayout.PREFERRED_SIZE, 106, javax.swing.GroupLayout.PREFERRED_SIZE)
-                                        .addGap(67, 67, 67)
-                                        .addComponent(jLabel5))
-                                    .addComponent(rbtnMes))
-                                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                                    .addComponent(rbtnAnio)
-                                    .addComponent(cmbAño, javax.swing.GroupLayout.PREFERRED_SIZE, 101, javax.swing.GroupLayout.PREFERRED_SIZE))))
-                        .addGap(0, 0, Short.MAX_VALUE)))
-                .addContainerGap())
-        );
-        layout.setVerticalGroup(
-            layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGroup(layout.createSequentialGroup()
-                .addContainerGap()
-                .addComponent(jLabel1)
-                .addGap(41, 41, 41)
-                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
-                    .addComponent(jLabel2)
-                    .addComponent(rbtnMes)
-                    .addComponent(rbtnAnio)
-                    .addComponent(rbtnDia))
-                .addGap(22, 22, 22)
-                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
-                    .addComponent(jLabel3)
-                    .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
-                        .addComponent(jLabel4)
-                        .addComponent(cmbMes, javax.swing.GroupLayout.PREFERRED_SIZE, 34, javax.swing.GroupLayout.PREFERRED_SIZE)
-                        .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
-                            .addComponent(jLabel5)
-                            .addComponent(cmbAño, javax.swing.GroupLayout.PREFERRED_SIZE, 34, javax.swing.GroupLayout.PREFERRED_SIZE))
-                        .addComponent(cmbDia, javax.swing.GroupLayout.PREFERRED_SIZE, 34, javax.swing.GroupLayout.PREFERRED_SIZE)))
-                .addGap(55, 55, 55)
-                .addComponent(jScrollPane1, javax.swing.GroupLayout.PREFERRED_SIZE, 339, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addContainerGap(158, Short.MAX_VALUE))
-        );
+        lblEstadisticas.setIcon(new javax.swing.ImageIcon(getClass().getResource("/Background/34_Spicy_Neutrals02.png"))); // NOI18N
+        add(lblEstadisticas, new org.netbeans.lib.awtextra.AbsoluteConstraints(0, 0, 690, 710));
     }// </editor-fold>//GEN-END:initComponents
 
 
@@ -218,12 +203,13 @@ año();
     private javax.swing.JComboBox<String> cmbDia;
     private javax.swing.JComboBox<String> cmbMes;
     private javax.swing.ButtonGroup filtroEstadisticas;
-    private javax.swing.JLabel jLabel1;
-    private javax.swing.JLabel jLabel2;
-    private javax.swing.JLabel jLabel3;
-    private javax.swing.JLabel jLabel4;
-    private javax.swing.JLabel jLabel5;
+    private javax.swing.JLabel jLabel10;
+    private javax.swing.JLabel jLabel6;
+    private javax.swing.JLabel jLabel7;
+    private javax.swing.JLabel jLabel8;
+    private javax.swing.JLabel jLabel9;
     private javax.swing.JScrollPane jScrollPane1;
+    private javax.swing.JLabel lblEstadisticas;
     private javax.swing.JRadioButton rbtnAnio;
     private javax.swing.JRadioButton rbtnDia;
     private javax.swing.JRadioButton rbtnMes;

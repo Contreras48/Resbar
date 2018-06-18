@@ -103,23 +103,31 @@ public class Administrar extends javax.swing.JPanel {
     // <editor-fold defaultstate="collapsed" desc="Generated Code">//GEN-BEGIN:initComponents
     private void initComponents() {
 
-        jLabel1 = new javax.swing.JLabel();
+        jLabel4 = new javax.swing.JLabel();
         jScrollPane1 = new javax.swing.JScrollPane();
         lstAdminCategorias = new javax.swing.JList<>();
-        jLabel5 = new javax.swing.JLabel();
+        jLabel6 = new javax.swing.JLabel();
         jScrollPane2 = new javax.swing.JScrollPane();
         tblProducto = new javax.swing.JTable();
         jLabel2 = new javax.swing.JLabel();
         btnAdmNuevoProductos = new javax.swing.JButton();
         jLabel3 = new javax.swing.JLabel();
         btnAdmNuevoProductos1 = new javax.swing.JButton();
+        lblFondo__ = new javax.swing.JLabel();
 
         setBackground(Color.decode("#2A3132"));
+        setLayout(new org.netbeans.lib.awtextra.AbsoluteLayout());
 
-        jLabel1.setFont(new java.awt.Font("Dialog", 1, 16)); // NOI18N
-        jLabel1.setForeground(Color.decode("#90AFC5"));
-        jLabel1.setText("Administrar");
+        jLabel4.setBackground(new java.awt.Color(255, 255, 255));
+        jLabel4.setFont(new java.awt.Font("Rockwell", 1, 36)); // NOI18N
+        jLabel4.setForeground(Color.decode("#662E1C"));
+        jLabel4.setText("Administrar");
+        add(jLabel4, new org.netbeans.lib.awtextra.AbsoluteConstraints(470, 10, 340, 30));
 
+        lstAdminCategorias.setBackground(Color.decode("#662E1C"));
+        lstAdminCategorias.setFont(new java.awt.Font("Rockwell", 1, 14)); // NOI18N
+        lstAdminCategorias.setForeground(new java.awt.Color(255, 255, 255));
+        lstAdminCategorias.setSelectionBackground(Color.decode("#EBDCB2"));
         lstAdminCategorias.addMouseListener(new java.awt.event.MouseAdapter() {
             public void mouseClicked(java.awt.event.MouseEvent evt) {
                 lstAdminCategoriasMouseClicked(evt);
@@ -127,11 +135,17 @@ public class Administrar extends javax.swing.JPanel {
         });
         jScrollPane1.setViewportView(lstAdminCategorias);
 
-        jLabel5.setFont(new java.awt.Font("Tahoma", 1, 11)); // NOI18N
-        jLabel5.setForeground(Color.decode("#90AFC5"));
-        jLabel5.setText("Categorias");
+        add(jScrollPane1, new org.netbeans.lib.awtextra.AbsoluteConstraints(10, 94, 126, 322));
 
-        tblProducto.setBackground(Color.decode("#90AFC5"));
+        jLabel6.setBackground(new java.awt.Color(255, 255, 255));
+        jLabel6.setFont(new java.awt.Font("Rockwell", 1, 18)); // NOI18N
+        jLabel6.setForeground(Color.decode("#662E1C"));
+        jLabel6.setText("Categorias");
+        add(jLabel6, new org.netbeans.lib.awtextra.AbsoluteConstraints(20, 70, -1, -1));
+
+        tblProducto.setBackground(Color.decode("#AF4425"));
+        tblProducto.setFont(new java.awt.Font("Rockwell", 1, 14)); // NOI18N
+        tblProducto.setForeground(new java.awt.Color(255, 255, 255));
         tblProducto.setModel(new javax.swing.table.DefaultTableModel(
             new Object [][] {
 
@@ -140,6 +154,7 @@ public class Administrar extends javax.swing.JPanel {
 
             }
         ));
+        tblProducto.setSelectionBackground(Color.decode("#EBDCB2"));
         tblProducto.addMouseListener(new java.awt.event.MouseAdapter() {
             public void mouseClicked(java.awt.event.MouseEvent evt) {
                 tblProductoMouseClicked(evt);
@@ -147,76 +162,32 @@ public class Administrar extends javax.swing.JPanel {
         });
         jScrollPane2.setViewportView(tblProducto);
 
+        add(jScrollPane2, new org.netbeans.lib.awtextra.AbsoluteConstraints(154, 94, 520, 322));
+
         jLabel2.setForeground(Color.decode("#90AFC5"));
         jLabel2.setText("Nueva Categoria");
+        add(jLabel2, new org.netbeans.lib.awtextra.AbsoluteConstraints(154, 517, -1, -1));
 
         btnAdmNuevoProductos.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
                 btnAdmNuevoProductosActionPerformed(evt);
             }
         });
+        add(btnAdmNuevoProductos, new org.netbeans.lib.awtextra.AbsoluteConstraints(154, 436, 120, 75));
 
         jLabel3.setForeground(Color.decode("#90AFC5"));
         jLabel3.setText("Nuevo Producto");
+        add(jLabel3, new org.netbeans.lib.awtextra.AbsoluteConstraints(512, 517, -1, -1));
 
         btnAdmNuevoProductos1.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
                 btnAdmNuevoProductos1ActionPerformed(evt);
             }
         });
+        add(btnAdmNuevoProductos1, new org.netbeans.lib.awtextra.AbsoluteConstraints(469, 436, 120, 75));
 
-        javax.swing.GroupLayout layout = new javax.swing.GroupLayout(this);
-        this.setLayout(layout);
-        layout.setHorizontalGroup(
-            layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGroup(layout.createSequentialGroup()
-                .addContainerGap()
-                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                    .addComponent(jLabel1)
-                    .addGroup(layout.createSequentialGroup()
-                        .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                            .addGroup(layout.createSequentialGroup()
-                                .addGap(13, 13, 13)
-                                .addComponent(jLabel5, javax.swing.GroupLayout.PREFERRED_SIZE, 89, javax.swing.GroupLayout.PREFERRED_SIZE))
-                            .addComponent(jScrollPane1, javax.swing.GroupLayout.PREFERRED_SIZE, 126, javax.swing.GroupLayout.PREFERRED_SIZE))
-                        .addGap(18, 18, 18)
-                        .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
-                            .addComponent(jScrollPane2, javax.swing.GroupLayout.PREFERRED_SIZE, 520, javax.swing.GroupLayout.PREFERRED_SIZE)
-                            .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, layout.createSequentialGroup()
-                                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING)
-                                    .addGroup(layout.createSequentialGroup()
-                                        .addComponent(jLabel2)
-                                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-                                        .addComponent(jLabel3))
-                                    .addGroup(layout.createSequentialGroup()
-                                        .addComponent(btnAdmNuevoProductos, javax.swing.GroupLayout.PREFERRED_SIZE, 120, javax.swing.GroupLayout.PREFERRED_SIZE)
-                                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-                                        .addComponent(btnAdmNuevoProductos1, javax.swing.GroupLayout.PREFERRED_SIZE, 120, javax.swing.GroupLayout.PREFERRED_SIZE)))
-                                .addGap(85, 85, 85)))))
-                .addContainerGap(33, Short.MAX_VALUE))
-        );
-        layout.setVerticalGroup(
-            layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, layout.createSequentialGroup()
-                .addGap(18, 18, 18)
-                .addComponent(jLabel1)
-                .addGap(42, 42, 42)
-                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING)
-                    .addGroup(layout.createSequentialGroup()
-                        .addComponent(jLabel5)
-                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                        .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
-                            .addComponent(jScrollPane2, javax.swing.GroupLayout.PREFERRED_SIZE, 0, Short.MAX_VALUE)
-                            .addComponent(jScrollPane1, javax.swing.GroupLayout.DEFAULT_SIZE, 322, Short.MAX_VALUE))
-                        .addGap(20, 20, 20)
-                        .addComponent(btnAdmNuevoProductos, javax.swing.GroupLayout.PREFERRED_SIZE, 75, javax.swing.GroupLayout.PREFERRED_SIZE))
-                    .addComponent(btnAdmNuevoProductos1, javax.swing.GroupLayout.PREFERRED_SIZE, 75, javax.swing.GroupLayout.PREFERRED_SIZE))
-                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
-                    .addComponent(jLabel2)
-                    .addComponent(jLabel3))
-                .addContainerGap(44, Short.MAX_VALUE))
-        );
+        lblFondo__.setIcon(new javax.swing.ImageIcon(getClass().getResource("/Background/34_Spicy_Neutrals02.png"))); // NOI18N
+        add(lblFondo__, new org.netbeans.lib.awtextra.AbsoluteConstraints(0, 0, 710, 580));
     }// </editor-fold>//GEN-END:initComponents
 
     private void lstAdminCategoriasMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_lstAdminCategoriasMouseClicked
@@ -298,12 +269,13 @@ public class Administrar extends javax.swing.JPanel {
     // Variables declaration - do not modify//GEN-BEGIN:variables
     private javax.swing.JButton btnAdmNuevoProductos;
     private javax.swing.JButton btnAdmNuevoProductos1;
-    private javax.swing.JLabel jLabel1;
     private javax.swing.JLabel jLabel2;
     private javax.swing.JLabel jLabel3;
-    private javax.swing.JLabel jLabel5;
+    private javax.swing.JLabel jLabel4;
+    private javax.swing.JLabel jLabel6;
     private javax.swing.JScrollPane jScrollPane1;
     private javax.swing.JScrollPane jScrollPane2;
+    private javax.swing.JLabel lblFondo__;
     private javax.swing.JList<String> lstAdminCategorias;
     private javax.swing.JTable tblProducto;
     // End of variables declaration//GEN-END:variables

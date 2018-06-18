@@ -102,24 +102,33 @@ public class Inicio extends javax.swing.JPanel {
     // <editor-fold defaultstate="collapsed" desc="Generated Code">//GEN-BEGIN:initComponents
     private void initComponents() {
 
-        jLabel1 = new javax.swing.JLabel();
+        jLabel7 = new javax.swing.JLabel();
+        jLabel6 = new javax.swing.JLabel();
         jScrollPane1 = new javax.swing.JScrollPane();
         tblOrdenesActivas = new javax.swing.JTable();
         txtBuscar = new RedondearBorde("/Recursos/buscar.png");
         btnNuevaOrden1 = new javax.swing.JButton();
-        jLabel2 = new javax.swing.JLabel();
         jLabel3 = new javax.swing.JLabel();
+        lblFondo2 = new javax.swing.JLabel();
 
-        setBackground(Color.decode("#2A3132"));
         setPreferredSize(new java.awt.Dimension(807, 707));
+        setLayout(new org.netbeans.lib.awtextra.AbsoluteLayout());
 
-        jLabel1.setFont(new java.awt.Font("Dialog", 1, 16)); // NOI18N
-        jLabel1.setForeground(Color.decode("#90AFC5")
-        );
-        jLabel1.setText("Ordenes activas");
+        jLabel7.setBackground(new java.awt.Color(255, 255, 255));
+        jLabel7.setFont(new java.awt.Font("Rockwell", 1, 18)); // NOI18N
+        jLabel7.setForeground(Color.decode("#662E1C"));
+        jLabel7.setText("Buscar: ");
+        add(jLabel7, new org.netbeans.lib.awtextra.AbsoluteConstraints(20, 52, -1, 30));
 
-        tblOrdenesActivas.setBackground(Color.decode("#90AFC5")
-        );
+        jLabel6.setBackground(new java.awt.Color(255, 255, 255));
+        jLabel6.setFont(new java.awt.Font("Rockwell", 1, 36)); // NOI18N
+        jLabel6.setForeground(Color.decode("#662E1C"));
+        jLabel6.setText("Ordenes Activas");
+        add(jLabel6, new org.netbeans.lib.awtextra.AbsoluteConstraints(370, 10, 310, 30));
+
+        tblOrdenesActivas.setBackground(Color.decode("#AF4425"));
+        tblOrdenesActivas.setFont(new java.awt.Font("Rockwell", 1, 14)); // NOI18N
+        tblOrdenesActivas.setForeground(new java.awt.Color(255, 255, 255));
         tblOrdenesActivas.setModel(new javax.swing.table.DefaultTableModel(
             new Object [][] {
                 {null, null, null, null, null},
@@ -142,7 +151,16 @@ public class Inicio extends javax.swing.JPanel {
                 return canEdit [columnIndex];
             }
         });
+        tblOrdenesActivas.setSelectionBackground(Color.decode("#EBDCB2"));
         jScrollPane1.setViewportView(tblOrdenesActivas);
+
+        add(jScrollPane1, new org.netbeans.lib.awtextra.AbsoluteConstraints(10, 89, 787, 471));
+
+        txtBuscar.setBackground(Color.decode("#AF4425"));
+        txtBuscar.setFont(new java.awt.Font("Rockwell", 3, 14)); // NOI18N
+        txtBuscar.setForeground(new java.awt.Color(255, 255, 255));
+        txtBuscar.setSelectionColor(Color.decode("#EBDCB2"));
+        add(txtBuscar, new org.netbeans.lib.awtextra.AbsoluteConstraints(105, 58, 357, -1));
 
         btnNuevaOrden1.setIcon(new javax.swing.ImageIcon(getClass().getResource("/Recursos/nueva32.jpg"))); // NOI18N
         btnNuevaOrden1.setFocusPainted(false);
@@ -151,49 +169,11 @@ public class Inicio extends javax.swing.JPanel {
                 btnNuevaOrden1ActionPerformed(evt);
             }
         });
+        add(btnNuevaOrden1, new org.netbeans.lib.awtextra.AbsoluteConstraints(10, 578, 120, 75));
+        add(jLabel3, new org.netbeans.lib.awtextra.AbsoluteConstraints(78, 55, -1, 23));
 
-        jLabel2.setFont(new java.awt.Font("Dialog", 1, 14)); // NOI18N
-        jLabel2.setForeground(Color.decode("#90AFC5"));
-        jLabel2.setText("Buscar");
-
-        javax.swing.GroupLayout layout = new javax.swing.GroupLayout(this);
-        this.setLayout(layout);
-        layout.setHorizontalGroup(
-            layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGroup(layout.createSequentialGroup()
-                .addContainerGap()
-                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                    .addComponent(jScrollPane1)
-                    .addGroup(layout.createSequentialGroup()
-                        .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                            .addComponent(jLabel1)
-                            .addGroup(layout.createSequentialGroup()
-                                .addComponent(jLabel2, javax.swing.GroupLayout.PREFERRED_SIZE, 58, javax.swing.GroupLayout.PREFERRED_SIZE)
-                                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
-                                .addComponent(jLabel3)
-                                .addGap(27, 27, 27)
-                                .addComponent(txtBuscar, javax.swing.GroupLayout.PREFERRED_SIZE, 357, javax.swing.GroupLayout.PREFERRED_SIZE))
-                            .addComponent(btnNuevaOrden1, javax.swing.GroupLayout.PREFERRED_SIZE, 120, javax.swing.GroupLayout.PREFERRED_SIZE))
-                        .addGap(0, 329, Short.MAX_VALUE)))
-                .addContainerGap())
-        );
-        layout.setVerticalGroup(
-            layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGroup(layout.createSequentialGroup()
-                .addContainerGap()
-                .addComponent(jLabel1)
-                .addGap(23, 23, 23)
-                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING)
-                    .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
-                        .addComponent(txtBuscar, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                        .addComponent(jLabel2))
-                    .addComponent(jLabel3, javax.swing.GroupLayout.PREFERRED_SIZE, 23, javax.swing.GroupLayout.PREFERRED_SIZE))
-                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
-                .addComponent(jScrollPane1, javax.swing.GroupLayout.DEFAULT_SIZE, 471, Short.MAX_VALUE)
-                .addGap(18, 18, 18)
-                .addComponent(btnNuevaOrden1, javax.swing.GroupLayout.PREFERRED_SIZE, 75, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addGap(54, 54, 54))
-        );
+        lblFondo2.setIcon(new javax.swing.ImageIcon(getClass().getResource("/Background/34_Spicy_Neutrals02.png"))); // NOI18N
+        add(lblFondo2, new org.netbeans.lib.awtextra.AbsoluteConstraints(0, 0, 810, 710));
     }// </editor-fold>//GEN-END:initComponents
 
     private void btnNuevaOrden1ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnNuevaOrden1ActionPerformed
@@ -206,10 +186,11 @@ public class Inicio extends javax.swing.JPanel {
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
     private javax.swing.JButton btnNuevaOrden1;
-    private javax.swing.JLabel jLabel1;
-    private javax.swing.JLabel jLabel2;
     private javax.swing.JLabel jLabel3;
+    private javax.swing.JLabel jLabel6;
+    private javax.swing.JLabel jLabel7;
     private javax.swing.JScrollPane jScrollPane1;
+    private javax.swing.JLabel lblFondo2;
     private javax.swing.JTable tblOrdenesActivas;
     private javax.swing.JTextField txtBuscar;
     // End of variables declaration//GEN-END:variables

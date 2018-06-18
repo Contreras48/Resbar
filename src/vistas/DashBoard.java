@@ -29,7 +29,7 @@ public class DashBoard extends javax.swing.JFrame {
         inicializarContenedor();
         
        // jFrame.setBackground(Color.decode("#F8F5F2"));
-       getContentPane().setBackground(Color.decode("#008080"));
+      // getContentPane().setBackground(Color.decode("#008080"));
        setIconImage(new ImageIcon(getClass().getResource("/Recursos/resbarICON_.png")).getImage());
        this.setResizable(false);
        
@@ -59,11 +59,13 @@ public class DashBoard extends javax.swing.JFrame {
         btnInicio = new javax.swing.JButton();
         btnAdministrar = new javax.swing.JButton();
         btnEstadisticas = new javax.swing.JButton();
+        lblFondo1 = new javax.swing.JLabel();
 
         setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
         setTitle("Inicio");
         setForeground(new java.awt.Color(51, 51, 255));
         setResizable(false);
+        getContentPane().setLayout(new org.netbeans.lib.awtextra.AbsoluteLayout());
 
         javax.swing.GroupLayout jpContenedorLayout = new javax.swing.GroupLayout(jpContenedor);
         jpContenedor.setLayout(jpContenedorLayout);
@@ -76,6 +78,8 @@ public class DashBoard extends javax.swing.JFrame {
             .addGap(0, 0, Short.MAX_VALUE)
         );
 
+        getContentPane().add(jpContenedor, new org.netbeans.lib.awtextra.AbsoluteConstraints(316, 53, -1, 703));
+
         btnInicio.setIcon(new javax.swing.ImageIcon(getClass().getResource("/Recursos/inicio.jpg"))); // NOI18N
         btnInicio.setFocusPainted(false);
         btnInicio.addActionListener(new java.awt.event.ActionListener() {
@@ -83,6 +87,7 @@ public class DashBoard extends javax.swing.JFrame {
                 btnInicioActionPerformed(evt);
             }
         });
+        getContentPane().add(btnInicio, new org.netbeans.lib.awtextra.AbsoluteConstraints(10, 110, 296, 99));
 
         btnAdministrar.setIcon(new javax.swing.ImageIcon(getClass().getResource("/Recursos/administracion.jpg"))); // NOI18N
         btnAdministrar.setFocusPainted(false);
@@ -91,6 +96,7 @@ public class DashBoard extends javax.swing.JFrame {
                 btnAdministrarActionPerformed(evt);
             }
         });
+        getContentPane().add(btnAdministrar, new org.netbeans.lib.awtextra.AbsoluteConstraints(10, 288, 293, 98));
 
         btnEstadisticas.setIcon(new javax.swing.ImageIcon(getClass().getResource("/Recursos/estadisticas.jpg"))); // NOI18N
         btnEstadisticas.setFocusPainted(false);
@@ -99,39 +105,10 @@ public class DashBoard extends javax.swing.JFrame {
                 btnEstadisticasActionPerformed(evt);
             }
         });
+        getContentPane().add(btnEstadisticas, new org.netbeans.lib.awtextra.AbsoluteConstraints(10, 468, 293, 98));
 
-        javax.swing.GroupLayout layout = new javax.swing.GroupLayout(getContentPane());
-        getContentPane().setLayout(layout);
-        layout.setHorizontalGroup(
-            layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, layout.createSequentialGroup()
-                .addContainerGap()
-                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                    .addComponent(btnInicio, javax.swing.GroupLayout.PREFERRED_SIZE, 296, javax.swing.GroupLayout.PREFERRED_SIZE)
-                    .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING, false)
-                        .addComponent(btnEstadisticas, javax.swing.GroupLayout.Alignment.LEADING, javax.swing.GroupLayout.PREFERRED_SIZE, 0, Short.MAX_VALUE)
-                        .addComponent(btnAdministrar, javax.swing.GroupLayout.Alignment.LEADING, javax.swing.GroupLayout.PREFERRED_SIZE, 293, javax.swing.GroupLayout.PREFERRED_SIZE)))
-                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
-                .addComponent(jpContenedor, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-                .addContainerGap())
-        );
-        layout.setVerticalGroup(
-            layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGroup(layout.createSequentialGroup()
-                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                    .addGroup(layout.createSequentialGroup()
-                        .addGap(110, 110, 110)
-                        .addComponent(btnInicio, javax.swing.GroupLayout.PREFERRED_SIZE, 99, javax.swing.GroupLayout.PREFERRED_SIZE)
-                        .addGap(79, 79, 79)
-                        .addComponent(btnAdministrar, javax.swing.GroupLayout.PREFERRED_SIZE, 98, javax.swing.GroupLayout.PREFERRED_SIZE)
-                        .addGap(82, 82, 82)
-                        .addComponent(btnEstadisticas, javax.swing.GroupLayout.PREFERRED_SIZE, 98, javax.swing.GroupLayout.PREFERRED_SIZE)
-                        .addGap(0, 190, Short.MAX_VALUE))
-                    .addGroup(layout.createSequentialGroup()
-                        .addGap(53, 53, 53)
-                        .addComponent(jpContenedor, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)))
-                .addContainerGap())
-        );
+        lblFondo1.setIcon(new javax.swing.ImageIcon(getClass().getResource("/Background/34_Spicy_Neutrals01.png"))); // NOI18N
+        getContentPane().add(lblFondo1, new org.netbeans.lib.awtextra.AbsoluteConstraints(0, 0, 1020, 770));
 
         pack();
     }// </editor-fold>//GEN-END:initComponents
@@ -207,5 +184,6 @@ public class DashBoard extends javax.swing.JFrame {
     private javax.swing.JButton btnEstadisticas;
     private javax.swing.JButton btnInicio;
     private javax.swing.JPanel jpContenedor;
+    private javax.swing.JLabel lblFondo1;
     // End of variables declaration//GEN-END:variables
 }
