@@ -23,7 +23,7 @@ public class Cobrar extends javax.swing.JFrame {
         initComponents();
         modelo= new DefaultTableModel(contenido,titulo);
         tblCobrar.setModel(modelo);
-        setIconImage(new ImageIcon(getClass().getResource("/Recursos/restaur.png")).getImage());
+        setIconImage(new ImageIcon(getClass().getResource("/Recursos/resbarICON_.png")).getImage());
         this.setResizable(false);
     }
 

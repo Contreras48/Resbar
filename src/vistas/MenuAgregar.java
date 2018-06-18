@@ -46,7 +46,7 @@ public class MenuAgregar extends javax.swing.JFrame {
         lstCategorias.setModel(modeloLista);
         ListaCategoria();
         perzonalizarComponentes();
-        setIconImage(new ImageIcon(getClass().getResource("/Recursos/restaur.png")).getImage());
+        setIconImage(new ImageIcon(getClass().getResource("/Recursos/resbarICON_.png")).getImage());
         this.setResizable(false);
     }
     

@@ -1,6 +1,8 @@
 
 package vistas;
 
+import javax.swing.ImageIcon;
+
 /**
  *
  * @author mateo
@@ -13,6 +15,7 @@ public class SplashScreen extends javax.swing.JFrame {
      */
     public SplashScreen() {
         initComponents();
+        setIconImage(new ImageIcon(getClass().getResource("/Recursos/resbarICON_.png")).getImage());
         setLocationRelativeTo(null);
         setVisible(true);
         runningPBar();

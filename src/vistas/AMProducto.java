@@ -33,7 +33,7 @@ public class AMProducto extends javax.swing.JFrame {
         txtNombre.requestFocus();
 //        txtId.setEditable(false);
         this.setResizable(false);
-        setIconImage(new ImageIcon(getClass().getResource("/Recursos/restaur.png")).getImage());
+        setIconImage(new ImageIcon(getClass().getResource("/Recursos/resbarICON_.png")).getImage());
         this.setResizable(false);
     }
     

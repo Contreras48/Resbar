@@ -31,7 +31,7 @@ public class AMCategoria extends javax.swing.JFrame {
 //        txtId.setEditable(false);
 //        lblEtiqueta.setText(mensaje);
         this.setResizable(false);
-        setIconImage(new ImageIcon(getClass().getResource("/Recursos/restaur.png")).getImage());
+        setIconImage(new ImageIcon(getClass().getResource("/Recursos/resbarICON_.png")).getImage());
         this.setResizable(false);
     }
 

@@ -30,7 +30,7 @@ public class DashBoard extends javax.swing.JFrame {
         
        // jFrame.setBackground(Color.decode("#F8F5F2"));
        getContentPane().setBackground(Color.decode("#008080"));
-       setIconImage(new ImageIcon(getClass().getResource("/Recursos/restaur.png")).getImage());
+       setIconImage(new ImageIcon(getClass().getResource("/Recursos/resbarICON_.png")).getImage());
        this.setResizable(false);
        
     }
