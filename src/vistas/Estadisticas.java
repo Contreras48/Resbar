@@ -8,6 +8,7 @@ package vistas;
 import Personalizacion.RenderColor;
 import java.awt.Color;
 import java.util.Enumeration;
+import javax.swing.DefaultComboBoxModel;
 import javax.swing.ImageIcon;
 import javax.swing.table.TableColumn;
 import javax.swing.table.TableColumnModel;
@@ -26,8 +27,43 @@ public class Estadisticas extends javax.swing.JPanel {
         personalizarComponentes();
 //        setIconImage(new ImageIcon(getClass().getResource("/Recursos/restaur.png")).getImage());
 //                this.setResizable(false);
+dia();
+mes();
+año();
     }
-    
+    public void dia(){
+    DefaultComboBoxModel dia = new DefaultComboBoxModel();
+    for(int i=1; i<=31; i++){
+        dia.addElement(i);
+        cmbDia.setModel(dia);
+    }
+    }
+    public void mes(){
+        cmbMes.addItem("Enero");
+        cmbMes.addItem("Febrero");
+        cmbMes.addItem("Marzo");
+        cmbMes.addItem("Abril");
+        cmbMes.addItem("Mayo");
+        cmbMes.addItem("Junio");
+        cmbMes.addItem("Julio");
+        cmbMes.addItem("Agosto");
+        cmbMes.addItem("Septiembre");
+        cmbMes.addItem("Octubre");
+        cmbMes.addItem("Noviembre");
+        cmbMes.addItem("Diciembre");
+               
+    }
+    public void año(){
+        cmbAño.addItem("2011");
+        cmbAño.addItem("2012");
+        cmbAño.addItem("2013");
+        cmbAño.addItem("2014");
+        cmbAño.addItem("2015");
+        cmbAño.addItem("2016");
+        cmbAño.addItem("2017");
+        cmbAño.addItem("2018");
+                           
+    }
     public final void personalizarComponentes(){
         Enumeration<TableColumn> en = tblEstadisticas.getColumnModel().getColumns();
         while (en.hasMoreElements()) {
@@ -61,6 +97,12 @@ public class Estadisticas extends javax.swing.JPanel {
         rbtnMes = new javax.swing.JRadioButton();
         rbtnAnio = new javax.swing.JRadioButton();
         rbtnDia = new javax.swing.JRadioButton();
+        jLabel3 = new javax.swing.JLabel();
+        cmbDia = new javax.swing.JComboBox<>();
+        cmbMes = new javax.swing.JComboBox<>();
+        jLabel4 = new javax.swing.JLabel();
+        cmbAño = new javax.swing.JComboBox<>();
+        jLabel5 = new javax.swing.JLabel();
 
         setBackground(Color.decode("#2A3132"));
 
@@ -96,6 +138,15 @@ public class Estadisticas extends javax.swing.JPanel {
         rbtnDia.setForeground(Color.decode("#90AFC5"));
         rbtnDia.setText("Dia");
 
+        jLabel3.setForeground(Color.decode("#90AFC5"));
+        jLabel3.setText("Dia");
+
+        jLabel4.setForeground(Color.decode("#90AFC5"));
+        jLabel4.setText("Mes");
+
+        jLabel5.setForeground(Color.decode("#90AFC5"));
+        jLabel5.setText("Año");
+
         javax.swing.GroupLayout layout = new javax.swing.GroupLayout(this);
         this.setLayout(layout);
         layout.setHorizontalGroup(
@@ -108,13 +159,29 @@ public class Estadisticas extends javax.swing.JPanel {
                         .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                             .addComponent(jLabel1)
                             .addGroup(layout.createSequentialGroup()
-                                .addComponent(jLabel2)
-                                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
-                                .addComponent(rbtnDia)
-                                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
-                                .addComponent(rbtnMes)
-                                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
-                                .addComponent(rbtnAnio)))
+                                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                                    .addGroup(layout.createSequentialGroup()
+                                        .addGap(35, 35, 35)
+                                        .addComponent(jLabel3)
+                                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
+                                        .addComponent(cmbDia, javax.swing.GroupLayout.PREFERRED_SIZE, 97, javax.swing.GroupLayout.PREFERRED_SIZE)
+                                        .addGap(27, 27, 27)
+                                        .addComponent(jLabel4))
+                                    .addGroup(layout.createSequentialGroup()
+                                        .addComponent(jLabel2)
+                                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
+                                        .addComponent(rbtnDia)))
+                                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                                    .addGroup(layout.createSequentialGroup()
+                                        .addComponent(cmbMes, javax.swing.GroupLayout.PREFERRED_SIZE, 106, javax.swing.GroupLayout.PREFERRED_SIZE)
+                                        .addGap(67, 67, 67)
+                                        .addComponent(jLabel5))
+                                    .addComponent(rbtnMes))
+                                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                                    .addComponent(rbtnAnio)
+                                    .addComponent(cmbAño, javax.swing.GroupLayout.PREFERRED_SIZE, 101, javax.swing.GroupLayout.PREFERRED_SIZE))))
                         .addGap(0, 0, Short.MAX_VALUE)))
                 .addContainerGap())
         );
@@ -129,17 +196,33 @@ public class Estadisticas extends javax.swing.JPanel {
                     .addComponent(rbtnMes)
                     .addComponent(rbtnAnio)
                     .addComponent(rbtnDia))
-                .addGap(18, 18, 18)
-                .addComponent(jScrollPane1, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addContainerGap(168, Short.MAX_VALUE))
+                .addGap(22, 22, 22)
+                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
+                    .addComponent(jLabel3)
+                    .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
+                        .addComponent(jLabel4)
+                        .addComponent(cmbMes, javax.swing.GroupLayout.PREFERRED_SIZE, 34, javax.swing.GroupLayout.PREFERRED_SIZE)
+                        .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
+                            .addComponent(jLabel5)
+                            .addComponent(cmbAño, javax.swing.GroupLayout.PREFERRED_SIZE, 34, javax.swing.GroupLayout.PREFERRED_SIZE))
+                        .addComponent(cmbDia, javax.swing.GroupLayout.PREFERRED_SIZE, 34, javax.swing.GroupLayout.PREFERRED_SIZE)))
+                .addGap(55, 55, 55)
+                .addComponent(jScrollPane1, javax.swing.GroupLayout.PREFERRED_SIZE, 339, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addContainerGap(158, Short.MAX_VALUE))
         );
     }// </editor-fold>//GEN-END:initComponents
 
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
+    private javax.swing.JComboBox<String> cmbAño;
+    private javax.swing.JComboBox<String> cmbDia;
+    private javax.swing.JComboBox<String> cmbMes;
     private javax.swing.ButtonGroup filtroEstadisticas;
     private javax.swing.JLabel jLabel1;
     private javax.swing.JLabel jLabel2;
+    private javax.swing.JLabel jLabel3;
+    private javax.swing.JLabel jLabel4;
+    private javax.swing.JLabel jLabel5;
     private javax.swing.JScrollPane jScrollPane1;
     private javax.swing.JRadioButton rbtnAnio;
     private javax.swing.JRadioButton rbtnDia;
