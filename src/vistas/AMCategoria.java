@@ -52,12 +52,13 @@ public class AMCategoria extends javax.swing.JFrame {
 
         jpFondo = new javax.swing.JPanel();
         btnGuardar = new javax.swing.JButton();
-        txtNombre = new RedondearBorde(null);
+        txtNuevaCategoria = new RedondearBorde(null);
         btnCancelar = new javax.swing.JButton();
         jLabel2 = new javax.swing.JLabel();
         jLabel3 = new javax.swing.JLabel();
         jLabel4 = new javax.swing.JLabel();
-        lblNombre = new javax.swing.JLabel();
+        jLabel5 = new javax.swing.JLabel();
+        txtIdCategoria = new RedondearBorde(null);
 
         setDefaultCloseOperation(javax.swing.WindowConstants.DISPOSE_ON_CLOSE);
         setTitle("Nueva | Categoria");
@@ -77,9 +78,9 @@ public class AMCategoria extends javax.swing.JFrame {
             }
         });
 
-        txtNombre.addKeyListener(new java.awt.event.KeyAdapter() {
+        txtNuevaCategoria.addKeyListener(new java.awt.event.KeyAdapter() {
             public void keyTyped(java.awt.event.KeyEvent evt) {
-                txtNombreKeyTyped(evt);
+                txtNuevaCategoriaKeyTyped(evt);
             }
         });
 
@@ -102,7 +103,15 @@ public class AMCategoria extends javax.swing.JFrame {
         jLabel4.setForeground(Color.decode("#90AFC5"));
         jLabel4.setText("Guardar");
 
-        lblNombre.setForeground(Color.decode("#90AFC5"));
+        jLabel5.setFont(new java.awt.Font("Tahoma", 1, 11)); // NOI18N
+        jLabel5.setForeground(Color.decode("#90AFC5"));
+        jLabel5.setText("Id");
+
+        txtIdCategoria.addKeyListener(new java.awt.event.KeyAdapter() {
+            public void keyTyped(java.awt.event.KeyEvent evt) {
+                txtIdCategoriaKeyTyped(evt);
+            }
+        });
 
         javax.swing.GroupLayout jpFondoLayout = new javax.swing.GroupLayout(jpFondo);
         jpFondo.setLayout(jpFondoLayout);
@@ -110,11 +119,6 @@ public class AMCategoria extends javax.swing.JFrame {
             jpFondoLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(jpFondoLayout.createSequentialGroup()
                 .addGroup(jpFondoLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                    .addGroup(jpFondoLayout.createSequentialGroup()
-                        .addContainerGap()
-                        .addComponent(jLabel2)
-                        .addGap(35, 35, 35)
-                        .addComponent(txtNombre, javax.swing.GroupLayout.PREFERRED_SIZE, 349, javax.swing.GroupLayout.PREFERRED_SIZE))
                     .addGroup(jpFondoLayout.createSequentialGroup()
                         .addGap(108, 108, 108)
                         .addGroup(jpFondoLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
@@ -124,35 +128,44 @@ public class AMCategoria extends javax.swing.JFrame {
                                 .addComponent(jLabel3)))
                         .addGroup(jpFondoLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                             .addGroup(jpFondoLayout.createSequentialGroup()
-                                .addGap(86, 86, 86)
-                                .addComponent(lblNombre, javax.swing.GroupLayout.PREFERRED_SIZE, 104, javax.swing.GroupLayout.PREFERRED_SIZE))
-                            .addGroup(jpFondoLayout.createSequentialGroup()
                                 .addGap(170, 170, 170)
                                 .addComponent(jLabel4))
                             .addGroup(jpFondoLayout.createSequentialGroup()
                                 .addGap(158, 158, 158)
-                                .addComponent(btnGuardar, javax.swing.GroupLayout.PREFERRED_SIZE, 82, javax.swing.GroupLayout.PREFERRED_SIZE)))))
+                                .addComponent(btnGuardar, javax.swing.GroupLayout.PREFERRED_SIZE, 82, javax.swing.GroupLayout.PREFERRED_SIZE))))
+                    .addGroup(jpFondoLayout.createSequentialGroup()
+                        .addContainerGap()
+                        .addGroup(jpFondoLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                            .addComponent(jLabel2)
+                            .addComponent(jLabel5))
+                        .addGap(35, 35, 35)
+                        .addGroup(jpFondoLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                            .addComponent(txtNuevaCategoria, javax.swing.GroupLayout.PREFERRED_SIZE, 349, javax.swing.GroupLayout.PREFERRED_SIZE)
+                            .addComponent(txtIdCategoria, javax.swing.GroupLayout.PREFERRED_SIZE, 110, javax.swing.GroupLayout.PREFERRED_SIZE))))
                 .addContainerGap(36, Short.MAX_VALUE))
         );
         jpFondoLayout.setVerticalGroup(
             jpFondoLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(jpFondoLayout.createSequentialGroup()
-                .addGap(45, 45, 45)
+                .addGap(28, 28, 28)
+                .addGroup(jpFondoLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
+                    .addComponent(jLabel5)
+                    .addComponent(txtIdCategoria, javax.swing.GroupLayout.PREFERRED_SIZE, 30, javax.swing.GroupLayout.PREFERRED_SIZE))
+                .addGap(25, 25, 25)
                 .addGroup(jpFondoLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                    .addGroup(jpFondoLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING)
-                        .addComponent(btnCancelar, javax.swing.GroupLayout.PREFERRED_SIZE, 50, javax.swing.GroupLayout.PREFERRED_SIZE)
-                        .addGroup(jpFondoLayout.createSequentialGroup()
-                            .addComponent(lblNombre, javax.swing.GroupLayout.PREFERRED_SIZE, 20, javax.swing.GroupLayout.PREFERRED_SIZE)
-                            .addGap(28, 28, 28)
+                    .addGroup(jpFondoLayout.createSequentialGroup()
+                        .addGap(48, 48, 48)
+                        .addGroup(jpFondoLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING)
+                            .addComponent(btnCancelar, javax.swing.GroupLayout.PREFERRED_SIZE, 50, javax.swing.GroupLayout.PREFERRED_SIZE)
                             .addComponent(btnGuardar, javax.swing.GroupLayout.PREFERRED_SIZE, 50, javax.swing.GroupLayout.PREFERRED_SIZE)))
                     .addGroup(jpFondoLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
                         .addComponent(jLabel2)
-                        .addComponent(txtNombre, javax.swing.GroupLayout.PREFERRED_SIZE, 30, javax.swing.GroupLayout.PREFERRED_SIZE)))
+                        .addComponent(txtNuevaCategoria, javax.swing.GroupLayout.PREFERRED_SIZE, 30, javax.swing.GroupLayout.PREFERRED_SIZE)))
                 .addGap(6, 6, 6)
                 .addGroup(jpFondoLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                     .addComponent(jLabel3)
                     .addComponent(jLabel4))
-                .addContainerGap(66, Short.MAX_VALUE))
+                .addContainerGap(28, Short.MAX_VALUE))
         );
 
         javax.swing.GroupLayout layout = new javax.swing.GroupLayout(getContentPane());
@@ -189,10 +202,14 @@ public class AMCategoria extends javax.swing.JFrame {
        
     }//GEN-LAST:event_btnGuardarMouseClicked
 
-    private void txtNombreKeyTyped(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_txtNombreKeyTyped
+    private void txtNuevaCategoriaKeyTyped(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_txtNuevaCategoriaKeyTyped
 //        Validacion validar= new Validacion();
 //        validar.soloDecimal(txtNombre);
-    }//GEN-LAST:event_txtNombreKeyTyped
+    }//GEN-LAST:event_txtNuevaCategoriaKeyTyped
+
+    private void txtIdCategoriaKeyTyped(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_txtIdCategoriaKeyTyped
+        // TODO add your handling code here:
+    }//GEN-LAST:event_txtIdCategoriaKeyTyped
 
     /**
      * @param args the command line arguments
@@ -230,8 +247,9 @@ public class AMCategoria extends javax.swing.JFrame {
     private javax.swing.JLabel jLabel2;
     private javax.swing.JLabel jLabel3;
     private javax.swing.JLabel jLabel4;
+    private javax.swing.JLabel jLabel5;
     private javax.swing.JPanel jpFondo;
-    private javax.swing.JLabel lblNombre;
-    private javax.swing.JTextField txtNombre;
+    private javax.swing.JTextField txtIdCategoria;
+    private javax.swing.JTextField txtNuevaCategoria;
     // End of variables declaration//GEN-END:variables
 }

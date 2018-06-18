@@ -122,7 +122,7 @@ public class Administrar extends javax.swing.JPanel {
         jLabel4.setFont(new java.awt.Font("Rockwell", 1, 36)); // NOI18N
         jLabel4.setForeground(Color.decode("#662E1C"));
         jLabel4.setText("Administrar");
-        add(jLabel4, new org.netbeans.lib.awtextra.AbsoluteConstraints(470, 10, 340, 30));
+        add(jLabel4, new org.netbeans.lib.awtextra.AbsoluteConstraints(260, 20, 340, 30));
 
         lstAdminCategorias.setBackground(Color.decode("#662E1C"));
         lstAdminCategorias.setFont(new java.awt.Font("Rockwell", 1, 14)); // NOI18N
@@ -177,7 +177,7 @@ public class Administrar extends javax.swing.JPanel {
 
         jLabel3.setForeground(Color.decode("#90AFC5"));
         jLabel3.setText("Nuevo Producto");
-        add(jLabel3, new org.netbeans.lib.awtextra.AbsoluteConstraints(512, 517, -1, -1));
+        add(jLabel3, new org.netbeans.lib.awtextra.AbsoluteConstraints(480, 520, -1, -1));
 
         btnAdmNuevoProductos1.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
@@ -225,8 +225,8 @@ public class Administrar extends javax.swing.JPanel {
     }//GEN-LAST:event_lstAdminCategoriasMouseClicked
 
     private void btnAdmNuevoProductosActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnAdmNuevoProductosActionPerformed
-        AMProducto nuProd = new AMProducto();
-        nuProd.setVisible(true);
+        AMCategoria nuCat = new AMCategoria();
+        nuCat.setVisible(true);
         
     }//GEN-LAST:event_btnAdmNuevoProductosActionPerformed
 
