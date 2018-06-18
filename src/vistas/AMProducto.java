@@ -53,7 +53,7 @@ public class AMProducto extends javax.swing.JFrame {
     // <editor-fold defaultstate="collapsed" desc="Generated Code">//GEN-BEGIN:initComponents
     private void initComponents() {
 
-        buttonGroup1 = new javax.swing.ButtonGroup();
+        rbtnArea = new javax.swing.ButtonGroup();
         jpFondo = new javax.swing.JPanel();
         jLabel2 = new javax.swing.JLabel();
         jLabel3 = new javax.swing.JLabel();
@@ -141,6 +141,7 @@ public class AMProducto extends javax.swing.JFrame {
         jLabel7.setForeground(Color.decode("#90AFC5"));
         jLabel7.setText("Enviar a");
 
+        rbtnArea.add(jRadioButton1);
         jRadioButton1.setForeground(Color.decode("#90AFC5"));
         jRadioButton1.setText("Cocina");
         jRadioButton1.addActionListener(new java.awt.event.ActionListener() {
@@ -149,6 +150,7 @@ public class AMProducto extends javax.swing.JFrame {
             }
         });
 
+        rbtnArea.add(jRadioButton2);
         jRadioButton2.setForeground(Color.decode("#90AFC5"));
         jRadioButton2.setText("Bebidas");
 
@@ -336,7 +338,6 @@ public class AMProducto extends javax.swing.JFrame {
     // Variables declaration - do not modify//GEN-BEGIN:variables
     private javax.swing.JButton btnCancelar;
     private javax.swing.JButton btnGuardar;
-    private javax.swing.ButtonGroup buttonGroup1;
     private javax.swing.JComboBox<String> cmbCategoria;
     private javax.swing.JLabel jLabel2;
     private javax.swing.JLabel jLabel3;
@@ -349,6 +350,7 @@ public class AMProducto extends javax.swing.JFrame {
     private javax.swing.JPanel jpFondo;
     private javax.swing.JLabel lblCategoria;
     private javax.swing.JLabel lblNombre;
+    private javax.swing.ButtonGroup rbtnArea;
     private javax.swing.JTextField txtNombre;
     private javax.swing.JTextField txtPrecio;
     // End of variables declaration//GEN-END:variables
