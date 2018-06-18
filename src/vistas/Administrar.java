@@ -5,11 +5,16 @@
  */
 package vistas;
 
+import Modelo.Categoria;
+import Modelo.ErrorAplicacion;
+import Modelo.ManejadorCategorias;
 import Personalizacion.RedondearBorde;
 import Personalizacion.RenderColor;
 import java.awt.Color;
 import java.awt.event.ActionEvent;
+import java.util.ArrayList;
 import java.util.Enumeration;
+import java.util.List;
 import javax.swing.DefaultListModel;
 import javax.swing.ImageIcon;
 import javax.swing.JMenuItem;
@@ -41,7 +46,7 @@ public class Administrar extends javax.swing.JPanel {
     /**
      * Creates new form Administrar
      */
-    public Administrar() {
+    public Administrar() throws ErrorAplicacion {
         initComponents();
         modeloProducto = new DefaultTableModel(datosProducto, titulosProducto);
         
@@ -66,29 +71,36 @@ public class Administrar extends javax.swing.JPanel {
             tcm.getColumn(i).setPreferredWidth(ancho[i]);
         }
     }
-    public void ListaCategoria(){
-        DefaultListModel modeloLista= new DefaultListModel();       
-        this.lstAdminCategorias.setModel(modeloLista);        
-        modeloLista.addElement("Entradas");
-        modeloLista.addElement("plato Fuerte");        
-        modeloLista.addElement("Sopas");
-        modeloLista.addElement("Bebidas");
-        modeloLista.addElement("Bocas");
-        modeloLista.addElement("Postres");
-        modeloLista.addElement("------------------------");  
-        modeloLista.addElement("--------------"); 
-        modeloLista.addElement("--------------"); 
-        modeloLista.addElement("--------------"); 
-        modeloLista.addElement("--------------"); 
-        modeloLista.addElement("--------------"); 
-        modeloLista.addElement("--------------"); 
-        modeloLista.addElement("--------------"); 
-        modeloLista.addElement("--------------"); 
-        modeloLista.addElement("--------------"); 
-        modeloLista.addElement("--------------"); 
-        modeloLista.addElement("--------------"); 
-        modeloLista.addElement("--------------"); 
-        modeloLista.addElement("--------------"); 
+    public void ListaCategoria() throws ErrorAplicacion{
+          DefaultListModel modeloLista= new DefaultListModel();   
+        List<Categoria> listaCategorias  =  new ArrayList<>();
+        listaCategorias = ManejadorCategorias.obtener(true);        
+        for (int i = 0; i < listaCategorias.size(); i++) {
+        modeloLista.add(i, listaCategorias.get(i).nombre);    
+       }  
+        this.lstAdminCategorias.setModel(modeloLista);
+//        DefaultListModel modeloLista= new DefaultListModel();       
+//        this.lstAdminCategorias.setModel(modeloLista);        
+//        modeloLista.addElement("Entradas");
+//        modeloLista.addElement("plato Fuerte");        
+//        modeloLista.addElement("Sopas");
+//        modeloLista.addElement("Bebidas");
+//        modeloLista.addElement("Bocas");
+//        modeloLista.addElement("Postres");
+//        modeloLista.addElement("------------------------");  
+//        modeloLista.addElement("--------------"); 
+//        modeloLista.addElement("--------------"); 
+//        modeloLista.addElement("--------------"); 
+//        modeloLista.addElement("--------------"); 
+//        modeloLista.addElement("--------------"); 
+//        modeloLista.addElement("--------------"); 
+//        modeloLista.addElement("--------------"); 
+//        modeloLista.addElement("--------------"); 
+//        modeloLista.addElement("--------------"); 
+//        modeloLista.addElement("--------------"); 
+//        modeloLista.addElement("--------------"); 
+//        modeloLista.addElement("--------------"); 
+//        modeloLista.addElement("--------------"); 
         
         
        }
@@ -262,7 +274,8 @@ public class Administrar extends javax.swing.JPanel {
     }//GEN-LAST:event_tblProductoMouseClicked
 
     private void btnAdmNuevoProductos1ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnAdmNuevoProductos1ActionPerformed
-        // TODO add your handling code here:
+       AMProducto nuProd = new AMProducto();
+       nuProd.setVisible(true);
     }//GEN-LAST:event_btnAdmNuevoProductos1ActionPerformed
 
 
