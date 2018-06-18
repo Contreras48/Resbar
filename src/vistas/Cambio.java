@@ -20,7 +20,7 @@ public class Cambio extends javax.swing.JFrame {
      */
     public Cambio() {
         initComponents();
-        setIconImage(new ImageIcon(getClass().getResource("/Recursos/restaur.png")).getImage());
+        setIconImage(new ImageIcon(getClass().getResource("/Recursos/resbarICON_.png")).getImage());
                 this.setResizable(false);
     }
 

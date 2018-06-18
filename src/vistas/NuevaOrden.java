@@ -52,7 +52,7 @@ public class NuevaOrden extends javax.swing.JFrame {
            modelo= new DefaultTableModel(bebidas,titulos);
         tblDetalleOrden.setModel(modelo);
         perzonalizarComponentes();
-        setIconImage(new ImageIcon(getClass().getResource("/Recursos/restaur.png")).getImage());
+        setIconImage(new ImageIcon(getClass().getResource("/Recursos/resbarICON_.png")).getImage());
         this.setResizable(false);
     }
     public final void perzonalizarComponentes(){
