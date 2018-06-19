@@ -27,16 +27,17 @@ public class Estadisticas extends javax.swing.JPanel {
         personalizarComponentes();
 //        setIconImage(new ImageIcon(getClass().getResource("/Recursos/restaur.png")).getImage());
 //                this.setResizable(false);
-dia();
-mes();
-año();
+        dia();
+        mes();
+        año();
     }
-    public void dia(){
-    DefaultComboBoxModel dia = new DefaultComboBoxModel();
-    for(int i=1; i<=31; i++){
-        dia.addElement(i);
-        cmbDia.setModel(dia);
-    }
+
+    public void dia() {
+        DefaultComboBoxModel dia = new DefaultComboBoxModel();
+        for (int i = 1; i <= 31; i++) {
+            dia.addElement(i);
+            cmbDia.setModel(dia);
+        }
     }
     public void mes(){
         cmbMes.addItem("Enero");
@@ -68,7 +69,7 @@ año();
         Enumeration<TableColumn> en = tblEstadisticas.getColumnModel().getColumns();
         while (en.hasMoreElements()) {
             TableColumn tc = en.nextElement();
-            tc.setCellRenderer(new RenderColor(new Color(179, 210, 238)));
+            //tc.setCellRenderer(new RenderColor(new Color(179, 210, 238)));
         }
         
         tblEstadisticas.setRowHeight(20);
@@ -132,7 +133,7 @@ año();
         jLabel6.setText("Estadisticas de Ventas");
         add(jLabel6, new org.netbeans.lib.awtextra.AbsoluteConstraints(280, 10, 400, 30));
 
-        tblEstadisticas.setBackground(Color.decode("#AF4425"));
+        tblEstadisticas.setBackground(Color.decode("#C9A66B"));
         tblEstadisticas.setFont(new java.awt.Font("Rockwell", 1, 14)); // NOI18N
         tblEstadisticas.setForeground(new java.awt.Color(255, 255, 255));
         tblEstadisticas.setModel(new javax.swing.table.DefaultTableModel(

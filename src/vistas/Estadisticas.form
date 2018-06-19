@@ -118,7 +118,7 @@
         <Component class="javax.swing.JTable" name="tblEstadisticas">
           <Properties>
             <Property name="background" type="java.awt.Color" editor="org.netbeans.modules.form.RADConnectionPropertyEditor">
-              <Connection code="Color.decode(&quot;#AF4425&quot;)" type="code"/>
+              <Connection code="Color.decode(&quot;#C9A66B&quot;)" type="code"/>
             </Property>
             <Property name="font" type="java.awt.Font" editor="org.netbeans.beaninfo.editors.FontEditor">
               <Font name="Rockwell" size="14" style="1"/>

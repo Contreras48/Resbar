@@ -48,7 +48,7 @@ public class Inicio extends javax.swing.JPanel {
         Enumeration<TableColumn> en = tblOrdenesActivas.getColumnModel().getColumns();
         while (en.hasMoreElements()) {
             TableColumn tc = en.nextElement();
-            tc.setCellRenderer(new RenderColor(new Color(179, 210, 238)));
+//            tc.setCellRenderer(new RenderColor(new Color(179, 210, 238)));
         }
         
         tblOrdenesActivas.setRowHeight(20);
@@ -126,7 +126,7 @@ public class Inicio extends javax.swing.JPanel {
         jLabel6.setText("Ordenes Activas");
         add(jLabel6, new org.netbeans.lib.awtextra.AbsoluteConstraints(370, 10, 310, 30));
 
-        tblOrdenesActivas.setBackground(Color.decode("#AF4425"));
+        tblOrdenesActivas.setBackground(Color.decode("#C9A66B"));
         tblOrdenesActivas.setFont(new java.awt.Font("Rockwell", 1, 14)); // NOI18N
         tblOrdenesActivas.setForeground(new java.awt.Color(255, 255, 255));
         tblOrdenesActivas.setModel(new javax.swing.table.DefaultTableModel(
