@@ -124,7 +124,7 @@ public class Inicio extends javax.swing.JPanel {
         jLabel6.setFont(new java.awt.Font("Rockwell", 1, 36)); // NOI18N
         jLabel6.setForeground(Color.decode("#662E1C"));
         jLabel6.setText("Ordenes Activas");
-        add(jLabel6, new org.netbeans.lib.awtextra.AbsoluteConstraints(370, 10, 310, 30));
+        add(jLabel6, new org.netbeans.lib.awtextra.AbsoluteConstraints(150, 10, 340, 30));
 
         tblOrdenesActivas.setBackground(Color.decode("#C9A66B"));
         tblOrdenesActivas.setFont(new java.awt.Font("Rockwell", 1, 14)); // NOI18N
@@ -154,7 +154,7 @@ public class Inicio extends javax.swing.JPanel {
         tblOrdenesActivas.setSelectionBackground(Color.decode("#EBDCB2"));
         jScrollPane1.setViewportView(tblOrdenesActivas);
 
-        add(jScrollPane1, new org.netbeans.lib.awtextra.AbsoluteConstraints(10, 89, 787, 471));
+        add(jScrollPane1, new org.netbeans.lib.awtextra.AbsoluteConstraints(10, 89, 670, 471));
 
         txtBuscar.setBackground(Color.decode("#AF4425"));
         txtBuscar.setFont(new java.awt.Font("Rockwell", 3, 14)); // NOI18N
@@ -169,7 +169,7 @@ public class Inicio extends javax.swing.JPanel {
                 btnNuevaOrden1ActionPerformed(evt);
             }
         });
-        add(btnNuevaOrden1, new org.netbeans.lib.awtextra.AbsoluteConstraints(10, 578, 120, 75));
+        add(btnNuevaOrden1, new org.netbeans.lib.awtextra.AbsoluteConstraints(30, 580, 120, 75));
         add(jLabel3, new org.netbeans.lib.awtextra.AbsoluteConstraints(78, 55, -1, 23));
 
         lblFondo2.setIcon(new javax.swing.ImageIcon(getClass().getResource("/Background/34_Spicy_Neutrals02.png"))); // NOI18N

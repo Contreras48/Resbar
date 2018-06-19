@@ -132,12 +132,16 @@ public class NuevaOrden extends javax.swing.JFrame {
         jpFondo.setBorder(javax.swing.BorderFactory.createLineBorder(new java.awt.Color(0, 0, 0)));
         jpFondo.setOpaque(false);
 
+        txtMesero.setBackground(Color.decode("#662E1C"));
+        txtMesero.setForeground(java.awt.Color.white);
         txtMesero.addKeyListener(new java.awt.event.KeyAdapter() {
             public void keyTyped(java.awt.event.KeyEvent evt) {
                 txtMeseroKeyTyped(evt);
             }
         });
 
+        tblDetalleOrden.setBackground(Color.decode("#C9A66B"));
+        tblDetalleOrden.setForeground(java.awt.Color.white);
         tblDetalleOrden.setModel(new javax.swing.table.DefaultTableModel(
             new Object [][] {
 
@@ -148,18 +152,22 @@ public class NuevaOrden extends javax.swing.JFrame {
         ));
         jScrollPane1.setViewportView(tblDetalleOrden);
 
+        txtCliente.setBackground(Color.decode("#662E1C"));
+        txtCliente.setForeground(java.awt.Color.white);
         txtCliente.addKeyListener(new java.awt.event.KeyAdapter() {
             public void keyTyped(java.awt.event.KeyEvent evt) {
                 txtClienteKeyTyped(evt);
             }
         });
 
-        jLabel3.setForeground(Color.decode("#90AFC5"));
+        jLabel3.setFont(new java.awt.Font("FreeSans", 3, 18)); // NOI18N
+        jLabel3.setForeground(java.awt.Color.black);
         jLabel3.setText("Mesero:");
 
         lblTotal.setText("$0.0");
 
-        jLabel7.setForeground(Color.decode("#90AFC5"));
+        jLabel7.setFont(new java.awt.Font("FreeSans", 3, 18)); // NOI18N
+        jLabel7.setForeground(java.awt.Color.black);
         jLabel7.setText("Detalle Orden");
 
         btnAgregagarProducto.setIcon(new javax.swing.ImageIcon(getClass().getResource("/Recursos/agregar32.jpg"))); // NOI18N
@@ -170,6 +178,8 @@ public class NuevaOrden extends javax.swing.JFrame {
             }
         });
 
+        txtMesa.setBackground(Color.decode("#662E1C"));
+        txtMesa.setForeground(java.awt.Color.white);
         txtMesa.addKeyListener(new java.awt.event.KeyAdapter() {
             public void keyTyped(java.awt.event.KeyEvent evt) {
                 txtMesaKeyTyped(evt);
@@ -183,15 +193,18 @@ public class NuevaOrden extends javax.swing.JFrame {
             }
         });
 
-        jLabel2.setForeground(Color.decode("#90AFC5"));
+        jLabel2.setFont(new java.awt.Font("FreeSans", 3, 18)); // NOI18N
+        jLabel2.setForeground(java.awt.Color.black);
         jLabel2.setText("N° mesa:");
 
         jLabel5.setText("TOTAL ORDEN:");
 
-        jLabel4.setForeground(Color.decode("#90AFC5"));
+        jLabel4.setFont(new java.awt.Font("FreeSans", 3, 18)); // NOI18N
+        jLabel4.setForeground(java.awt.Color.black);
         jLabel4.setText("Cliente:");
 
-        jLabel9.setForeground(Color.decode("#90AFC5"));
+        jLabel9.setFont(new java.awt.Font("FreeSans", 3, 18)); // NOI18N
+        jLabel9.setForeground(java.awt.Color.black);
         jLabel9.setText("Agregar Productos");
 
         lblMesa.setForeground(Color.decode("#90AFC5"));
@@ -204,13 +217,17 @@ public class NuevaOrden extends javax.swing.JFrame {
 
         lblHora.setForeground(Color.decode("#90AFC5"));
 
-        jLabel10.setForeground(Color.decode("#90AFC5"));
+        jLabel10.setFont(new java.awt.Font("FreeSans", 3, 18)); // NOI18N
+        jLabel10.setForeground(java.awt.Color.black);
         jLabel10.setText("Enviar Orden");
 
-        jLabel1.setForeground(Color.decode("#90AFC5"));
+        jLabel1.setFont(new java.awt.Font("FreeSans", 3, 18)); // NOI18N
+        jLabel1.setForeground(java.awt.Color.black);
         jLabel1.setText("Comentarios");
 
+        jTextArea2.setBackground(Color.decode("#662E1C"));
         jTextArea2.setColumns(20);
+        jTextArea2.setForeground(java.awt.Color.white);
         jTextArea2.setRows(5);
         jScrollPane3.setViewportView(jTextArea2);
 
@@ -243,7 +260,7 @@ public class NuevaOrden extends javax.swing.JFrame {
                                         .addGroup(jpFondoLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                                             .addComponent(jLabel7)
                                             .addComponent(jScrollPane1, javax.swing.GroupLayout.PREFERRED_SIZE, 644, javax.swing.GroupLayout.PREFERRED_SIZE))
-                                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 44, Short.MAX_VALUE)
+                                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 50, Short.MAX_VALUE)
                                         .addGroup(jpFondoLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                                             .addComponent(jLabel1)
                                             .addComponent(jScrollPane3, javax.swing.GroupLayout.PREFERRED_SIZE, 259, javax.swing.GroupLayout.PREFERRED_SIZE)))
@@ -338,7 +355,7 @@ public class NuevaOrden extends javax.swing.JFrame {
                 .addContainerGap())
         );
 
-        getContentPane().add(jpFondo, new org.netbeans.lib.awtextra.AbsoluteConstraints(0, 0, -1, 768));
+        getContentPane().add(jpFondo, new org.netbeans.lib.awtextra.AbsoluteConstraints(0, 0, 1040, 768));
 
         lblNuevaOrden.setIcon(new javax.swing.ImageIcon(getClass().getResource("/Background/34_Spicy_Neutrals03.png"))); // NOI18N
         getContentPane().add(lblNuevaOrden, new org.netbeans.lib.awtextra.AbsoluteConstraints(0, 0, 1030, 770));

@@ -11,7 +11,7 @@ public class Imprimir extends javax.swing.JFrame implements Printable {
      */
     public Imprimir() {
         initComponents();
-        setIconImage(new ImageIcon(getClass().getResource("/Recursos/resbarICON_.png")).getImage());
+        //setIconImage(new ImageIcon(getClass().getResource("/Recursos/resbarICON_.png")).getImage());
     }
 
     /**
