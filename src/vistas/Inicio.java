@@ -5,18 +5,27 @@
  */
 package vistas;
 
+import Modelo.ErrorAplicacion;
+import Modelo.ManejadorOrdenes;
+import Modelo.Orden;
 import Personalizacion.RedondearBorde;
 import Personalizacion.RenderColor;
 import java.awt.Color;
 import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
 import java.util.Enumeration;
+import java.util.List;
+import java.util.logging.Level;
+import java.util.logging.Logger;
 import javax.swing.ImageIcon;
 import javax.swing.JMenuItem;
 import javax.swing.JPopupMenu;
+import javax.swing.JTable;
+import javax.swing.RowFilter;
 import javax.swing.table.DefaultTableModel;
 import javax.swing.table.TableColumn;
 import javax.swing.table.TableColumnModel;
+import javax.swing.table.TableRowSorter;
 
 /**
  *
@@ -25,23 +34,27 @@ import javax.swing.table.TableColumnModel;
 public class Inicio extends javax.swing.JPanel {
     DefaultTableModel modelo;
     String[] titulosColumnas = {"N°", "Mesa", "Mesero", "Cliente", "Total"};
-    Object[][] datos = {{"001", "M1", "Eduardo Magaña", "Silvia Lopez", "$50"},
-                        {"002", "M2", "William Sanchez", "Sonia Ruiz", "$40"},
-                        {"003", "M3", "Sergio Ramos", "Daniel Perez", "$35"},
-                        {"004", "M4", "Eduardo Magaña", "Jose Hidalgo", "$25"},
-                        {"005", "M5", "Eduardo Magaña", "Elias Trejo", "$45"},
-                        {"006", "M6", "william Sanchez", "Saul Castillo", "$35"},
-                        {"007", "M7", "Sergio Ramos", "Norma Ascensio", "$30"}};
+    List<Orden> listaOrden;
 
     /**
      * Creates new form Inicio
      */
     public Inicio() {
         initComponents();
-        modelo = new DefaultTableModel(datos, titulosColumnas);
+        modelo = new DefaultTableModel(new Object[0][0], titulosColumnas){
+            @Override
+            public final boolean isCellEditable(int row, int column) {
+                return false;
+            }
+        };
         tblOrdenesActivas.setModel(modelo);
         personalizarComponentes();
-        
+        try {
+            listaOrden = ManejadorOrdenes.ordenesActivas();
+        } catch (ErrorAplicacion ex) {
+            Logger.getLogger(Inicio.class.getName()).log(Level.SEVERE, null, ex);
+        }
+        cargarOrdenes();
     }
     
     public final void personalizarComponentes(){
@@ -91,6 +104,24 @@ public class Inicio extends javax.swing.JPanel {
         popupMenu.add(menuItem3);
         popupMenu.add(menuItem4);
         tblOrdenesActivas.setComponentPopupMenu(popupMenu);
+    }
+    
+    public void filtrar(String consulta, JTable tblJTable){
+        TableRowSorter<DefaultTableModel> tr = new TableRowSorter<>(modelo);
+        tblJTable.setRowSorter(tr);
+        tr.setRowFilter(RowFilter.regexFilter(consulta));
+    }
+    
+    public void cargarOrdenes(){
+        for (int i = 0; i < listaOrden.size(); i++) {
+            Object[] fila = new Object[5];
+            fila[0] = listaOrden.get(i).idOrden;
+            fila[1] = listaOrden.get(i).mesa;
+            fila[2] = listaOrden.get(i).mesero;
+            fila[3] = listaOrden.get(i).cliente;
+            fila[4] = listaOrden.get(i).total;
+            modelo.addRow(fila);
+        }
     }
 
     /**
@@ -160,6 +191,11 @@ public class Inicio extends javax.swing.JPanel {
         txtBuscar.setFont(new java.awt.Font("Rockwell", 3, 14)); // NOI18N
         txtBuscar.setForeground(new java.awt.Color(255, 255, 255));
         txtBuscar.setSelectionColor(Color.decode("#EBDCB2"));
+        txtBuscar.addKeyListener(new java.awt.event.KeyAdapter() {
+            public void keyReleased(java.awt.event.KeyEvent evt) {
+                txtBuscarKeyReleased(evt);
+            }
+        });
         add(txtBuscar, new org.netbeans.lib.awtextra.AbsoluteConstraints(105, 58, 357, -1));
 
         btnNuevaOrden1.setIcon(new javax.swing.ImageIcon(getClass().getResource("/Recursos/nueva32.jpg"))); // NOI18N
@@ -182,6 +218,10 @@ public class Inicio extends javax.swing.JPanel {
         //menu.setBackground(Color.decode("#763626"));
         //jLabel1.setForeground(Color.decode("#90AFC5"));  
     }//GEN-LAST:event_btnNuevaOrden1ActionPerformed
+
+    private void txtBuscarKeyReleased(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_txtBuscarKeyReleased
+        filtrar(txtBuscar.getText(), tblOrdenesActivas);
+    }//GEN-LAST:event_txtBuscarKeyReleased
 
 
     // Variables declaration - do not modify//GEN-BEGIN:variables

@@ -147,6 +147,9 @@
           <Connection code="Color.decode(&quot;#EBDCB2&quot;)" type="code"/>
         </Property>
       </Properties>
+      <Events>
+        <EventHandler event="keyReleased" listener="java.awt.event.KeyListener" parameters="java.awt.event.KeyEvent" handler="txtBuscarKeyReleased"/>
+      </Events>
       <AuxValues>
         <AuxValue name="JavaCodeGenerator_CreateCodeCustom" type="java.lang.String" value="new RedondearBorde(&quot;/Recursos/buscar.png&quot;)"/>
       </AuxValues>
