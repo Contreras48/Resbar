@@ -1,10 +1,8 @@
 
 package Personalizacion;
 
-import com.sun.javafx.iio.ImageLoader;
 import java.awt.BasicStroke;
 import java.awt.Color;
-import java.awt.Component;
 import java.awt.Dimension;
 import java.awt.GradientPaint;
 import java.awt.Graphics;

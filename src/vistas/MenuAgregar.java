@@ -5,17 +5,26 @@
  */
 package vistas;
 
+import Modelo.Categoria;
+import Modelo.ErrorAplicacion;
+import Modelo.ManejadorCategorias;
 import Personalizacion.MiEditor;
 import Personalizacion.MiRender;
 import Personalizacion.RedondearBorde;
 import Personalizacion.RenderColor;
 import java.awt.Color;
+import java.util.ArrayList;
 import java.util.Enumeration;
+import java.util.List;
 import javax.swing.DefaultListModel;
 import javax.swing.ImageIcon;
+import javax.swing.JOptionPane;
+import javax.swing.JTable;
+import javax.swing.RowFilter;
 import javax.swing.table.DefaultTableModel;
 import javax.swing.table.TableColumn;
 import javax.swing.table.TableColumnModel;
+import javax.swing.table.TableRowSorter;
 
 /**
  *
@@ -25,13 +34,8 @@ public class MenuAgregar extends javax.swing.JFrame {
     DefaultTableModel modelo;
     DefaultListModel modeloLista; 
     Object[] titulos = {"Nombre", "Precio", "Cantidad"};
-    Object[][] bebidas = {{"Pepsi", "$0.75", ""},
-                          {"Café", "$0.75", ""}};
-    Object[][] postres = {{"Tres leches", "$1.50", ""},
-                          {"Pastel de Chocolate", "$1.75", ""}};
-    Object[][] PlatoFuerte = {{"Pollo asado", "$2.00", ""}};
-    
-//    modeloLista.
+    List<Integer> ids = new ArrayList<>();
+    List<Categoria> categoria;
 
     /**
      * Creates new form Productos
@@ -40,13 +44,24 @@ public class MenuAgregar extends javax.swing.JFrame {
         initComponents();
         setLocationRelativeTo(null);
         
-        modelo= new DefaultTableModel(bebidas, titulos);
+        modelo = new DefaultTableModel(new Object[0][0], titulos){
+            boolean[] editable = {false, false, true};
+            @Override
+            public final boolean isCellEditable(int row, int column) {
+                return this.editable[column];
+            }
+        };
         tblMenuProductos.setModel(modelo);
-        modeloLista=new DefaultListModel();
+        modeloLista = new DefaultListModel();
         lstCategorias.setModel(modeloLista);
+        try {
+            this.categoria = ManejadorCategorias.obtener(true);
+        } catch (ErrorAplicacion ex) {
+             JOptionPane.showMessageDialog(null, ex.getMessage() );
+        }
         ListaCategoria();
         perzonalizarComponentes();
-        setIconImage(new ImageIcon(getClass().getResource("/Recursos/resbarICON_.png")).getImage());
+        setIconImage(new ImageIcon(getClass().getResource("/Recursos/restaur.png")).getImage());
         this.setResizable(false);
     }
     
@@ -65,33 +80,32 @@ public class MenuAgregar extends javax.swing.JFrame {
     }
     
     public void ListaCategoria(){
-        DefaultListModel modeloLista= new DefaultListModel();       
-        this.lstCategorias.setModel(modeloLista);        
-        modeloLista.addElement("Entradas");
-        modeloLista.addElement("plato Fuerte");        
-        modeloLista.addElement("Sopas");
-        modeloLista.addElement("Bebidas");
-        modeloLista.addElement("Bocas");
-        modeloLista.addElement("Postres");
-        modeloLista.addElement("------------------------");  
-        modeloLista.addElement("--------------"); 
-        modeloLista.addElement("--------------"); 
-        modeloLista.addElement("--------------"); 
-        modeloLista.addElement("--------------"); 
-        modeloLista.addElement("--------------"); 
-        modeloLista.addElement("--------------"); 
-        modeloLista.addElement("--------------"); 
-        modeloLista.addElement("--------------"); 
-        modeloLista.addElement("--------------"); 
-        modeloLista.addElement("--------------"); 
-        modeloLista.addElement("--------------"); 
-        modeloLista.addElement("--------------"); 
-        modeloLista.addElement("--------------");  
-       }
+        for (int i = 0; i < categoria.size(); i++) {
+             modeloLista.addElement(categoria.get(i).nombre);
+             ids.add(categoria.get(i).idCategoria);
+        } 
+    }
+    
     public void limpiarModelo(){
         for (int i = modelo.getRowCount(); i > 0; i--) {
             modelo.removeRow(i-1);  
         }
+    }
+    
+    public void actualizarTabla(Integer index){
+        limpiarModelo();
+        for (int i = 0; i < categoria.get(index).productos.size(); i++) {
+            Object[] fila = new Object[2];
+            fila[0] = categoria.get(index).productos.get(i).nombre;
+            fila[1] = categoria.get(index).productos.get(i).precio;
+            modelo.addRow(fila);
+        }
+    }
+    
+    public void filtrar(String consulta, JTable tblJTable){
+        TableRowSorter<DefaultTableModel> tr = new TableRowSorter<>(modelo);
+        tblJTable.setRowSorter(tr);
+        tr.setRowFilter(RowFilter.regexFilter(consulta));
     }
 
     /**
@@ -131,6 +145,12 @@ public class MenuAgregar extends javax.swing.JFrame {
             }
         });
 
+        txtBuscarProducto.addKeyListener(new java.awt.event.KeyAdapter() {
+            public void keyReleased(java.awt.event.KeyEvent evt) {
+                txtBuscarProductoKeyReleased(evt);
+            }
+        });
+
         tblMenuProductos.setBackground(Color.decode("#90AFC5"));
         tblMenuProductos.setModel(new javax.swing.table.DefaultTableModel(
             new Object [][] {
@@ -151,6 +171,11 @@ public class MenuAgregar extends javax.swing.JFrame {
         jLabel4.setForeground(Color.decode("#90AFC5"));
         jLabel4.setText("Agregar a la Orden");
 
+        lstCategorias.addMouseListener(new java.awt.event.MouseAdapter() {
+            public void mouseClicked(java.awt.event.MouseEvent evt) {
+                lstCategoriasMouseClicked(evt);
+            }
+        });
         jScrollPane1.setViewportView(lstCategorias);
 
         jLabel5.setFont(new java.awt.Font("Tahoma", 1, 11)); // NOI18N
@@ -222,11 +247,18 @@ public class MenuAgregar extends javax.swing.JFrame {
     }// </editor-fold>//GEN-END:initComponents
 
     private void btnContinuarActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnContinuarActionPerformed
-        NuevaOrden no =new NuevaOrden();
+        NuevaOrden no = new NuevaOrden();
         no.setVisible(true);
         this.dispose();
-//        no.btnAgregagarProducto.setVisible(false);
     }//GEN-LAST:event_btnContinuarActionPerformed
+
+    private void lstCategoriasMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_lstCategoriasMouseClicked
+        actualizarTabla(lstCategorias.getSelectedIndex());
+    }//GEN-LAST:event_lstCategoriasMouseClicked
+
+    private void txtBuscarProductoKeyReleased(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_txtBuscarProductoKeyReleased
+        filtrar(txtBuscarProducto.getText(), tblMenuProductos);
+    }//GEN-LAST:event_txtBuscarProductoKeyReleased
 
     /**
      * @param args the command line arguments
