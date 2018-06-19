@@ -32,7 +32,7 @@ import resbar.Validacion;
 public class NuevaOrden extends javax.swing.JFrame {
 
     DefaultTableModel modelo;
-    Object[] titulos = {"Productooo", "Cantidad"};
+    Object[] titulos = {"Producto", "Cantidad"};
     Object[][] bebidas = {{"Pepsi",      "2"},
                           {"Café",       "1"}};
     /**
@@ -49,7 +49,13 @@ public class NuevaOrden extends javax.swing.JFrame {
         SimpleDateFormat formato=new SimpleDateFormat("dd/MM/YYYY");
         lblFecha.setText(formato.format(sistFecha));        
            
-           modelo= new DefaultTableModel(bebidas,titulos);
+        modelo= new DefaultTableModel(bebidas,titulos){
+            boolean[] editable = {false, true};
+            @Override
+            public final boolean isCellEditable(int row, int column) {
+                return this.editable[column];
+            }
+        };
         tblDetalleOrden.setModel(modelo);
         perzonalizarComponentes();
         setIconImage(new ImageIcon(getClass().getResource("/Recursos/resbarICON_.png")).getImage());
