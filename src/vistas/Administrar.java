@@ -5,50 +5,72 @@
  */
 package vistas;
 
+import Modelo.Categoria;
+import Modelo.ErrorAplicacion;
+import Modelo.ManejadorCategorias;
+import Modelo.ManejadorProductos;
+import Modelo.Producto;
 import Personalizacion.RedondearBorde;
 import Personalizacion.RenderColor;
 import java.awt.Color;
 //import java.awt.event.ActionEvent;
 import java.util.Enumeration;
+import java.util.List;
+import java.util.logging.Level;
+import java.util.logging.Logger;
 //import javax.swing.DefaultListModel;
 //import javax.swing.ImageIcon;
 //import javax.swing.JMenuItem;
 //import javax.swing.JPopupMenu;
 import javax.swing.JTable;
+import javax.swing.RowFilter;
 import javax.swing.table.DefaultTableModel;
 import javax.swing.table.TableColumn;
 import javax.swing.table.TableColumnModel;
+import javax.swing.table.TableRowSorter;
 
 /**
  *
  * @author mateo
  */
 public class Administrar extends javax.swing.JPanel {
-    
-int[] anchoProducto = {50, 300, 300, 50};
+    int[] anchoProducto = {50, 300, 300, 50};
     int[] anchoCategoria = {50, 600};
     String[] titulosCategoria = {"Id", "Nombre"};
-    String[][] datosCategoria = {{"001", "Bebidas"}, {"002", "Bocas"}, {"003", "Entredas"}, {"004", "Plato fuerte"}, {"005", "Postre"}, {"006", "Sopas"}};
-    String[] titulosProducto = {"Id", "Nombre", "Precio"};
-    String[][] datosProducto = {{"001", "Pepsi", "$0.75"},
-                                {"002", "Café", "$0.75"},
-                                {"003","Tres leches", "$1.50"},
-                                {"004", "Pastel de Chocolate", "$1.75"},
-                                {"005", "Pollo asado", "$2.00"}};
+    String[] titulosProducto = {"Id", "Nombre", "Precio", "Categoria"};
     DefaultTableModel modeloCategoria;
     DefaultTableModel modeloProducto;
+    List<Categoria> listaCategoria;
+    List<Producto> listaProducto;
 
     /**
      * Creates new form Administrar
      */
     public Administrar() {
         initComponents();
-        modeloProducto = new DefaultTableModel(datosProducto, titulosProducto);
+        modeloProducto = new DefaultTableModel(new Object[0][0], titulosProducto){
+            @Override
+            public final boolean isCellEditable(int row, int column) {
+                return false;
+            }
+        };
         tblProducto.setModel(modeloProducto);
-        modeloCategoria = new DefaultTableModel(datosCategoria, titulosCategoria);
+        modeloCategoria = new DefaultTableModel(new Object[0][0], titulosCategoria){
+            @Override
+            public final boolean isCellEditable(int row, int column) {
+                return false;
+            }
+        };
         tblCategoria.setModel(modeloCategoria);
         personalizarComponentes(tblProducto, anchoProducto);
         personalizarComponentes(tblCategoria, anchoCategoria);
+        try {
+            listaCategoria = ManejadorCategorias.obtener(true);
+        } catch (ErrorAplicacion ex) {
+            Logger.getLogger(Administrar.class.getName()).log(Level.SEVERE, null, ex);
+        }
+        cargarCategorias();
+        cargarProductos();
     }
     
     public final void personalizarComponentes(JTable tabla, int[] ancho){
@@ -64,33 +86,40 @@ int[] anchoProducto = {50, 300, 300, 50};
 //            tcm.getColumn(i).setPreferredWidth(ancho[i]);
         }
     }
-    public void ListaCategoria(){
-////        DefaultListModel modeloLista= new DefaultListModel();       
-////        this.lstAdminCategorias.setModel(modeloLista);        
-//        modeloLista.addElement("Entradas");
-//        modeloLista.addElement("plato Fuerte");        
-//        modeloLista.addElement("Sopas");
-//        modeloLista.addElement("Bebidas");
-//        modeloLista.addElement("Bocas");
-//        modeloLista.addElement("Postres");
-//        modeloLista.addElement("------------------------");  
-//        modeloLista.addElement("--------------"); 
-//        modeloLista.addElement("--------------"); 
-//        modeloLista.addElement("--------------"); 
-//        modeloLista.addElement("--------------"); 
-//        modeloLista.addElement("--------------"); 
-//        modeloLista.addElement("--------------"); 
-//        modeloLista.addElement("--------------"); 
-//        modeloLista.addElement("--------------"); 
-//        modeloLista.addElement("--------------"); 
-//        modeloLista.addElement("--------------"); 
-//        modeloLista.addElement("--------------"); 
-//        modeloLista.addElement("--------------"); 
-//        modeloLista.addElement("--------------"); 
-//        
-//        
-       }
-
+    
+    public void cargarProductos(){
+        for (int i = 0; i < listaCategoria.size(); i++) {
+            for (int j = 0; j < listaCategoria.get(i).productos.size(); j++) {
+                Object[] fila = new Object[4];
+                fila[0] = listaCategoria.get(i).productos.get(j).idProducto;
+                fila[1] = listaCategoria.get(i).productos.get(j).nombre;
+                fila[2] = listaCategoria.get(i).productos.get(j).precio;
+                fila[3] = listaCategoria.get(i).productos.get(j).categoria.nombre;
+                modeloProducto.addRow(fila);
+            }
+        }
+    }
+    
+    public void cargarCategorias(){
+        for (int i = 0; i < listaCategoria.size(); i++) {
+            Object[] fila = new Object[2];
+            fila[0] = listaCategoria.get(i).idCategoria;
+            fila[1] = listaCategoria.get(i).nombre;
+            modeloCategoria.addRow(fila);
+        }
+    }
+    
+    public void filtrarCategoria(String consulta, JTable tblJTable){
+        TableRowSorter<DefaultTableModel> tr = new TableRowSorter<>(modeloCategoria);
+        tblJTable.setRowSorter(tr);
+        tr.setRowFilter(RowFilter.regexFilter(consulta));
+    }
+    
+    public void filtrarProducto(String consulta, JTable tblJTable){
+        TableRowSorter<DefaultTableModel> tr = new TableRowSorter<>(modeloProducto);
+        tblJTable.setRowSorter(tr);
+        tr.setRowFilter(RowFilter.regexFilter(consulta));
+    }
 
     /**
      * This method is called from within the constructor to initialize the form.
@@ -104,7 +133,7 @@ int[] anchoProducto = {50, 300, 300, 50};
         jLabel4 = new javax.swing.JLabel();
         jtpContenedorAdministrar = new javax.swing.JTabbedPane();
         jPanel2 = new javax.swing.JPanel();
-        jTextField1 = new RedondearBorde("/Recursos/buscar.png");
+        txtBuscarCategoria = new RedondearBorde("/Recursos/buscar.png");
         jScrollPane2 = new javax.swing.JScrollPane();
         tblCategoria = new javax.swing.JTable();
         btnNuevaCategoria = new javax.swing.JButton();
@@ -126,9 +155,14 @@ int[] anchoProducto = {50, 300, 300, 50};
         jLabel4.setText("Administrar");
         add(jLabel4, new org.netbeans.lib.awtextra.AbsoluteConstraints(210, 10, 240, 30));
 
-        jTextField1.setBackground(Color.decode("#AF4425"));
-        jTextField1.setForeground(java.awt.Color.white);
-        jTextField1.setText("Buscar categoria");
+        txtBuscarCategoria.setBackground(Color.decode("#AF4425"));
+        txtBuscarCategoria.setForeground(java.awt.Color.white);
+        txtBuscarCategoria.setText("Buscar categoria");
+        txtBuscarCategoria.addKeyListener(new java.awt.event.KeyAdapter() {
+            public void keyReleased(java.awt.event.KeyEvent evt) {
+                txtBuscarCategoriaKeyReleased(evt);
+            }
+        });
 
         tblCategoria.setBackground(Color.decode("#C9A66B")
         );
@@ -163,7 +197,7 @@ int[] anchoProducto = {50, 300, 300, 50};
             .addComponent(jScrollPane2, javax.swing.GroupLayout.Alignment.TRAILING)
             .addGroup(jPanel2Layout.createSequentialGroup()
                 .addGroup(jPanel2Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                    .addComponent(jTextField1, javax.swing.GroupLayout.PREFERRED_SIZE, 477, javax.swing.GroupLayout.PREFERRED_SIZE)
+                    .addComponent(txtBuscarCategoria, javax.swing.GroupLayout.PREFERRED_SIZE, 477, javax.swing.GroupLayout.PREFERRED_SIZE)
                     .addComponent(btnNuevaCategoria, javax.swing.GroupLayout.PREFERRED_SIZE, 120, javax.swing.GroupLayout.PREFERRED_SIZE)
                     .addComponent(jLabel2))
                 .addGap(0, 143, Short.MAX_VALUE))
@@ -172,7 +206,7 @@ int[] anchoProducto = {50, 300, 300, 50};
             jPanel2Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(jPanel2Layout.createSequentialGroup()
                 .addContainerGap()
-                .addComponent(jTextField1, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addComponent(txtBuscarCategoria, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
                 .addComponent(jScrollPane2, javax.swing.GroupLayout.DEFAULT_SIZE, 254, Short.MAX_VALUE)
                 .addGap(18, 18, 18)
@@ -186,6 +220,11 @@ int[] anchoProducto = {50, 300, 300, 50};
 
         txtBuscarProducto.setBackground(Color.decode("#AF4425"));
         txtBuscarProducto.setForeground(java.awt.Color.white);
+        txtBuscarProducto.addKeyListener(new java.awt.event.KeyAdapter() {
+            public void keyReleased(java.awt.event.KeyEvent evt) {
+                txtBuscarProductoKeyReleased(evt);
+            }
+        });
 
         tblProducto.setAutoCreateRowSorter(true);
         tblProducto.setBackground(Color.decode("#C9A66B"));
@@ -279,6 +318,14 @@ AMCategoria nuProd= new AMCategoria("");
 
     }//GEN-LAST:event_btnNuevaCategoriaActionPerformed
 
+    private void txtBuscarCategoriaKeyReleased(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_txtBuscarCategoriaKeyReleased
+        filtrarCategoria(txtBuscarCategoria.getText(), tblCategoria);
+    }//GEN-LAST:event_txtBuscarCategoriaKeyReleased
+
+    private void txtBuscarProductoKeyReleased(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_txtBuscarProductoKeyReleased
+        filtrarProducto(txtBuscarProducto.getText(), tblProducto);
+    }//GEN-LAST:event_txtBuscarProductoKeyReleased
+
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
     private javax.swing.JButton btnNuevaCategoria;
@@ -290,11 +337,11 @@ AMCategoria nuProd= new AMCategoria("");
     private javax.swing.JPanel jPanel2;
     private javax.swing.JScrollPane jScrollPane1;
     private javax.swing.JScrollPane jScrollPane2;
-    private javax.swing.JTextField jTextField1;
     private javax.swing.JTabbedPane jtpContenedorAdministrar;
     private javax.swing.JLabel lblFondo2;
     private javax.swing.JTable tblCategoria;
     private javax.swing.JTable tblProducto;
+    private javax.swing.JTextField txtBuscarCategoria;
     private javax.swing.JTextField txtBuscarProducto;
     // End of variables declaration//GEN-END:variables
 }
