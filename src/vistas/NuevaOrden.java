@@ -347,7 +347,7 @@ public class NuevaOrden extends javax.swing.JFrame {
         getContentPane().add(jpFondo, new org.netbeans.lib.awtextra.AbsoluteConstraints(0, 0, -1, 768));
 
         lblNuevaOrden.setIcon(new javax.swing.ImageIcon(getClass().getResource("/Background/34_Spicy_Neutrals03.png"))); // NOI18N
-        getContentPane().add(lblNuevaOrden, new org.netbeans.lib.awtextra.AbsoluteConstraints(0, 0, 1030, 770));
+        getContentPane().add(lblNuevaOrden, new org.netbeans.lib.awtextra.AbsoluteConstraints(0, 0, 1030, 760));
 
         pack();
     }// </editor-fold>//GEN-END:initComponents

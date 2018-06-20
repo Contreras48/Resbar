@@ -53,7 +53,7 @@
     <Component class="javax.swing.JButton" name="btnInicio">
       <Properties>
         <Property name="icon" type="javax.swing.Icon" editor="org.netbeans.modules.form.editors2.IconEditor">
-          <Image iconType="3" name="/Recursos/inicio.jpg"/>
+          <Image iconType="3" name="/IconosNuevos/INICIO.png"/>
         </Property>
         <Property name="focusPainted" type="boolean" value="false"/>
       </Properties>
@@ -62,14 +62,14 @@
       </Events>
       <Constraints>
         <Constraint layoutClass="org.netbeans.modules.form.compat2.layouts.DesignAbsoluteLayout" value="org.netbeans.modules.form.compat2.layouts.DesignAbsoluteLayout$AbsoluteConstraintsDescription">
-          <AbsoluteConstraints x="10" y="110" width="296" height="99"/>
+          <AbsoluteConstraints x="10" y="109" width="300" height="110"/>
         </Constraint>
       </Constraints>
     </Component>
     <Component class="javax.swing.JButton" name="btnAdministrar">
       <Properties>
         <Property name="icon" type="javax.swing.Icon" editor="org.netbeans.modules.form.editors2.IconEditor">
-          <Image iconType="3" name="/Recursos/administracion.jpg"/>
+          <Image iconType="3" name="/IconosNuevos/ADMINISTRAR.png"/>
         </Property>
         <Property name="focusPainted" type="boolean" value="false"/>
       </Properties>
@@ -78,14 +78,14 @@
       </Events>
       <Constraints>
         <Constraint layoutClass="org.netbeans.modules.form.compat2.layouts.DesignAbsoluteLayout" value="org.netbeans.modules.form.compat2.layouts.DesignAbsoluteLayout$AbsoluteConstraintsDescription">
-          <AbsoluteConstraints x="10" y="288" width="293" height="98"/>
+          <AbsoluteConstraints x="10" y="276" width="300" height="110"/>
         </Constraint>
       </Constraints>
     </Component>
     <Component class="javax.swing.JButton" name="btnEstadisticas">
       <Properties>
         <Property name="icon" type="javax.swing.Icon" editor="org.netbeans.modules.form.editors2.IconEditor">
-          <Image iconType="3" name="/Recursos/estadisticas.jpg"/>
+          <Image iconType="3" name="/IconosNuevos/ESTADISTICAS.png"/>
         </Property>
         <Property name="focusPainted" type="boolean" value="false"/>
       </Properties>
@@ -94,7 +94,7 @@
       </Events>
       <Constraints>
         <Constraint layoutClass="org.netbeans.modules.form.compat2.layouts.DesignAbsoluteLayout" value="org.netbeans.modules.form.compat2.layouts.DesignAbsoluteLayout$AbsoluteConstraintsDescription">
-          <AbsoluteConstraints x="10" y="468" width="293" height="98"/>
+          <AbsoluteConstraints x="10" y="456" width="300" height="110"/>
         </Constraint>
       </Constraints>
     </Component>

@@ -198,14 +198,15 @@ public class Inicio extends javax.swing.JPanel {
         });
         add(txtBuscar, new org.netbeans.lib.awtextra.AbsoluteConstraints(105, 58, 357, -1));
 
-        btnNuevaOrden1.setIcon(new javax.swing.ImageIcon(getClass().getResource("/Recursos/nueva32.jpg"))); // NOI18N
+        btnNuevaOrden1.setIcon(new javax.swing.ImageIcon(getClass().getResource("/IconosNuevos/NUEVA_.png"))); // NOI18N
         btnNuevaOrden1.setFocusPainted(false);
+        btnNuevaOrden1.setOpaque(false);
         btnNuevaOrden1.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
                 btnNuevaOrden1ActionPerformed(evt);
             }
         });
-        add(btnNuevaOrden1, new org.netbeans.lib.awtextra.AbsoluteConstraints(10, 578, 120, 75));
+        add(btnNuevaOrden1, new org.netbeans.lib.awtextra.AbsoluteConstraints(610, 580, 190, 90));
         add(jLabel3, new org.netbeans.lib.awtextra.AbsoluteConstraints(78, 55, -1, 23));
 
         lblFondo2.setIcon(new javax.swing.ImageIcon(getClass().getResource("/Background/34_Spicy_Neutrals02.png"))); // NOI18N
