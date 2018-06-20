@@ -73,7 +73,7 @@ public class SplashScreen extends javax.swing.JFrame {
         ProgressBar.setString("");
         ProgressBar.setStringPainted(true);
 
-        message.setFont(new java.awt.Font("Microsoft YaHei UI", 0, 24)); // NOI18N
+        message.setFont(new java.awt.Font("Miriam Fixed", 1, 24)); // NOI18N
         message.setForeground(new java.awt.Color(255, 255, 255));
         message.setText("Cargando 100%");
 
@@ -85,7 +85,7 @@ public class SplashScreen extends javax.swing.JFrame {
             .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, jPanel1Layout.createSequentialGroup()
                 .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
                 .addComponent(message)
-                .addGap(183, 183, 183))
+                .addGap(190, 190, 190))
         );
         jPanel1Layout.setVerticalGroup(
             jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
