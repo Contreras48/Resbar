@@ -128,17 +128,19 @@ public class MenuAgregar extends javax.swing.JFrame {
         jpFondo.setBorder(javax.swing.BorderFactory.createLineBorder(new java.awt.Color(0, 0, 0)));
         jpFondo.setOpaque(false);
 
-        btnContinuar.setIcon(new javax.swing.ImageIcon(getClass().getResource("/Recursos/guardar16.jpg"))); // NOI18N
+        btnContinuar.setIcon(new javax.swing.ImageIcon(getClass().getResource("/IconosNew/AGREGARALAORDEN.png"))); // NOI18N
         btnContinuar.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
                 btnContinuarActionPerformed(evt);
             }
         });
 
-        txtBuscarProducto.setBackground(Color.decode("#662E1C"));
+        txtBuscarProducto.setBackground(Color.decode("#AF4425"));
+        txtBuscarProducto.setFont(new java.awt.Font("Rockwell", 1, 14)); // NOI18N
         txtBuscarProducto.setForeground(java.awt.Color.white);
 
-        tblMenuProductos.setBackground(Color.decode("#C9A66B"));
+        tblMenuProductos.setBackground(Color.decode("#662E1C"));
+        tblMenuProductos.setFont(new java.awt.Font("Rockwell", 1, 14)); // NOI18N
         tblMenuProductos.setForeground(java.awt.Color.white);
         tblMenuProductos.setModel(new javax.swing.table.DefaultTableModel(
             new Object [][] {
@@ -150,23 +152,24 @@ public class MenuAgregar extends javax.swing.JFrame {
         ));
         jScrollPane2.setViewportView(tblMenuProductos);
 
-        jLabel2.setFont(new java.awt.Font("FreeSans", 3, 18)); // NOI18N
-        jLabel2.setForeground(Color.decode("#90AFC5"));
+        jLabel2.setFont(new java.awt.Font("Rockwell", 1, 18)); // NOI18N
+        jLabel2.setForeground(Color.decode("#662E1C"));
         jLabel2.setText("Buscar");
 
-        jLabel3.setIcon(new javax.swing.ImageIcon(getClass().getResource("/Recursos/buscar.jpg"))); // NOI18N
+        jLabel3.setIcon(new javax.swing.ImageIcon(getClass().getResource("/IconosNew/busqueda.png"))); // NOI18N
 
-        jLabel4.setFont(new java.awt.Font("FreeSans", 3, 18)); // NOI18N
-        jLabel4.setForeground(Color.decode("#90AFC5"));
+        jLabel4.setFont(new java.awt.Font("Rockwell", 1, 18)); // NOI18N
+        jLabel4.setForeground(Color.decode("#662E1C"));
         jLabel4.setText("Agregar a la Orden");
 
-        lstCategorias.setBackground(Color.decode("#662E1C"));
+        lstCategorias.setBackground(Color.decode("#AF4425"));
+        lstCategorias.setFont(new java.awt.Font("Rockwell", 1, 14)); // NOI18N
         lstCategorias.setForeground(java.awt.Color.white);
         lstCategorias.setOpaque(false);
         jScrollPane1.setViewportView(lstCategorias);
 
-        jLabel5.setFont(new java.awt.Font("FreeSans", 3, 18)); // NOI18N
-        jLabel5.setForeground(Color.decode("#90AFC5"));
+        jLabel5.setFont(new java.awt.Font("Rockwell", 1, 18)); // NOI18N
+        jLabel5.setForeground(Color.decode("#662E1C"));
         jLabel5.setText("Categorias");
 
         javax.swing.GroupLayout jpFondoLayout = new javax.swing.GroupLayout(jpFondo);
@@ -177,24 +180,25 @@ public class MenuAgregar extends javax.swing.JFrame {
                 .addGap(41, 41, 41)
                 .addGroup(jpFondoLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                     .addGroup(jpFondoLayout.createSequentialGroup()
-                        .addGroup(jpFondoLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                            .addComponent(jScrollPane1, javax.swing.GroupLayout.PREFERRED_SIZE, 115, javax.swing.GroupLayout.PREFERRED_SIZE)
-                            .addComponent(jLabel5, javax.swing.GroupLayout.PREFERRED_SIZE, 102, javax.swing.GroupLayout.PREFERRED_SIZE))
-                        .addGap(18, 18, 18)
-                        .addGroup(jpFondoLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                            .addComponent(jLabel4)
-                            .addComponent(jScrollPane2, javax.swing.GroupLayout.PREFERRED_SIZE, 757, javax.swing.GroupLayout.PREFERRED_SIZE)
-                            .addGroup(jpFondoLayout.createSequentialGroup()
-                                .addGap(16, 16, 16)
-                                .addComponent(btnContinuar, javax.swing.GroupLayout.PREFERRED_SIZE, 120, javax.swing.GroupLayout.PREFERRED_SIZE))))
-                    .addGroup(jpFondoLayout.createSequentialGroup()
                         .addGap(13, 13, 13)
                         .addComponent(jLabel2, javax.swing.GroupLayout.PREFERRED_SIZE, 68, javax.swing.GroupLayout.PREFERRED_SIZE)
                         .addGap(50, 50, 50)
                         .addComponent(jLabel3, javax.swing.GroupLayout.PREFERRED_SIZE, 39, javax.swing.GroupLayout.PREFERRED_SIZE)
                         .addGap(18, 18, 18)
-                        .addComponent(txtBuscarProducto, javax.swing.GroupLayout.PREFERRED_SIZE, 667, javax.swing.GroupLayout.PREFERRED_SIZE)))
+                        .addComponent(txtBuscarProducto, javax.swing.GroupLayout.PREFERRED_SIZE, 667, javax.swing.GroupLayout.PREFERRED_SIZE))
+                    .addGroup(jpFondoLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING)
+                        .addComponent(btnContinuar, javax.swing.GroupLayout.PREFERRED_SIZE, 190, javax.swing.GroupLayout.PREFERRED_SIZE)
+                        .addGroup(jpFondoLayout.createSequentialGroup()
+                            .addGroup(jpFondoLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                                .addComponent(jScrollPane1, javax.swing.GroupLayout.PREFERRED_SIZE, 115, javax.swing.GroupLayout.PREFERRED_SIZE)
+                                .addComponent(jLabel5, javax.swing.GroupLayout.PREFERRED_SIZE, 102, javax.swing.GroupLayout.PREFERRED_SIZE))
+                            .addGap(18, 18, 18)
+                            .addComponent(jScrollPane2, javax.swing.GroupLayout.PREFERRED_SIZE, 757, javax.swing.GroupLayout.PREFERRED_SIZE))))
                 .addContainerGap(37, Short.MAX_VALUE))
+            .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, jpFondoLayout.createSequentialGroup()
+                .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                .addComponent(jLabel4)
+                .addGap(46, 46, 46))
         );
         jpFondoLayout.setVerticalGroup(
             jpFondoLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
@@ -213,16 +217,16 @@ public class MenuAgregar extends javax.swing.JFrame {
                         .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
                         .addComponent(jScrollPane1, javax.swing.GroupLayout.PREFERRED_SIZE, 322, javax.swing.GroupLayout.PREFERRED_SIZE))
                     .addComponent(jScrollPane2, javax.swing.GroupLayout.PREFERRED_SIZE, 474, javax.swing.GroupLayout.PREFERRED_SIZE))
-                .addGap(18, 18, 18)
-                .addComponent(btnContinuar, javax.swing.GroupLayout.PREFERRED_SIZE, 75, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
+                .addComponent(btnContinuar, javax.swing.GroupLayout.PREFERRED_SIZE, 87, javax.swing.GroupLayout.PREFERRED_SIZE)
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
                 .addComponent(jLabel4)
-                .addContainerGap(48, Short.MAX_VALUE))
+                .addContainerGap(44, Short.MAX_VALUE))
         );
 
         getContentPane().add(jpFondo, new org.netbeans.lib.awtextra.AbsoluteConstraints(0, 0, 970, 750));
 
-        lblNuevaOrden.setIcon(new javax.swing.ImageIcon(getClass().getResource("/Background/34_Spicy_Neutrals03.png"))); // NOI18N
+        lblNuevaOrden.setIcon(new javax.swing.ImageIcon(getClass().getResource("/Background/Backgrund_05.png"))); // NOI18N
         getContentPane().add(lblNuevaOrden, new org.netbeans.lib.awtextra.AbsoluteConstraints(0, 0, 970, 750));
 
         pack();
