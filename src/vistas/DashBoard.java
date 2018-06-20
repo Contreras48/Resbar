@@ -80,32 +80,32 @@ public class DashBoard extends javax.swing.JFrame {
 
         getContentPane().add(jpContenedor, new org.netbeans.lib.awtextra.AbsoluteConstraints(316, 53, -1, 703));
 
-        btnInicio.setIcon(new javax.swing.ImageIcon(getClass().getResource("/Recursos/inicio.jpg"))); // NOI18N
+        btnInicio.setIcon(new javax.swing.ImageIcon(getClass().getResource("/IconosNew/INICIO.png"))); // NOI18N
         btnInicio.setFocusPainted(false);
         btnInicio.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
                 btnInicioActionPerformed(evt);
             }
         });
-        getContentPane().add(btnInicio, new org.netbeans.lib.awtextra.AbsoluteConstraints(10, 110, 296, 99));
+        getContentPane().add(btnInicio, new org.netbeans.lib.awtextra.AbsoluteConstraints(10, 99, 300, 110));
 
-        btnAdministrar.setIcon(new javax.swing.ImageIcon(getClass().getResource("/Recursos/administracion.jpg"))); // NOI18N
+        btnAdministrar.setIcon(new javax.swing.ImageIcon(getClass().getResource("/IconosNew/ADMINISTRAR.png"))); // NOI18N
         btnAdministrar.setFocusPainted(false);
         btnAdministrar.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
                 btnAdministrarActionPerformed(evt);
             }
         });
-        getContentPane().add(btnAdministrar, new org.netbeans.lib.awtextra.AbsoluteConstraints(10, 288, 293, 98));
+        getContentPane().add(btnAdministrar, new org.netbeans.lib.awtextra.AbsoluteConstraints(10, 280, 300, 110));
 
-        btnEstadisticas.setIcon(new javax.swing.ImageIcon(getClass().getResource("/Recursos/estadisticas.jpg"))); // NOI18N
+        btnEstadisticas.setIcon(new javax.swing.ImageIcon(getClass().getResource("/IconosNew/ESTADISTICAS.png"))); // NOI18N
         btnEstadisticas.setFocusPainted(false);
         btnEstadisticas.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
                 btnEstadisticasActionPerformed(evt);
             }
         });
-        getContentPane().add(btnEstadisticas, new org.netbeans.lib.awtextra.AbsoluteConstraints(10, 468, 293, 98));
+        getContentPane().add(btnEstadisticas, new org.netbeans.lib.awtextra.AbsoluteConstraints(10, 460, 300, 110));
 
         lblFondo1.setIcon(new javax.swing.ImageIcon(getClass().getResource("/Background/34_Spicy_Neutrals01.png"))); // NOI18N
         getContentPane().add(lblFondo1, new org.netbeans.lib.awtextra.AbsoluteConstraints(0, 0, 1020, 770));
