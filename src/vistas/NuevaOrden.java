@@ -446,9 +446,9 @@ public class NuevaOrden extends javax.swing.JFrame {
     private javax.swing.JLabel lblMesero;
     private javax.swing.JLabel lblNuevaOrden;
     private javax.swing.JLabel lblTotal;
-    private javax.swing.JTable tblDetalleOrden;
-    private javax.swing.JTextField txtCliente;
-    private javax.swing.JTextField txtMesa;
-    private javax.swing.JTextField txtMesero;
+    public static javax.swing.JTable tblDetalleOrden;
+    public static javax.swing.JTextField txtCliente;
+    public static javax.swing.JTextField txtMesa;
+    public static javax.swing.JTextField txtMesero;
     // End of variables declaration//GEN-END:variables
 }

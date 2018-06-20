@@ -5,31 +5,82 @@
  */
 package vistas;
 
+import Modelo.Categoria;
+import Modelo.ErrorAplicacion;
+import Modelo.ManejadorCategorias;
 import Personalizacion.RedondearBorde;
 import com.sun.javafx.tk.Toolkit;
 import java.awt.Color;
 import java.awt.event.KeyEvent;
+import java.awt.event.WindowAdapter;
+import java.util.ArrayList;
+import java.util.Enumeration;
+import java.util.List;
 import javax.swing.JLabel;
 import javax.swing.JOptionPane;
+import javax.swing.JTable;
 import javax.swing.UIManager;
+import javax.swing.table.DefaultTableModel;
+import javax.swing.table.TableColumn;
+import javax.swing.table.TableColumnModel;
 import resbar.Validacion;
+import static vistas.Administrar.tblCategoria;
 
 /**
  *
  * @author mateo
  */
 public class AMCategoria extends javax.swing.JFrame {
+    Validacion validar= new Validacion();
+//    Administrar ad = new Administrar();
+     public boolean estado=false;
+     DefaultTableModel modeloC;
+     Administrar p2;
+      int[] anchoProducto = {50, 300, 300, 50};
+    int[] anchoCategoria = {50, 600};
+    String[] titulosCategoria = {"Id", "Nombre"};
+    String[] titulosProducto = {"Categoria", "Id_Prod", "Nombre", "Precio"};
 
     /**
      * Creates new form AMCategoria
      * @param mensaje
      */
     public AMCategoria(String mensaje) {
-       initComponents();
+        initComponents();
         setLocationRelativeTo(null);
         txtId.setEditable(false);
         lblEtiqueta.setText(mensaje);
+        
+        Categoria cat = new Categoria();
+        try {
+            txtId.setText(String.valueOf(ManejadorCategorias.obtenerId()));
+        } catch (ErrorAplicacion ex) {
+            JOptionPane.showMessageDialog(null, ex.getMessage());
+        }
+        txtNombre.requestFocus();
     }
+    
+    public void limpiar(){
+        txtId.setText(" ");
+        txtNombre.setText(" ");
+    }
+    public final void personalizarComponentes(JTable tabla, int[] ancho){
+        //Tabla Productos
+        Enumeration<TableColumn> en = tabla.getColumnModel().getColumns();
+        while (en.hasMoreElements()) {
+            TableColumn tc = en.nextElement();
+//            tc.setCellRenderer(new RenderColor(new Color(179, 210, 238)));
+        }
+         tabla.setRowHeight(20);
+        TableColumnModel tcm = tabla.getColumnModel();
+        for (int i = 0; i < ancho.length; i++) {
+//            tcm.getColumn(i).setPreferredWidth(ancho[i]);
+        }
+        Administrar ad= new Administrar();
+        ad.poputTable();
+    }
+    
+    
 
 //    AMCategoria() {
 //        throw new UnsupportedOperationException("Not supported yet."); //To change body of generated methods, choose Tools | Templates.
@@ -200,24 +251,55 @@ public class AMCategoria extends javax.swing.JFrame {
     }//GEN-LAST:event_btnCancelarActionPerformed
 
     private void btnGuardarActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnGuardarActionPerformed
+    
         lblNombre.setText("");
         Validacion validar = new Validacion();
-        String cadena= txtNombre.getText();
-        boolean label= validar.ValidarNulos(cadena);
-            if(label==true){
-                lblNombre.setText("campo obligatorio");
+        String cadena = txtNombre.getText();
+        boolean label = validar.ValidarNulos(cadena);
+        if (label == true) {
+            lblNombre.setText("campo obligatorio");
+        } else {
+            if (lblEtiqueta.getText().equals("Modificar categoria")) {
+                Categoria cat = new Categoria();
+                cat.idCategoria = Integer.parseInt(txtId.getText());
+                cat.nombre = String.valueOf(txtNombre.getText());
+
+                try {
+                    ManejadorCategorias.actualizar(cat);
+                    JOptionPane.showMessageDialog(null, "modificado con exito");
+                    Administrar.modeloCategoria.setRowCount(0);
+                    Administrar.listaCategoria = ManejadorCategorias.obtener(false);
+                    Administrar.cargarCategorias();
+                    this.dispose();
+                    limpiar();
+                } catch (ErrorAplicacion ex) {
+                    JOptionPane.showMessageDialog(null, ex.getMessage());
+                }
+            }else{
+            Categoria cat = new Categoria();
+            cat.idCategoria = Integer.parseInt(txtId.getText());
+            cat.nombre = String.valueOf(txtNombre.getText());
+            try {
+                ManejadorCategorias.insertar(cat);
+                JOptionPane.showMessageDialog(null, "agregado con exito");
+                Administrar.modeloCategoria.setRowCount(0);
+                Administrar.listaCategoria = ManejadorCategorias.obtener(false);
+                Administrar.cargarCategorias();
+                this.dispose();
+                limpiar();
+            } catch (ErrorAplicacion ex) {
+                JOptionPane.showMessageDialog(null, ex.getMessage());
             }
-        txtNombre.setText("");
-        txtNombre.requestFocus();
+            }
+        }
     }//GEN-LAST:event_btnGuardarActionPerformed
 
     private void btnGuardarMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_btnGuardarMouseClicked
-       
+         
     }//GEN-LAST:event_btnGuardarMouseClicked
 
     private void txtNombreKeyTyped(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_txtNombreKeyTyped
-        Validacion validar= new Validacion();
-        validar.soloDecimal(txtNombre);
+        validar.sololetras(txtNombre);
     }//GEN-LAST:event_txtNombreKeyTyped
 
     private void txtNombreActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_txtNombreActionPerformed
@@ -264,7 +346,7 @@ public class AMCategoria extends javax.swing.JFrame {
     private javax.swing.JPanel jpFondo;
     private javax.swing.JLabel lblEtiqueta;
     private javax.swing.JLabel lblNombre;
-    private javax.swing.JTextField txtId;
-    private javax.swing.JTextField txtNombre;
+    public static javax.swing.JTextField txtId;
+    public static javax.swing.JTextField txtNombre;
     // End of variables declaration//GEN-END:variables
 }

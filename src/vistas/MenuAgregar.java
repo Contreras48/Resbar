@@ -306,7 +306,7 @@ public class MenuAgregar extends javax.swing.JFrame {
     private javax.swing.JScrollPane jScrollPane2;
     private javax.swing.JPanel jpFondo;
     private javax.swing.JList<String> lstCategorias;
-    private javax.swing.JTable tblMenuProductos;
+    public static javax.swing.JTable tblMenuProductos;
     private javax.swing.JTextField txtBuscarProducto;
     // End of variables declaration//GEN-END:variables
 }

@@ -231,7 +231,7 @@ public class Inicio extends javax.swing.JPanel {
     private javax.swing.JLabel jLabel7;
     private javax.swing.JScrollPane jScrollPane1;
     private javax.swing.JLabel lblFondo2;
-    private javax.swing.JTable tblOrdenesActivas;
+    public static javax.swing.JTable tblOrdenesActivas;
     private javax.swing.JTextField txtBuscar;
     // End of variables declaration//GEN-END:variables
 }

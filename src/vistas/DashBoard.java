@@ -180,10 +180,10 @@ public class DashBoard extends javax.swing.JFrame {
     }
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
-    private javax.swing.JButton btnAdministrar;
+    public static javax.swing.JButton btnAdministrar;
     private javax.swing.JButton btnEstadisticas;
     private javax.swing.JButton btnInicio;
-    private javax.swing.JPanel jpContenedor;
+    public static javax.swing.JPanel jpContenedor;
     private javax.swing.JLabel lblFondo1;
     // End of variables declaration//GEN-END:variables
 }

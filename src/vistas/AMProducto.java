@@ -5,35 +5,73 @@
  */
 package vistas;
 
+import Modelo.Categoria;
+import Modelo.ErrorAplicacion;
+import Modelo.ManejadorCategorias;
+import Modelo.ManejadorProductos;
+import Modelo.Producto;
 import Personalizacion.RedondearBorde;
 import java.awt.Color;
+import java.util.ArrayList;
+import java.util.List;
+import java.util.logging.Level;
+import java.util.logging.Logger;
 import javax.swing.DefaultComboBoxModel;
 import javax.swing.JOptionPane;
 import javax.swing.UIManager;
 import resbar.Validacion;
+import static vistas.Administrar.listaCategoria;
+import static vistas.Administrar.modeloCategoria;
 
 /**
  *
  * @author mateo
  */
-public class AMProducto extends javax.swing.JFrame {
-    String[] categorias = {"SELECCIONAR", "Bebidas", "Bocas", "Entradas", "Plato fuerte", "Postres", "Sopas"};
-    DefaultComboBoxModel<String> modelo = new DefaultComboBoxModel(categorias);
+public class AMProducto extends javax.swing.JFrame {  
+    String[] categorias;
+    DefaultComboBoxModel<String> modelo = new DefaultComboBoxModel();
+    Validacion validar= new Validacion();
+     public static List<Categoria> listaCategoria = new ArrayList<>();
     /**
      * Creates new form AMProducto
      * @param mensaje
      */
     public AMProducto(String mensaje) {
-        initComponents();
+         initComponents();
         setLocationRelativeTo(null);
         
         lblEtiqueta.setText(mensaje);
+        
+        try {
+            listaCategoria= ManejadorCategorias.obtener(false);
+        } catch (ErrorAplicacion ex) {
+            Logger.getLogger(AMProducto.class.getName()).log(Level.SEVERE, null, ex);
+        }
+        
+        Categoria categoriaSeleccione = new Categoria();
+        categoriaSeleccione.idCategoria = 0;
+        categoriaSeleccione.nombre = "<< Seleccionar >>";
+        listaCategoria.add(0, categoriaSeleccione);
+        categorias= new String[listaCategoria.size()];
+        for (int i = 0; i < listaCategoria.size(); i++) {
+            categorias[i]= listaCategoria.get(i).nombre;
+        }
+        
+        modelo= new DefaultComboBoxModel<>(categorias);
         cmbCategoria.setModel(modelo);
+        txtId.setEditable(false);
+        rbtnCocina.setSelected(true);
+        
+        Producto pro = new Producto();
+        try {
+            txtId.setText(String.valueOf(ManejadorProductos.obtenerId()));
+        } catch (ErrorAplicacion ex) {
+            JOptionPane.showMessageDialog(null, ex.getMessage());
+        }
         txtNombre.requestFocus();
-        txtId.setEditable(false);;
     }
     
-    public void Limpiar(){
+     public void Limpiar(){
         txtNombre.setText("");
         txtPrecio.setText("");
         cmbCategoria.setSelectedIndex(0);
@@ -64,8 +102,8 @@ public class AMProducto extends javax.swing.JFrame {
         lblNombre = new javax.swing.JLabel();
         lblCategoria = new javax.swing.JLabel();
         jLabel7 = new javax.swing.JLabel();
-        jRadioButton1 = new javax.swing.JRadioButton();
-        jRadioButton2 = new javax.swing.JRadioButton();
+        rbtnCocina = new javax.swing.JRadioButton();
+        rbtnBebida = new javax.swing.JRadioButton();
         lblEtiqueta = new javax.swing.JLabel();
         txtId = new RedondearBorde(null);
         jLabel1 = new javax.swing.JLabel();
@@ -120,6 +158,11 @@ public class AMProducto extends javax.swing.JFrame {
                 txtNombreMouseClicked(evt);
             }
         });
+        txtNombre.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                txtNombreActionPerformed(evt);
+            }
+        });
         txtNombre.addKeyListener(new java.awt.event.KeyAdapter() {
             public void keyTyped(java.awt.event.KeyEvent evt) {
                 txtNombreKeyTyped(evt);
@@ -141,18 +184,18 @@ public class AMProducto extends javax.swing.JFrame {
         jLabel7.setForeground(Color.decode("#90AFC5"));
         jLabel7.setText("Enviar a");
 
-        rbtnArea.add(jRadioButton1);
-        jRadioButton1.setForeground(Color.decode("#90AFC5"));
-        jRadioButton1.setText("Cocina");
-        jRadioButton1.addActionListener(new java.awt.event.ActionListener() {
+        rbtnArea.add(rbtnCocina);
+        rbtnCocina.setForeground(Color.decode("#90AFC5"));
+        rbtnCocina.setText("Cocina");
+        rbtnCocina.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
-                jRadioButton1ActionPerformed(evt);
+                rbtnCocinaActionPerformed(evt);
             }
         });
 
-        rbtnArea.add(jRadioButton2);
-        jRadioButton2.setForeground(Color.decode("#90AFC5"));
-        jRadioButton2.setText("Bebidas");
+        rbtnArea.add(rbtnBebida);
+        rbtnBebida.setForeground(Color.decode("#90AFC5"));
+        rbtnBebida.setText("Bebidas");
 
         lblEtiqueta.setFont(new java.awt.Font("Dialog", 1, 16)); // NOI18N
         lblEtiqueta.setText("jLabel1");
@@ -206,9 +249,9 @@ public class AMProducto extends javax.swing.JFrame {
                                 .addComponent(jLabel7)
                                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
                                 .addGroup(jpFondoLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                                    .addComponent(jRadioButton1)
+                                    .addComponent(rbtnCocina)
                                     .addGroup(jpFondoLayout.createSequentialGroup()
-                                        .addComponent(jRadioButton2)
+                                        .addComponent(rbtnBebida)
                                         .addGap(48, 48, 48)
                                         .addComponent(lblPrecio, javax.swing.GroupLayout.PREFERRED_SIZE, 118, javax.swing.GroupLayout.PREFERRED_SIZE))))
                             .addComponent(cmbCategoria, javax.swing.GroupLayout.PREFERRED_SIZE, 276, javax.swing.GroupLayout.PREFERRED_SIZE))
@@ -253,10 +296,10 @@ public class AMProducto extends javax.swing.JFrame {
                         .addGap(18, 18, 18)
                         .addGroup(jpFondoLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                             .addComponent(jLabel7)
-                            .addComponent(jRadioButton1))
+                            .addComponent(rbtnCocina))
                         .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
                         .addGroup(jpFondoLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                            .addComponent(jRadioButton2)
+                            .addComponent(rbtnBebida)
                             .addComponent(lblPrecio, javax.swing.GroupLayout.DEFAULT_SIZE, 26, Short.MAX_VALUE))
                         .addGap(18, 18, 18)
                         .addGroup(jpFondoLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
@@ -284,12 +327,11 @@ public class AMProducto extends javax.swing.JFrame {
     }// </editor-fold>//GEN-END:initComponents
 
     private void txtNombreKeyTyped(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_txtNombreKeyTyped
-        Validacion validar= new Validacion();
         validar.sololetras(txtNombre);
     }//GEN-LAST:event_txtNombreKeyTyped
 
     private void txtNombreMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_txtNombreMouseClicked
-
+        validar.sololetras(txtNombre);
     }//GEN-LAST:event_txtNombreMouseClicked
 
     private void btnCancelarActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnCancelarActionPerformed
@@ -297,30 +339,85 @@ public class AMProducto extends javax.swing.JFrame {
     }//GEN-LAST:event_btnCancelarActionPerformed
 
     private void btnGuardarActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnGuardarActionPerformed
-        lblNombre.setText("");
+       lblNombre.setText("");
         lblPrecio.setText("");
         lblCategoria.setText("");
         
         Validacion validar = new Validacion();
-        String cadena= txtNombre.getText();
-        boolean label= validar.ValidarNulos(cadena);
-            if(label==true){
-               lblNombre.setText("campo obligatorio");
-            }
-            
-        cadena= txtPrecio.getText();
-        label= validar.ValidarNulos(cadena);
-            if(label==true){
-            lblPrecio.setText("campo obligatorio");
-            }
-            if(cmbCategoria.getSelectedIndex()==0){
-                lblCategoria.setText("campo obligatorio");
-            
-            }
-     
-        Limpiar();
-        
+        String cadena = txtNombre.getText();
+        boolean label = validar.ValidarNulos(cadena);
+        if (label == true) {
+            lblNombre.setText("campo obligatorio");
+        }
 
+        cadena = txtPrecio.getText();
+        label = validar.ValidarNulos(cadena);
+        if (label == true) {
+            lblPrecio.setText("campo obligatorio");
+        }
+        if (cmbCategoria.getSelectedIndex() == 0) {
+            lblCategoria.setText("campo obligatorio");
+        }
+        
+        if (lblEtiqueta.getText().equals("Modificar categoria")) {
+            Producto pro= new Producto();
+           pro.idProducto = Integer.parseInt(txtId.getText());
+                pro.nombre = String.valueOf(txtNombre.getText());
+                Categoria cat = new Categoria();
+                cat.idCategoria= cmbCategoria.getSelectedIndex()+1;
+                pro.categoria = cat;
+                pro.precio = Double.parseDouble(txtPrecio.getText());
+                char area;
+                if (rbtnCocina.isSelected() == true) {
+                    area = 'c';
+                } else {
+                    area =  'b';
+                }
+                pro.area = area;
+            try {
+                ManejadorProductos.actualizar(pro);
+                JOptionPane.showMessageDialog(null, "modificado con exito");
+                Administrar.modeloProducto.setRowCount(0);
+                Administrar.listaCategoria = ManejadorCategorias.obtener(true);
+                Administrar.cargarProductos();
+                Limpiar();
+                this.dispose();
+            } catch (ErrorAplicacion ex) {
+                Logger.getLogger(AMProducto.class.getName()).log(Level.SEVERE, null, ex);
+            }
+        
+        }else{
+
+        if(!txtId.getText().isEmpty() && txtNombre.getText().isEmpty() && cmbCategoria.getSelectedIndex()==0){
+        } else {
+            try {
+                Producto pro = new Producto();
+                pro.idProducto = Integer.parseInt(txtId.getText());
+                pro.nombre = String.valueOf(txtNombre.getText());
+                Categoria cat = new Categoria();
+                cat.idCategoria= cmbCategoria.getSelectedIndex()+1;
+                pro.categoria = cat;
+                pro.precio = Double.parseDouble(txtPrecio.getText());
+                char area;
+                if (rbtnCocina.isSelected() == true) {
+                    area = 'c';
+                } else {
+                    area =  'b';
+                }
+                pro.area = area;
+                ManejadorProductos.insertar(pro);
+                JOptionPane.showMessageDialog(null, "agregado con exito");
+                Administrar.modeloProducto.setRowCount(0);
+                Administrar.listaCategoria = ManejadorCategorias.obtener(true);
+                Administrar.cargarProductos();
+                Limpiar();
+                this.dispose();
+            } catch (ErrorAplicacion ex) {
+                JOptionPane.showMessageDialog(null, ex.getMessage());
+            }
+
+        }
+        }
     }//GEN-LAST:event_btnGuardarActionPerformed
 
     private void btnGuardarMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_btnGuardarMouseClicked
@@ -328,13 +425,16 @@ public class AMProducto extends javax.swing.JFrame {
     }//GEN-LAST:event_btnGuardarMouseClicked
 
     private void txtPrecioKeyTyped(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_txtPrecioKeyTyped
-        Validacion validar= new Validacion();
         validar.soloDecimal(txtPrecio);
     }//GEN-LAST:event_txtPrecioKeyTyped
 
-    private void jRadioButton1ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jRadioButton1ActionPerformed
+    private void rbtnCocinaActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_rbtnCocinaActionPerformed
         // TODO add your handling code here:
-    }//GEN-LAST:event_jRadioButton1ActionPerformed
+    }//GEN-LAST:event_rbtnCocinaActionPerformed
+
+    private void txtNombreActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_txtNombreActionPerformed
+        // TODO add your handling code here:
+    }//GEN-LAST:event_txtNombreActionPerformed
 
     /**
      * @param args the command line arguments
@@ -369,7 +469,7 @@ public class AMProducto extends javax.swing.JFrame {
     // Variables declaration - do not modify//GEN-BEGIN:variables
     private javax.swing.JButton btnCancelar;
     private javax.swing.JButton btnGuardar;
-    private javax.swing.JComboBox<String> cmbCategoria;
+    public static javax.swing.JComboBox<String> cmbCategoria;
     private javax.swing.JLabel jLabel1;
     private javax.swing.JLabel jLabel2;
     private javax.swing.JLabel jLabel3;
@@ -377,16 +477,16 @@ public class AMProducto extends javax.swing.JFrame {
     private javax.swing.JLabel jLabel5;
     private javax.swing.JLabel jLabel6;
     private javax.swing.JLabel jLabel7;
-    private javax.swing.JRadioButton jRadioButton1;
-    private javax.swing.JRadioButton jRadioButton2;
     private javax.swing.JPanel jpFondo;
     private javax.swing.JLabel lblCategoria;
     private javax.swing.JLabel lblEtiqueta;
     private javax.swing.JLabel lblNombre;
     private javax.swing.JLabel lblPrecio;
     private javax.swing.ButtonGroup rbtnArea;
-    private javax.swing.JTextField txtId;
-    private javax.swing.JTextField txtNombre;
-    private javax.swing.JTextField txtPrecio;
+    public static javax.swing.JRadioButton rbtnBebida;
+    public static javax.swing.JRadioButton rbtnCocina;
+    public static javax.swing.JTextField txtId;
+    public static javax.swing.JTextField txtNombre;
+    public static javax.swing.JTextField txtPrecio;
     // End of variables declaration//GEN-END:variables
 }
