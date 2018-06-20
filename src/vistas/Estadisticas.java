@@ -133,7 +133,7 @@ public class Estadisticas extends javax.swing.JPanel {
         jLabel6.setText("Estadisticas de Ventas");
         add(jLabel6, new org.netbeans.lib.awtextra.AbsoluteConstraints(280, 10, 400, 30));
 
-        tblEstadisticas.setBackground(Color.decode("#C9A66B"));
+        tblEstadisticas.setBackground(Color.decode("#662E1C"));
         tblEstadisticas.setFont(new java.awt.Font("Rockwell", 1, 14)); // NOI18N
         tblEstadisticas.setForeground(new java.awt.Color(255, 255, 255));
         tblEstadisticas.setModel(new javax.swing.table.DefaultTableModel(
