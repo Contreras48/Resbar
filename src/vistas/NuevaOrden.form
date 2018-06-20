@@ -82,7 +82,7 @@
                                               <Component id="jLabel7" alignment="0" min="-2" max="-2" attributes="0"/>
                                               <Component id="jScrollPane1" alignment="0" min="-2" pref="644" max="-2" attributes="0"/>
                                           </Group>
-                                          <EmptySpace pref="50" max="32767" attributes="0"/>
+                                          <EmptySpace max="32767" attributes="0"/>
                                           <Group type="103" groupAlignment="0" attributes="0">
                                               <Component id="jLabel1" min="-2" max="-2" attributes="0"/>
                                               <Component id="jScrollPane3" alignment="0" min="-2" pref="259" max="-2" attributes="0"/>
@@ -92,12 +92,12 @@
                                           <Group type="103" groupAlignment="0" attributes="0">
                                               <Group type="102" alignment="0" attributes="0">
                                                   <Component id="jLabel2" min="-2" max="-2" attributes="0"/>
-                                                  <EmptySpace max="-2" attributes="0"/>
+                                                  <EmptySpace type="unrelated" max="-2" attributes="0"/>
                                                   <Component id="txtMesa" min="-2" pref="181" max="-2" attributes="0"/>
                                               </Group>
                                               <Group type="102" alignment="0" attributes="0">
                                                   <Component id="jLabel3" min="-2" max="-2" attributes="0"/>
-                                                  <EmptySpace type="unrelated" max="-2" attributes="0"/>
+                                                  <EmptySpace type="separate" max="-2" attributes="0"/>
                                                   <Component id="txtMesero" min="-2" pref="348" max="-2" attributes="0"/>
                                               </Group>
                                               <Group type="102" alignment="0" attributes="0">
@@ -116,18 +116,21 @@
                               </Group>
                               <Group type="102" attributes="0">
                                   <Group type="103" groupAlignment="0" attributes="0">
-                                      <Group type="102" alignment="0" attributes="0">
+                                      <Component id="btnAgregagarProducto" min="-2" pref="190" max="-2" attributes="0"/>
+                                      <Group type="102" attributes="0">
+                                          <EmptySpace min="10" pref="10" max="-2" attributes="0"/>
                                           <Component id="jLabel9" min="-2" max="-2" attributes="0"/>
-                                          <EmptySpace min="-2" pref="158" max="-2" attributes="0"/>
-                                          <Component id="jLabel10" min="-2" max="-2" attributes="0"/>
-                                      </Group>
-                                      <Group type="102" alignment="0" attributes="0">
-                                          <Component id="btnAgregagarProducto" min="-2" pref="120" max="-2" attributes="0"/>
-                                          <EmptySpace min="-2" pref="159" max="-2" attributes="0"/>
-                                          <Component id="btnAceptar" min="-2" pref="120" max="-2" attributes="0"/>
                                       </Group>
                                   </Group>
-                                  <EmptySpace min="-2" pref="291" max="-2" attributes="0"/>
+                                  <EmptySpace min="-2" pref="222" max="-2" attributes="0"/>
+                                  <Group type="103" groupAlignment="0" attributes="0">
+                                      <Component id="btnAceptar" min="-2" pref="188" max="-2" attributes="0"/>
+                                      <Group type="102" alignment="0" attributes="0">
+                                          <EmptySpace min="-2" pref="40" max="-2" attributes="0"/>
+                                          <Component id="jLabel10" min="-2" max="-2" attributes="0"/>
+                                      </Group>
+                                  </Group>
+                                  <EmptySpace min="-2" pref="415" max="-2" attributes="0"/>
                                   <Component id="lblCliente" max="32767" attributes="0"/>
                               </Group>
                           </Group>
@@ -184,23 +187,20 @@
                           <Component id="jScrollPane3" max="32767" attributes="0"/>
                       </Group>
                   </Group>
-                  <EmptySpace min="-2" pref="32" max="-2" attributes="0"/>
+                  <EmptySpace min="-2" pref="18" max="-2" attributes="0"/>
                   <Group type="103" groupAlignment="1" attributes="0">
                       <Component id="lblCliente" min="-2" pref="20" max="-2" attributes="0"/>
                       <Group type="102" attributes="0">
-                          <Group type="103" groupAlignment="0" attributes="0">
-                              <Group type="102" alignment="0" attributes="0">
-                                  <Component id="btnAgregagarProducto" min="-2" pref="75" max="-2" attributes="0"/>
-                                  <EmptySpace max="-2" attributes="0"/>
-                                  <Component id="jLabel9" min="-2" max="-2" attributes="0"/>
-                              </Group>
-                              <Group type="102" alignment="0" attributes="0">
-                                  <Component id="btnAceptar" min="-2" pref="75" max="-2" attributes="0"/>
-                                  <EmptySpace max="-2" attributes="0"/>
-                                  <Component id="jLabel10" min="-2" max="-2" attributes="0"/>
-                              </Group>
+                          <Group type="103" groupAlignment="1" max="-2" attributes="0">
+                              <Component id="btnAgregagarProducto" max="32767" attributes="0"/>
+                              <Component id="btnAceptar" max="32767" attributes="0"/>
                           </Group>
-                          <EmptySpace min="-2" pref="12" max="-2" attributes="0"/>
+                          <EmptySpace type="unrelated" max="-2" attributes="0"/>
+                          <Group type="103" groupAlignment="3" attributes="0">
+                              <Component id="jLabel9" alignment="3" min="-2" max="-2" attributes="0"/>
+                              <Component id="jLabel10" alignment="3" min="-2" max="-2" attributes="0"/>
+                          </Group>
+                          <EmptySpace min="-2" pref="7" max="-2" attributes="0"/>
                       </Group>
                   </Group>
                   <EmptySpace min="-2" pref="564" max="-2" attributes="0"/>
@@ -217,7 +217,10 @@
         <Component class="javax.swing.JTextField" name="txtMesero">
           <Properties>
             <Property name="background" type="java.awt.Color" editor="org.netbeans.modules.form.RADConnectionPropertyEditor">
-              <Connection code="Color.decode(&quot;#662E1C&quot;)" type="code"/>
+              <Connection code="Color.decode(&quot;#AF4425&quot;)" type="code"/>
+            </Property>
+            <Property name="font" type="java.awt.Font" editor="org.netbeans.beaninfo.editors.FontEditor">
+              <Font name="Rockwell" size="14" style="1"/>
             </Property>
             <Property name="foreground" type="java.awt.Color" editor="org.netbeans.beaninfo.editors.ColorEditor">
               <Color blue="ff" green="ff" id="white" palette="1" red="ff" type="palette"/>
@@ -240,7 +243,10 @@
             <Component class="javax.swing.JTable" name="tblDetalleOrden">
               <Properties>
                 <Property name="background" type="java.awt.Color" editor="org.netbeans.modules.form.RADConnectionPropertyEditor">
-                  <Connection code="Color.decode(&quot;#C9A66B&quot;)" type="code"/>
+                  <Connection code="Color.decode(&quot;#662E1C&quot;)" type="code"/>
+                </Property>
+                <Property name="font" type="java.awt.Font" editor="org.netbeans.beaninfo.editors.FontEditor">
+                  <Font name="Rockwell" size="14" style="1"/>
                 </Property>
                 <Property name="foreground" type="java.awt.Color" editor="org.netbeans.beaninfo.editors.ColorEditor">
                   <Color blue="ff" green="ff" id="white" palette="1" red="ff" type="palette"/>
@@ -258,7 +264,10 @@
         <Component class="javax.swing.JTextField" name="txtCliente">
           <Properties>
             <Property name="background" type="java.awt.Color" editor="org.netbeans.modules.form.RADConnectionPropertyEditor">
-              <Connection code="Color.decode(&quot;#662E1C&quot;)" type="code"/>
+              <Connection code="Color.decode(&quot;#AF4425&quot;)" type="code"/>
+            </Property>
+            <Property name="font" type="java.awt.Font" editor="org.netbeans.beaninfo.editors.FontEditor">
+              <Font name="Rockwell" size="14" style="1"/>
             </Property>
             <Property name="foreground" type="java.awt.Color" editor="org.netbeans.beaninfo.editors.ColorEditor">
               <Color blue="ff" green="ff" id="white" palette="1" red="ff" type="palette"/>
@@ -274,10 +283,10 @@
         <Component class="javax.swing.JLabel" name="jLabel3">
           <Properties>
             <Property name="font" type="java.awt.Font" editor="org.netbeans.beaninfo.editors.FontEditor">
-              <Font name="FreeSans" size="18" style="3"/>
+              <Font name="Rockwell" size="18" style="1"/>
             </Property>
-            <Property name="foreground" type="java.awt.Color" editor="org.netbeans.beaninfo.editors.ColorEditor">
-              <Color blue="0" green="0" id="black" palette="1" red="0" type="palette"/>
+            <Property name="foreground" type="java.awt.Color" editor="org.netbeans.modules.form.RADConnectionPropertyEditor">
+              <Connection code="Color.decode(&quot;#662E1C&quot;)" type="code"/>
             </Property>
             <Property name="text" type="java.lang.String" value="Mesero:"/>
           </Properties>
@@ -290,10 +299,10 @@
         <Component class="javax.swing.JLabel" name="jLabel7">
           <Properties>
             <Property name="font" type="java.awt.Font" editor="org.netbeans.beaninfo.editors.FontEditor">
-              <Font name="FreeSans" size="18" style="3"/>
+              <Font name="Rockwell" size="18" style="1"/>
             </Property>
-            <Property name="foreground" type="java.awt.Color" editor="org.netbeans.beaninfo.editors.ColorEditor">
-              <Color blue="0" green="0" id="black" palette="1" red="0" type="palette"/>
+            <Property name="foreground" type="java.awt.Color" editor="org.netbeans.modules.form.RADConnectionPropertyEditor">
+              <Connection code="Color.decode(&quot;#662E1C&quot;)" type="code"/>
             </Property>
             <Property name="text" type="java.lang.String" value="Detalle Orden"/>
           </Properties>
@@ -301,7 +310,7 @@
         <Component class="javax.swing.JButton" name="btnAgregagarProducto">
           <Properties>
             <Property name="icon" type="javax.swing.Icon" editor="org.netbeans.modules.form.editors2.IconEditor">
-              <Image iconType="3" name="/Recursos/agregar32.jpg"/>
+              <Image iconType="3" name="/IconosNew/AGREGARORDEN.png"/>
             </Property>
             <Property name="horizontalTextPosition" type="int" value="0"/>
           </Properties>
@@ -315,7 +324,10 @@
         <Component class="javax.swing.JTextField" name="txtMesa">
           <Properties>
             <Property name="background" type="java.awt.Color" editor="org.netbeans.modules.form.RADConnectionPropertyEditor">
-              <Connection code="Color.decode(&quot;#662E1C&quot;)" type="code"/>
+              <Connection code="Color.decode(&quot;#AF4425&quot;)" type="code"/>
+            </Property>
+            <Property name="font" type="java.awt.Font" editor="org.netbeans.beaninfo.editors.FontEditor">
+              <Font name="Rockwell" size="14" style="1"/>
             </Property>
             <Property name="foreground" type="java.awt.Color" editor="org.netbeans.beaninfo.editors.ColorEditor">
               <Color blue="ff" green="ff" id="white" palette="1" red="ff" type="palette"/>
@@ -331,7 +343,7 @@
         <Component class="javax.swing.JButton" name="btnAceptar">
           <Properties>
             <Property name="icon" type="javax.swing.Icon" editor="org.netbeans.modules.form.editors2.IconEditor">
-              <Image iconType="3" name="/Recursos/aceptar16.jpg"/>
+              <Image iconType="3" name="/IconosNew/ENVIARORDEN.png"/>
             </Property>
           </Properties>
           <Events>
@@ -341,10 +353,10 @@
         <Component class="javax.swing.JLabel" name="jLabel2">
           <Properties>
             <Property name="font" type="java.awt.Font" editor="org.netbeans.beaninfo.editors.FontEditor">
-              <Font name="FreeSans" size="18" style="3"/>
+              <Font name="Rockwell" size="18" style="1"/>
             </Property>
-            <Property name="foreground" type="java.awt.Color" editor="org.netbeans.beaninfo.editors.ColorEditor">
-              <Color blue="0" green="0" id="black" palette="1" red="0" type="palette"/>
+            <Property name="foreground" type="java.awt.Color" editor="org.netbeans.modules.form.RADConnectionPropertyEditor">
+              <Connection code="Color.decode(&quot;#662E1C&quot;)" type="code"/>
             </Property>
             <Property name="text" type="java.lang.String" value="N&#xb0; mesa:"/>
           </Properties>
@@ -360,10 +372,10 @@
         <Component class="javax.swing.JLabel" name="jLabel4">
           <Properties>
             <Property name="font" type="java.awt.Font" editor="org.netbeans.beaninfo.editors.FontEditor">
-              <Font name="FreeSans" size="18" style="3"/>
+              <Font name="Rockwell" size="18" style="1"/>
             </Property>
-            <Property name="foreground" type="java.awt.Color" editor="org.netbeans.beaninfo.editors.ColorEditor">
-              <Color blue="0" green="0" id="black" palette="1" red="0" type="palette"/>
+            <Property name="foreground" type="java.awt.Color" editor="org.netbeans.modules.form.RADConnectionPropertyEditor">
+              <Connection code="Color.decode(&quot;#662E1C&quot;)" type="code"/>
             </Property>
             <Property name="text" type="java.lang.String" value="Cliente:"/>
           </Properties>
@@ -371,10 +383,10 @@
         <Component class="javax.swing.JLabel" name="jLabel9">
           <Properties>
             <Property name="font" type="java.awt.Font" editor="org.netbeans.beaninfo.editors.FontEditor">
-              <Font name="FreeSans" size="18" style="3"/>
+              <Font name="Rockwell" size="18" style="1"/>
             </Property>
-            <Property name="foreground" type="java.awt.Color" editor="org.netbeans.beaninfo.editors.ColorEditor">
-              <Color blue="0" green="0" id="black" palette="1" red="0" type="palette"/>
+            <Property name="foreground" type="java.awt.Color" editor="org.netbeans.modules.form.RADConnectionPropertyEditor">
+              <Connection code="Color.decode(&quot;#662E1C&quot;)" type="code"/>
             </Property>
             <Property name="text" type="java.lang.String" value="Agregar Productos"/>
           </Properties>
@@ -402,25 +414,31 @@
         </Component>
         <Component class="javax.swing.JLabel" name="lblFecha">
           <Properties>
+            <Property name="font" type="java.awt.Font" editor="org.netbeans.beaninfo.editors.FontEditor">
+              <Font name="Rockwell" size="14" style="1"/>
+            </Property>
             <Property name="foreground" type="java.awt.Color" editor="org.netbeans.modules.form.RADConnectionPropertyEditor">
-              <Connection code="Color.decode(&quot;#90AFC5&quot;)" type="code"/>
+              <Connection code="Color.decode(&quot;#662E1C&quot;)" type="code"/>
             </Property>
           </Properties>
         </Component>
         <Component class="javax.swing.JLabel" name="lblHora">
           <Properties>
+            <Property name="font" type="java.awt.Font" editor="org.netbeans.beaninfo.editors.FontEditor">
+              <Font name="Rockwell" size="14" style="1"/>
+            </Property>
             <Property name="foreground" type="java.awt.Color" editor="org.netbeans.modules.form.RADConnectionPropertyEditor">
-              <Connection code="Color.decode(&quot;#90AFC5&quot;)" type="code"/>
+              <Connection code="Color.decode(&quot;#662E1C&quot;)" type="code"/>
             </Property>
           </Properties>
         </Component>
         <Component class="javax.swing.JLabel" name="jLabel10">
           <Properties>
             <Property name="font" type="java.awt.Font" editor="org.netbeans.beaninfo.editors.FontEditor">
-              <Font name="FreeSans" size="18" style="3"/>
+              <Font name="Rockwell" size="18" style="1"/>
             </Property>
-            <Property name="foreground" type="java.awt.Color" editor="org.netbeans.beaninfo.editors.ColorEditor">
-              <Color blue="0" green="0" id="black" palette="1" red="0" type="palette"/>
+            <Property name="foreground" type="java.awt.Color" editor="org.netbeans.modules.form.RADConnectionPropertyEditor">
+              <Connection code="Color.decode(&quot;#662E1C&quot;)" type="code"/>
             </Property>
             <Property name="text" type="java.lang.String" value="Enviar Orden"/>
           </Properties>
@@ -428,10 +446,10 @@
         <Component class="javax.swing.JLabel" name="jLabel1">
           <Properties>
             <Property name="font" type="java.awt.Font" editor="org.netbeans.beaninfo.editors.FontEditor">
-              <Font name="FreeSans" size="18" style="3"/>
+              <Font name="Rockwell" size="18" style="1"/>
             </Property>
-            <Property name="foreground" type="java.awt.Color" editor="org.netbeans.beaninfo.editors.ColorEditor">
-              <Color blue="0" green="0" id="black" palette="1" red="0" type="palette"/>
+            <Property name="foreground" type="java.awt.Color" editor="org.netbeans.modules.form.RADConnectionPropertyEditor">
+              <Connection code="Color.decode(&quot;#662E1C&quot;)" type="code"/>
             </Property>
             <Property name="text" type="java.lang.String" value="Comentarios"/>
           </Properties>
@@ -446,9 +464,12 @@
             <Component class="javax.swing.JTextArea" name="jTextArea2">
               <Properties>
                 <Property name="background" type="java.awt.Color" editor="org.netbeans.modules.form.RADConnectionPropertyEditor">
-                  <Connection code="Color.decode(&quot;#662E1C&quot;)" type="code"/>
+                  <Connection code="Color.decode(&quot;#AF4425&quot;)" type="code"/>
                 </Property>
                 <Property name="columns" type="int" value="20"/>
+                <Property name="font" type="java.awt.Font" editor="org.netbeans.beaninfo.editors.FontEditor">
+                  <Font name="Rockwell" size="14" style="1"/>
+                </Property>
                 <Property name="foreground" type="java.awt.Color" editor="org.netbeans.beaninfo.editors.ColorEditor">
                   <Color blue="ff" green="ff" id="white" palette="1" red="ff" type="palette"/>
                 </Property>
@@ -462,7 +483,7 @@
     <Component class="javax.swing.JLabel" name="lblNuevaOrden">
       <Properties>
         <Property name="icon" type="javax.swing.Icon" editor="org.netbeans.modules.form.editors2.IconEditor">
-          <Image iconType="3" name="/Background/34_Spicy_Neutrals03.png"/>
+          <Image iconType="3" name="/Background/Backgrund_05.png"/>
         </Property>
       </Properties>
       <Constraints>

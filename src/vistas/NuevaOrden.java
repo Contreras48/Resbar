@@ -132,7 +132,8 @@ public class NuevaOrden extends javax.swing.JFrame {
         jpFondo.setBorder(javax.swing.BorderFactory.createLineBorder(new java.awt.Color(0, 0, 0)));
         jpFondo.setOpaque(false);
 
-        txtMesero.setBackground(Color.decode("#662E1C"));
+        txtMesero.setBackground(Color.decode("#AF4425"));
+        txtMesero.setFont(new java.awt.Font("Rockwell", 1, 14)); // NOI18N
         txtMesero.setForeground(java.awt.Color.white);
         txtMesero.addKeyListener(new java.awt.event.KeyAdapter() {
             public void keyTyped(java.awt.event.KeyEvent evt) {
@@ -140,7 +141,8 @@ public class NuevaOrden extends javax.swing.JFrame {
             }
         });
 
-        tblDetalleOrden.setBackground(Color.decode("#C9A66B"));
+        tblDetalleOrden.setBackground(Color.decode("#662E1C"));
+        tblDetalleOrden.setFont(new java.awt.Font("Rockwell", 1, 14)); // NOI18N
         tblDetalleOrden.setForeground(java.awt.Color.white);
         tblDetalleOrden.setModel(new javax.swing.table.DefaultTableModel(
             new Object [][] {
@@ -152,7 +154,8 @@ public class NuevaOrden extends javax.swing.JFrame {
         ));
         jScrollPane1.setViewportView(tblDetalleOrden);
 
-        txtCliente.setBackground(Color.decode("#662E1C"));
+        txtCliente.setBackground(Color.decode("#AF4425"));
+        txtCliente.setFont(new java.awt.Font("Rockwell", 1, 14)); // NOI18N
         txtCliente.setForeground(java.awt.Color.white);
         txtCliente.addKeyListener(new java.awt.event.KeyAdapter() {
             public void keyTyped(java.awt.event.KeyEvent evt) {
@@ -160,17 +163,17 @@ public class NuevaOrden extends javax.swing.JFrame {
             }
         });
 
-        jLabel3.setFont(new java.awt.Font("FreeSans", 3, 18)); // NOI18N
-        jLabel3.setForeground(java.awt.Color.black);
+        jLabel3.setFont(new java.awt.Font("Rockwell", 1, 18)); // NOI18N
+        jLabel3.setForeground(Color.decode("#662E1C"));
         jLabel3.setText("Mesero:");
 
         lblTotal.setText("$0.0");
 
-        jLabel7.setFont(new java.awt.Font("FreeSans", 3, 18)); // NOI18N
-        jLabel7.setForeground(java.awt.Color.black);
+        jLabel7.setFont(new java.awt.Font("Rockwell", 1, 18)); // NOI18N
+        jLabel7.setForeground(Color.decode("#662E1C"));
         jLabel7.setText("Detalle Orden");
 
-        btnAgregagarProducto.setIcon(new javax.swing.ImageIcon(getClass().getResource("/Recursos/agregar32.jpg"))); // NOI18N
+        btnAgregagarProducto.setIcon(new javax.swing.ImageIcon(getClass().getResource("/IconosNew/AGREGARORDEN.png"))); // NOI18N
         btnAgregagarProducto.setHorizontalTextPosition(javax.swing.SwingConstants.CENTER);
         btnAgregagarProducto.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
@@ -178,7 +181,8 @@ public class NuevaOrden extends javax.swing.JFrame {
             }
         });
 
-        txtMesa.setBackground(Color.decode("#662E1C"));
+        txtMesa.setBackground(Color.decode("#AF4425"));
+        txtMesa.setFont(new java.awt.Font("Rockwell", 1, 14)); // NOI18N
         txtMesa.setForeground(java.awt.Color.white);
         txtMesa.addKeyListener(new java.awt.event.KeyAdapter() {
             public void keyTyped(java.awt.event.KeyEvent evt) {
@@ -186,25 +190,25 @@ public class NuevaOrden extends javax.swing.JFrame {
             }
         });
 
-        btnAceptar.setIcon(new javax.swing.ImageIcon(getClass().getResource("/Recursos/aceptar16.jpg"))); // NOI18N
+        btnAceptar.setIcon(new javax.swing.ImageIcon(getClass().getResource("/IconosNew/ENVIARORDEN.png"))); // NOI18N
         btnAceptar.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
                 btnAceptarActionPerformed(evt);
             }
         });
 
-        jLabel2.setFont(new java.awt.Font("FreeSans", 3, 18)); // NOI18N
-        jLabel2.setForeground(java.awt.Color.black);
+        jLabel2.setFont(new java.awt.Font("Rockwell", 1, 18)); // NOI18N
+        jLabel2.setForeground(Color.decode("#662E1C"));
         jLabel2.setText("N° mesa:");
 
         jLabel5.setText("TOTAL ORDEN:");
 
-        jLabel4.setFont(new java.awt.Font("FreeSans", 3, 18)); // NOI18N
-        jLabel4.setForeground(java.awt.Color.black);
+        jLabel4.setFont(new java.awt.Font("Rockwell", 1, 18)); // NOI18N
+        jLabel4.setForeground(Color.decode("#662E1C"));
         jLabel4.setText("Cliente:");
 
-        jLabel9.setFont(new java.awt.Font("FreeSans", 3, 18)); // NOI18N
-        jLabel9.setForeground(java.awt.Color.black);
+        jLabel9.setFont(new java.awt.Font("Rockwell", 1, 18)); // NOI18N
+        jLabel9.setForeground(Color.decode("#662E1C"));
         jLabel9.setText("Agregar Productos");
 
         lblMesa.setForeground(Color.decode("#90AFC5"));
@@ -213,20 +217,23 @@ public class NuevaOrden extends javax.swing.JFrame {
 
         lblCliente.setForeground(Color.decode("#90AFC5"));
 
-        lblFecha.setForeground(Color.decode("#90AFC5"));
+        lblFecha.setFont(new java.awt.Font("Rockwell", 1, 14)); // NOI18N
+        lblFecha.setForeground(Color.decode("#662E1C"));
 
-        lblHora.setForeground(Color.decode("#90AFC5"));
+        lblHora.setFont(new java.awt.Font("Rockwell", 1, 14)); // NOI18N
+        lblHora.setForeground(Color.decode("#662E1C"));
 
-        jLabel10.setFont(new java.awt.Font("FreeSans", 3, 18)); // NOI18N
-        jLabel10.setForeground(java.awt.Color.black);
+        jLabel10.setFont(new java.awt.Font("Rockwell", 1, 18)); // NOI18N
+        jLabel10.setForeground(Color.decode("#662E1C"));
         jLabel10.setText("Enviar Orden");
 
-        jLabel1.setFont(new java.awt.Font("FreeSans", 3, 18)); // NOI18N
-        jLabel1.setForeground(java.awt.Color.black);
+        jLabel1.setFont(new java.awt.Font("Rockwell", 1, 18)); // NOI18N
+        jLabel1.setForeground(Color.decode("#662E1C"));
         jLabel1.setText("Comentarios");
 
-        jTextArea2.setBackground(Color.decode("#662E1C"));
+        jTextArea2.setBackground(Color.decode("#AF4425"));
         jTextArea2.setColumns(20);
+        jTextArea2.setFont(new java.awt.Font("Rockwell", 1, 14)); // NOI18N
         jTextArea2.setForeground(java.awt.Color.white);
         jTextArea2.setRows(5);
         jScrollPane3.setViewportView(jTextArea2);
@@ -260,7 +267,7 @@ public class NuevaOrden extends javax.swing.JFrame {
                                         .addGroup(jpFondoLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                                             .addComponent(jLabel7)
                                             .addComponent(jScrollPane1, javax.swing.GroupLayout.PREFERRED_SIZE, 644, javax.swing.GroupLayout.PREFERRED_SIZE))
-                                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 50, Short.MAX_VALUE)
+                                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
                                         .addGroup(jpFondoLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                                             .addComponent(jLabel1)
                                             .addComponent(jScrollPane3, javax.swing.GroupLayout.PREFERRED_SIZE, 259, javax.swing.GroupLayout.PREFERRED_SIZE)))
@@ -268,11 +275,11 @@ public class NuevaOrden extends javax.swing.JFrame {
                                         .addGroup(jpFondoLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                                             .addGroup(jpFondoLayout.createSequentialGroup()
                                                 .addComponent(jLabel2)
-                                                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                                                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
                                                 .addComponent(txtMesa, javax.swing.GroupLayout.PREFERRED_SIZE, 181, javax.swing.GroupLayout.PREFERRED_SIZE))
                                             .addGroup(jpFondoLayout.createSequentialGroup()
                                                 .addComponent(jLabel3)
-                                                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
+                                                .addGap(18, 18, 18)
                                                 .addComponent(txtMesero, javax.swing.GroupLayout.PREFERRED_SIZE, 348, javax.swing.GroupLayout.PREFERRED_SIZE))
                                             .addGroup(jpFondoLayout.createSequentialGroup()
                                                 .addComponent(jLabel4)
@@ -285,15 +292,17 @@ public class NuevaOrden extends javax.swing.JFrame {
                                 .addGap(34, 34, 34))
                             .addGroup(jpFondoLayout.createSequentialGroup()
                                 .addGroup(jpFondoLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                                    .addComponent(btnAgregagarProducto, javax.swing.GroupLayout.PREFERRED_SIZE, 190, javax.swing.GroupLayout.PREFERRED_SIZE)
                                     .addGroup(jpFondoLayout.createSequentialGroup()
-                                        .addComponent(jLabel9)
-                                        .addGap(158, 158, 158)
-                                        .addComponent(jLabel10))
+                                        .addGap(10, 10, 10)
+                                        .addComponent(jLabel9)))
+                                .addGap(222, 222, 222)
+                                .addGroup(jpFondoLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                                    .addComponent(btnAceptar, javax.swing.GroupLayout.PREFERRED_SIZE, 188, javax.swing.GroupLayout.PREFERRED_SIZE)
                                     .addGroup(jpFondoLayout.createSequentialGroup()
-                                        .addComponent(btnAgregagarProducto, javax.swing.GroupLayout.PREFERRED_SIZE, 120, javax.swing.GroupLayout.PREFERRED_SIZE)
-                                        .addGap(159, 159, 159)
-                                        .addComponent(btnAceptar, javax.swing.GroupLayout.PREFERRED_SIZE, 120, javax.swing.GroupLayout.PREFERRED_SIZE)))
-                                .addGap(291, 291, 291)
+                                        .addGap(40, 40, 40)
+                                        .addComponent(jLabel10)))
+                                .addGap(415, 415, 415)
                                 .addComponent(lblCliente, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)))))
                 .addContainerGap())
         );
@@ -334,20 +343,18 @@ public class NuevaOrden extends javax.swing.JFrame {
                         .addComponent(jLabel1)
                         .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
                         .addComponent(jScrollPane3)))
-                .addGap(32, 32, 32)
+                .addGap(18, 18, 18)
                 .addGroup(jpFondoLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING)
                     .addComponent(lblCliente, javax.swing.GroupLayout.PREFERRED_SIZE, 20, javax.swing.GroupLayout.PREFERRED_SIZE)
                     .addGroup(jpFondoLayout.createSequentialGroup()
-                        .addGroup(jpFondoLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                            .addGroup(jpFondoLayout.createSequentialGroup()
-                                .addComponent(btnAgregagarProducto, javax.swing.GroupLayout.PREFERRED_SIZE, 75, javax.swing.GroupLayout.PREFERRED_SIZE)
-                                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                                .addComponent(jLabel9))
-                            .addGroup(jpFondoLayout.createSequentialGroup()
-                                .addComponent(btnAceptar, javax.swing.GroupLayout.PREFERRED_SIZE, 75, javax.swing.GroupLayout.PREFERRED_SIZE)
-                                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                                .addComponent(jLabel10)))
-                        .addGap(12, 12, 12)))
+                        .addGroup(jpFondoLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING, false)
+                            .addComponent(btnAgregagarProducto, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                            .addComponent(btnAceptar, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
+                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
+                        .addGroup(jpFondoLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
+                            .addComponent(jLabel9)
+                            .addComponent(jLabel10))
+                        .addGap(7, 7, 7)))
                 .addGap(564, 564, 564)
                 .addGroup(jpFondoLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
                     .addComponent(lblTotal, javax.swing.GroupLayout.PREFERRED_SIZE, 15, javax.swing.GroupLayout.PREFERRED_SIZE)
@@ -357,7 +364,7 @@ public class NuevaOrden extends javax.swing.JFrame {
 
         getContentPane().add(jpFondo, new org.netbeans.lib.awtextra.AbsoluteConstraints(0, 0, 1040, 768));
 
-        lblNuevaOrden.setIcon(new javax.swing.ImageIcon(getClass().getResource("/Background/34_Spicy_Neutrals03.png"))); // NOI18N
+        lblNuevaOrden.setIcon(new javax.swing.ImageIcon(getClass().getResource("/Background/Backgrund_05.png"))); // NOI18N
         getContentPane().add(lblNuevaOrden, new org.netbeans.lib.awtextra.AbsoluteConstraints(0, 0, 1030, 770));
 
         pack();
