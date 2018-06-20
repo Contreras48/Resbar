@@ -144,8 +144,8 @@ public void poputMenuCategoria(){
         txtBuscarProducto.setForeground(java.awt.Color.white);
 
         tblProducto.setAutoCreateRowSorter(true);
-        tblProducto.setBackground(Color.decode("#C9A66B"));
-        tblProducto.setFont(new java.awt.Font("Cantarell", 1, 14)); // NOI18N
+        tblProducto.setBackground(Color.decode("#662E1C"));
+        tblProducto.setFont(new java.awt.Font("Rockwell", 1, 14)); // NOI18N
         tblProducto.setForeground(java.awt.Color.white);
         tblProducto.setModel(new javax.swing.table.DefaultTableModel(
             new Object [][] {
@@ -207,9 +207,8 @@ public void poputMenuCategoria(){
         jTextField1.setForeground(java.awt.Color.white);
         jTextField1.setText("Buscar categoria");
 
-        tblCategoria.setBackground(Color.decode("#C9A66B")
-        );
-        tblCategoria.setFont(new java.awt.Font("Cantarell", 1, 15)); // NOI18N
+        tblCategoria.setBackground(Color.decode("#662E1C"));
+        tblCategoria.setFont(new java.awt.Font("Rockwell", 1, 14)); // NOI18N
         tblCategoria.setForeground(java.awt.Color.white);
         tblCategoria.setModel(new javax.swing.table.DefaultTableModel(
             new Object [][] {
