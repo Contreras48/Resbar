@@ -11,12 +11,13 @@ import javax.swing.JTable;
 import javax.swing.SpinnerNumberModel;
 import javax.swing.table.TableCellEditor;
 import vistas.MenuAgregar;
+import vistas.NuevaOrden;
 
 /**
  *
  * @author mateo
  */
-public class MiEditor extends AbstractCellEditor implements TableCellEditor, ActionListener{
+public class MiEditor1 extends AbstractCellEditor implements TableCellEditor, ActionListener{
     Boolean currentValue;
     JSpinner spinner;
     JButton button;
@@ -24,7 +25,7 @@ public class MiEditor extends AbstractCellEditor implements TableCellEditor, Act
     private final JTable jTable1;
     int c;
     
-    public MiEditor(JTable jTable1, int c, String comando) {
+    public MiEditor1(JTable jTable1, int c, String comando) {
         this.spinner = new JSpinner();
         SpinnerNumberModel spn = new SpinnerNumberModel(0, 0, 100, 1);
         this.spinner.setModel(spn);
@@ -40,10 +41,10 @@ public class MiEditor extends AbstractCellEditor implements TableCellEditor, Act
     public void actionPerformed(ActionEvent e) {
         fireEditingStopped();
         //System.out.println(button.getActionCommand());
-        int fila = MenuAgregar.tblMenuProductos.getSelectedRow();
+        int fila = NuevaOrden.tblDetalleOrden.getSelectedRow();
         int valor = 0;
-        if(MenuAgregar.tblMenuProductos.getValueAt(fila, c) != null){
-            valor = Integer.parseInt(String.valueOf(MenuAgregar.tblMenuProductos.getValueAt(fila, c)));
+        if(NuevaOrden.tblDetalleOrden.getValueAt(fila, c) != null){
+            valor = Integer.parseInt(String.valueOf(NuevaOrden.tblDetalleOrden.getValueAt(fila, c)));
             if (button.getActionCommand().equals("+")) {
                 valor += 1;
             } else {
@@ -52,7 +53,7 @@ public class MiEditor extends AbstractCellEditor implements TableCellEditor, Act
                 }
             }
         }
-        MenuAgregar.tblMenuProductos.setValueAt(valor, fila, c);
+        NuevaOrden.tblDetalleOrden.setValueAt(valor, fila, c);
     }
 
     @Override

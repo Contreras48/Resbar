@@ -5,7 +5,12 @@
  */
 package vistas;
 
+import Modelo.DetalleOrden;
+import Modelo.ErrorAplicacion;
+import Modelo.ManejadorOrdenes;
+import Modelo.Orden;
 import Personalizacion.MiEditor;
+import Personalizacion.MiEditor1;
 import Personalizacion.MiRender;
 import javax.swing.UIManager;
 import Personalizacion.RedondearBorde;
@@ -13,8 +18,12 @@ import java.awt.Color;
 import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
 import java.text.SimpleDateFormat;
+import java.util.ArrayList;
 import java.util.Calendar;
 import java.util.Date;
+import java.util.List;
+import java.util.logging.Level;
+import java.util.logging.Logger;
 import javax.swing.ImageIcon;
 import javax.swing.JMenuItem;
 import javax.swing.JOptionPane;
@@ -32,9 +41,9 @@ import resbar.Validacion;
 public class NuevaOrden extends javax.swing.JFrame {
 
     DefaultTableModel modelo;
-    Object[] titulos = {"Producto", "Cantidad"};
-    Object[][] bebidas = {{"Pepsi",      "2"},
-                          {"Café",       "1"}};
+    Object[] titulos = {"Producto","Aumentar" ,"Cantidad", "Disminuir"};
+    Object[][] detalle = {{"gfrg","" ,"0", ""}};
+    List<DetalleOrden> listaOrden = new ArrayList<>();
     /**
      * Creates new form NuevaOrden
      */
@@ -49,8 +58,8 @@ public class NuevaOrden extends javax.swing.JFrame {
         SimpleDateFormat formato=new SimpleDateFormat("dd/MM/YYYY");
         lblFecha.setText(formato.format(sistFecha));        
            
-        modelo= new DefaultTableModel(bebidas,titulos){
-            boolean[] editable = {false, true};
+        modelo= new DefaultTableModel(detalle,titulos){
+            boolean[] editable = {false, true,false,true};
             @Override
             public final boolean isCellEditable(int row, int column) {
                 return this.editable[column];
@@ -65,13 +74,18 @@ public class NuevaOrden extends javax.swing.JFrame {
 
         TableColumn agregarColumn;
         agregarColumn = tblDetalleOrden.getColumnModel().getColumn(1);
-        agregarColumn.setCellEditor(new MiEditor(tblDetalleOrden));
-        agregarColumn.setCellRenderer(new MiRender(true));
+        agregarColumn.setCellEditor(new MiEditor1(tblDetalleOrden,1,"+"));
+        agregarColumn.setCellRenderer(new MiRender(true, "+"));
+        agregarColumn = tblDetalleOrden.getColumnModel().getColumn(3);
+        agregarColumn.setCellEditor(new MiEditor1(tblDetalleOrden,3,"-"));
+        agregarColumn.setCellRenderer(new MiRender(true, "-"));
         tblDetalleOrden.setRowHeight(20);
         
         TableColumnModel tcm = tblDetalleOrden.getColumnModel();
         tcm.getColumn(0).setPreferredWidth(300);
-        tcm.getColumn(1).setPreferredWidth(50);
+        tcm.getColumn(1).setPreferredWidth(5);
+        tcm.getColumn(2).setPreferredWidth(50);
+        tcm.getColumn(3).setPreferredWidth(5);
         poputNuevaOrden();
     }
     

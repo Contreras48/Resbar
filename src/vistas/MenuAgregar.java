@@ -31,9 +31,9 @@ import javax.swing.table.TableRowSorter;
  * @author mateo
  */
 public class MenuAgregar extends javax.swing.JFrame {
-    DefaultTableModel modelo;
-    DefaultListModel modeloLista; 
-    Object[] titulos = {"Nombre", "Precio", "Cantidad"};
+    public static DefaultTableModel modelo;
+    public static DefaultListModel modeloLista; 
+    Object[] titulos = {"Nombre", "Precio",  "Aumentar", "Cantidad", "Disminuir"};
     List<Integer> ids = new ArrayList<>();
     List<Categoria> categoria;
 
@@ -45,7 +45,7 @@ public class MenuAgregar extends javax.swing.JFrame {
         setLocationRelativeTo(null);
         
         modelo = new DefaultTableModel(new Object[0][0], titulos){
-            boolean[] editable = {false, false, true};
+            boolean[] editable = {false, false, true, false, true};
             @Override
             public final boolean isCellEditable(int row, int column) {
                 return this.editable[column];
@@ -69,14 +69,19 @@ public class MenuAgregar extends javax.swing.JFrame {
       
         TableColumn agregarColumn;
         agregarColumn = tblMenuProductos.getColumnModel().getColumn(2);
-        agregarColumn.setCellEditor(new MiEditor(tblMenuProductos));
-        agregarColumn.setCellRenderer(new MiRender(true));
+        agregarColumn.setCellEditor(new MiEditor(tblMenuProductos, 3, "+"));
+        agregarColumn.setCellRenderer(new MiRender(true, "+"));
+        agregarColumn = tblMenuProductos.getColumnModel().getColumn(4);
+        agregarColumn.setCellEditor(new MiEditor(tblMenuProductos, 3, "-"));
+        agregarColumn.setCellRenderer(new MiRender(true, "-"));
         tblMenuProductos.setRowHeight(20);
         
         TableColumnModel tcm = tblMenuProductos.getColumnModel();
         tcm.getColumn(0).setPreferredWidth(300);
         tcm.getColumn(1).setPreferredWidth(50);
-        tcm.getColumn(2).setPreferredWidth(50);
+        tcm.getColumn(2).setPreferredWidth(5);
+        tcm.getColumn(3).setPreferredWidth(20);
+        tcm.getColumn(4).setPreferredWidth(5);
     }
     
     public void ListaCategoria(){
@@ -95,9 +100,10 @@ public class MenuAgregar extends javax.swing.JFrame {
     public void actualizarTabla(Integer index){
         limpiarModelo();
         for (int i = 0; i < categoria.get(index).productos.size(); i++) {
-            Object[] fila = new Object[2];
+            Object[] fila = new Object[5];
             fila[0] = categoria.get(index).productos.get(i).nombre;
             fila[1] = categoria.get(index).productos.get(i).precio;
+            fila[3] = 0;
             modelo.addRow(fila);
         }
     }
