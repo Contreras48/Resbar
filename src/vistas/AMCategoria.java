@@ -31,12 +31,11 @@ import static vistas.Administrar.tblCategoria;
  * @author mateo
  */
 public class AMCategoria extends javax.swing.JFrame {
-    Validacion validar= new Validacion();
-//    Administrar ad = new Administrar();
-     public boolean estado=false;
-     DefaultTableModel modeloC;
-     Administrar p2;
-      int[] anchoProducto = {50, 300, 300, 50};
+    Validacion validar = new Validacion();
+    public boolean estado = false;
+    DefaultTableModel modeloC;
+    Administrar p2;
+    int[] anchoProducto = {50, 300, 300, 50};
     int[] anchoCategoria = {50, 600};
     String[] titulosCategoria = {"Id", "Nombre"};
     String[] titulosProducto = {"Categoria", "Id_Prod", "Nombre", "Precio"};
@@ -50,7 +49,7 @@ public class AMCategoria extends javax.swing.JFrame {
         setLocationRelativeTo(null);
         txtId.setEditable(false);
         lblEtiqueta.setText(mensaje);
-        
+
         Categoria cat = new Categoria();
         try {
             txtId.setText(String.valueOf(ManejadorCategorias.obtenerId()));
@@ -71,21 +70,16 @@ public class AMCategoria extends javax.swing.JFrame {
             TableColumn tc = en.nextElement();
 //            tc.setCellRenderer(new RenderColor(new Color(179, 210, 238)));
         }
-         tabla.setRowHeight(20);
+        tabla.setRowHeight(20);
         TableColumnModel tcm = tabla.getColumnModel();
         for (int i = 0; i < ancho.length; i++) {
 //            tcm.getColumn(i).setPreferredWidth(ancho[i]);
         }
-        Administrar ad= new Administrar();
+        Administrar ad = new Administrar();
         ad.poputTable();
     }
     
-    
-
-//    AMCategoria() {
-//        throw new UnsupportedOperationException("Not supported yet."); //To change body of generated methods, choose Tools | Templates.
-//    }
-
+  
    
 
     /**
@@ -275,21 +269,21 @@ public class AMCategoria extends javax.swing.JFrame {
                 } catch (ErrorAplicacion ex) {
                     JOptionPane.showMessageDialog(null, ex.getMessage());
                 }
-            }else{
-            Categoria cat = new Categoria();
-            cat.idCategoria = Integer.parseInt(txtId.getText());
-            cat.nombre = String.valueOf(txtNombre.getText());
-            try {
-                ManejadorCategorias.insertar(cat);
-                JOptionPane.showMessageDialog(null, "agregado con exito");
-                Administrar.modeloCategoria.setRowCount(0);
-                Administrar.listaCategoria = ManejadorCategorias.obtener(false);
-                Administrar.cargarCategorias();
-                this.dispose();
-                limpiar();
-            } catch (ErrorAplicacion ex) {
-                JOptionPane.showMessageDialog(null, ex.getMessage());
-            }
+            } else {
+                Categoria cat = new Categoria();
+                cat.idCategoria = Integer.parseInt(txtId.getText());
+                cat.nombre = String.valueOf(txtNombre.getText());
+                try {
+                    ManejadorCategorias.insertar(cat);
+                    JOptionPane.showMessageDialog(null, "agregado con exito");
+                    Administrar.modeloCategoria.setRowCount(0);
+                    Administrar.listaCategoria = ManejadorCategorias.obtener(false);
+                    Administrar.cargarCategorias();
+                    this.dispose();
+                    limpiar();
+                } catch (ErrorAplicacion ex) {
+                    JOptionPane.showMessageDialog(null, ex.getMessage());
+                }
             }
         }
     }//GEN-LAST:event_btnGuardarActionPerformed

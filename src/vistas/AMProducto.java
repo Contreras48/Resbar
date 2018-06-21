@@ -31,37 +31,38 @@ public class AMProducto extends javax.swing.JFrame {
     String[] categorias;
     DefaultComboBoxModel<String> modelo = new DefaultComboBoxModel();
     Validacion validar= new Validacion();
-     public static List<Categoria> listaCategoria = new ArrayList<>();
+    public static List<Categoria> listaCategoria = new ArrayList<>();
+     
     /**
      * Creates new form AMProducto
      * @param mensaje
      */
     public AMProducto(String mensaje) {
-         initComponents();
+        initComponents();
         setLocationRelativeTo(null);
-        
+
         lblEtiqueta.setText(mensaje);
-        
+
         try {
-            listaCategoria= ManejadorCategorias.obtener(false);
+            listaCategoria = ManejadorCategorias.obtener(false);
         } catch (ErrorAplicacion ex) {
             Logger.getLogger(AMProducto.class.getName()).log(Level.SEVERE, null, ex);
         }
-        
+
         Categoria categoriaSeleccione = new Categoria();
         categoriaSeleccione.idCategoria = 0;
         categoriaSeleccione.nombre = "<< Seleccionar >>";
         listaCategoria.add(0, categoriaSeleccione);
-        categorias= new String[listaCategoria.size()];
+        categorias = new String[listaCategoria.size()];
         for (int i = 0; i < listaCategoria.size(); i++) {
-            categorias[i]= listaCategoria.get(i).nombre;
+            categorias[i] = listaCategoria.get(i).nombre;
         }
-        
-        modelo= new DefaultComboBoxModel<>(categorias);
+
+        modelo = new DefaultComboBoxModel<>(categorias);
         cmbCategoria.setModel(modelo);
         txtId.setEditable(false);
         rbtnCocina.setSelected(true);
-        
+
         Producto pro = new Producto();
         try {
             txtId.setText(String.valueOf(ManejadorProductos.obtenerId()));
@@ -339,10 +340,10 @@ public class AMProducto extends javax.swing.JFrame {
     }//GEN-LAST:event_btnCancelarActionPerformed
 
     private void btnGuardarActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnGuardarActionPerformed
-       lblNombre.setText("");
+        lblNombre.setText("");
         lblPrecio.setText("");
         lblCategoria.setText("");
-        
+
         Validacion validar = new Validacion();
         String cadena = txtNombre.getText();
         boolean label = validar.ValidarNulos(cadena);
@@ -358,22 +359,22 @@ public class AMProducto extends javax.swing.JFrame {
         if (cmbCategoria.getSelectedIndex() == 0) {
             lblCategoria.setText("campo obligatorio");
         }
-        
+
         if (lblEtiqueta.getText().equals("Modificar categoria")) {
-            Producto pro= new Producto();
-           pro.idProducto = Integer.parseInt(txtId.getText());
-                pro.nombre = String.valueOf(txtNombre.getText());
-                Categoria cat = new Categoria();
-                cat.idCategoria= cmbCategoria.getSelectedIndex()+1;
-                pro.categoria = cat;
-                pro.precio = Double.parseDouble(txtPrecio.getText());
-                char area;
-                if (rbtnCocina.isSelected() == true) {
-                    area = 'c';
-                } else {
-                    area =  'b';
-                }
-                pro.area = area;
+            Producto pro = new Producto();
+            pro.idProducto = Integer.parseInt(txtId.getText());
+            pro.nombre = String.valueOf(txtNombre.getText());
+            Categoria cat = new Categoria();
+            cat.idCategoria = cmbCategoria.getSelectedIndex() + 1;
+            pro.categoria = cat;
+            pro.precio = Double.parseDouble(txtPrecio.getText());
+            char area;
+            if (rbtnCocina.isSelected() == true) {
+                area = 'c';
+            } else {
+                area = 'b';
+            }
+            pro.area = area;
             try {
                 ManejadorProductos.actualizar(pro);
                 JOptionPane.showMessageDialog(null, "modificado con exito");
@@ -385,38 +386,38 @@ public class AMProducto extends javax.swing.JFrame {
             } catch (ErrorAplicacion ex) {
                 Logger.getLogger(AMProducto.class.getName()).log(Level.SEVERE, null, ex);
             }
-        
-        }else{
 
-        if(!txtId.getText().isEmpty() && txtNombre.getText().isEmpty() && cmbCategoria.getSelectedIndex()==0){
         } else {
-            try {
-                Producto pro = new Producto();
-                pro.idProducto = Integer.parseInt(txtId.getText());
-                pro.nombre = String.valueOf(txtNombre.getText());
-                Categoria cat = new Categoria();
-                cat.idCategoria= cmbCategoria.getSelectedIndex()+1;
-                pro.categoria = cat;
-                pro.precio = Double.parseDouble(txtPrecio.getText());
-                char area;
-                if (rbtnCocina.isSelected() == true) {
-                    area = 'c';
-                } else {
-                    area =  'b';
-                }
-                pro.area = area;
-                ManejadorProductos.insertar(pro);
-                JOptionPane.showMessageDialog(null, "agregado con exito");
-                Administrar.modeloProducto.setRowCount(0);
-                Administrar.listaCategoria = ManejadorCategorias.obtener(true);
-                Administrar.cargarProductos();
-                Limpiar();
-                this.dispose();
-            } catch (ErrorAplicacion ex) {
-                JOptionPane.showMessageDialog(null, ex.getMessage());
-            }
 
-        }
+            if (!txtId.getText().isEmpty() && txtNombre.getText().isEmpty() && cmbCategoria.getSelectedIndex() == 0) {
+            } else {
+                try {
+                    Producto pro = new Producto();
+                    pro.idProducto = Integer.parseInt(txtId.getText());
+                    pro.nombre = String.valueOf(txtNombre.getText());
+                    Categoria cat = new Categoria();
+                    cat.idCategoria = cmbCategoria.getSelectedIndex() + 1;
+                    pro.categoria = cat;
+                    pro.precio = Double.parseDouble(txtPrecio.getText());
+                    char area;
+                    if (rbtnCocina.isSelected() == true) {
+                        area = 'c';
+                    } else {
+                        area = 'b';
+                    }
+                    pro.area = area;
+                    ManejadorProductos.insertar(pro);
+                    JOptionPane.showMessageDialog(null, "agregado con exito");
+                    Administrar.modeloProducto.setRowCount(0);
+                    Administrar.listaCategoria = ManejadorCategorias.obtener(true);
+                    Administrar.cargarProductos();
+                    Limpiar();
+                    this.dispose();
+                } catch (ErrorAplicacion ex) {
+                    JOptionPane.showMessageDialog(null, ex.getMessage());
+                }
+
+            }
         }
     }//GEN-LAST:event_btnGuardarActionPerformed
 

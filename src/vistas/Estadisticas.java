@@ -5,19 +5,40 @@
  */
 package vistas;
 
+import Modelo.Categoria;
+import Modelo.ErrorAplicacion;
+import Modelo.ManejadorOrdenes;
+import Modelo.Orden;
 import Personalizacion.RenderColor;
 import java.awt.Color;
+import java.sql.Date;
+import java.text.ParseException;
+import java.text.SimpleDateFormat;
+import java.util.ArrayList;
+import java.util.Arrays;
+import java.util.Calendar;
 import java.util.Enumeration;
+import java.util.List;
+import java.util.logging.Level;
+import java.util.logging.Logger;
+import static javax.print.attribute.Size2DSyntax.MM;
 import javax.swing.DefaultComboBoxModel;
 import javax.swing.ImageIcon;
+import javax.swing.JOptionPane;
+import javax.swing.table.DefaultTableModel;
 import javax.swing.table.TableColumn;
 import javax.swing.table.TableColumnModel;
+import static vistas.Administrar.modeloProducto;
+import static vistas.Administrar.tblProducto;
 
 /**
  *
  * @author mateo
  */
 public class Estadisticas extends javax.swing.JPanel {
+    public static List<Orden> listaOrden = new ArrayList<>();
+    public static DefaultTableModel modeloEstadistica;
+    String[] titulosEstadistica = {"Fecha", "Ventas"};
 
     /**
      * Creates new form Estadisticas
@@ -25,60 +46,32 @@ public class Estadisticas extends javax.swing.JPanel {
     public Estadisticas() {
         initComponents();
         personalizarComponentes();
-//        setIconImage(new ImageIcon(getClass().getResource("/Recursos/restaur.png")).getImage());
-//                this.setResizable(false);
-        dia();
-        mes();
-        año();
+
+        modeloEstadistica = new DefaultTableModel(new Object[0][0], titulosEstadistica) {
+            @Override
+            public final boolean isCellEditable(int row, int column) {
+                return false;
+            }
+        };
+        tblEstadisticas.setModel(modeloEstadistica);
+    }
+    
+    public int obtenerUltimoDiaMes(int anio, int mes) {
+
+        Calendar cal = Calendar.getInstance();
+        cal.set(anio, mes - 1, 1);
+        return cal.getActualMaximum(Calendar.DAY_OF_MONTH);
+
     }
 
-    public void dia() {
-        DefaultComboBoxModel dia = new DefaultComboBoxModel();
-        for (int i = 1; i <= 31; i++) {
-            dia.addElement(i);
-            cmbDia.setModel(dia);
-        }
-    }
-    public void mes(){
-        cmbMes.addItem("Enero");
-        cmbMes.addItem("Febrero");
-        cmbMes.addItem("Marzo");
-        cmbMes.addItem("Abril");
-        cmbMes.addItem("Mayo");
-        cmbMes.addItem("Junio");
-        cmbMes.addItem("Julio");
-        cmbMes.addItem("Agosto");
-        cmbMes.addItem("Septiembre");
-        cmbMes.addItem("Octubre");
-        cmbMes.addItem("Noviembre");
-        cmbMes.addItem("Diciembre");
-               
-    }
-    public void año(){
-        cmbAño.addItem("2011");
-        cmbAño.addItem("2012");
-        cmbAño.addItem("2013");
-        cmbAño.addItem("2014");
-        cmbAño.addItem("2015");
-        cmbAño.addItem("2016");
-        cmbAño.addItem("2017");
-        cmbAño.addItem("2018");
-                           
-    }
-    public final void personalizarComponentes(){
+
+    public final void personalizarComponentes() {
         Enumeration<TableColumn> en = tblEstadisticas.getColumnModel().getColumns();
         while (en.hasMoreElements()) {
             TableColumn tc = en.nextElement();
-            //tc.setCellRenderer(new RenderColor(new Color(179, 210, 238)));
         }
-        
+
         tblEstadisticas.setRowHeight(20);
-//        TableColumnModel tcm = tblEstadisticas.getColumnModel();
-//        tcm.getColumn(0).setPreferredWidth(50);
-//        tcm.getColumn(1).setPreferredWidth(30);
-//        tcm.getColumn(2).setPreferredWidth(200);
-//        tcm.getColumn(3).setPreferredWidth(200);
-//        tcm.getColumn(4).setPreferredWidth(100);
     }
 
     /**
@@ -91,8 +84,7 @@ public class Estadisticas extends javax.swing.JPanel {
     private void initComponents() {
 
         filtroEstadisticas = new javax.swing.ButtonGroup();
-        jLabel10 = new javax.swing.JLabel();
-        jLabel9 = new javax.swing.JLabel();
+        jdcCalendario = new com.toedter.calendar.JDateChooser();
         jLabel8 = new javax.swing.JLabel();
         jLabel6 = new javax.swing.JLabel();
         jScrollPane1 = new javax.swing.JScrollPane();
@@ -101,31 +93,18 @@ public class Estadisticas extends javax.swing.JPanel {
         rbtnMes = new javax.swing.JRadioButton();
         rbtnAnio = new javax.swing.JRadioButton();
         rbtnDia = new javax.swing.JRadioButton();
-        cmbDia = new javax.swing.JComboBox<>();
-        cmbMes = new javax.swing.JComboBox<>();
-        cmbAño = new javax.swing.JComboBox<>();
         lblEstadisticas = new javax.swing.JLabel();
+        jLabel1 = new javax.swing.JLabel();
 
         setBackground(Color.decode("#2A3132"));
         setLayout(new org.netbeans.lib.awtextra.AbsoluteLayout());
-
-        jLabel10.setBackground(new java.awt.Color(255, 255, 255));
-        jLabel10.setFont(new java.awt.Font("Rockwell", 1, 14)); // NOI18N
-        jLabel10.setForeground(Color.decode("#AF4425"));
-        jLabel10.setText("Seleccione:");
-        add(jLabel10, new org.netbeans.lib.awtextra.AbsoluteConstraints(420, 80, -1, 40));
-
-        jLabel9.setBackground(new java.awt.Color(255, 255, 255));
-        jLabel9.setFont(new java.awt.Font("Rockwell", 1, 14)); // NOI18N
-        jLabel9.setForeground(Color.decode("#AF4425"));
-        jLabel9.setText("Seleccione:");
-        add(jLabel9, new org.netbeans.lib.awtextra.AbsoluteConstraints(210, 80, -1, 40));
+        add(jdcCalendario, new org.netbeans.lib.awtextra.AbsoluteConstraints(130, 70, 180, -1));
 
         jLabel8.setBackground(new java.awt.Color(255, 255, 255));
-        jLabel8.setFont(new java.awt.Font("Rockwell", 1, 14)); // NOI18N
+        jLabel8.setFont(new java.awt.Font("Rockwell", 1, 18)); // NOI18N
         jLabel8.setForeground(Color.decode("#AF4425"));
         jLabel8.setText("Seleccione:");
-        add(jLabel8, new org.netbeans.lib.awtextra.AbsoluteConstraints(10, 88, -1, 30));
+        add(jLabel8, new org.netbeans.lib.awtextra.AbsoluteConstraints(10, 60, -1, 30));
 
         jLabel6.setBackground(new java.awt.Color(255, 255, 255));
         jLabel6.setFont(new java.awt.Font("Rockwell", 1, 36)); // NOI18N
@@ -138,82 +117,338 @@ public class Estadisticas extends javax.swing.JPanel {
         tblEstadisticas.setForeground(new java.awt.Color(255, 255, 255));
         tblEstadisticas.setModel(new javax.swing.table.DefaultTableModel(
             new Object [][] {
-                {null, null, null, null},
-                {null, null, null, null},
-                {null, null, null, null},
-                {null, null, null, null}
+                {null, null},
+                {null, null},
+                {null, null},
+                {null, null}
             },
             new String [] {
-                "Title 1", "Title 2", "Title 3", "Title 4"
+                "Fecha", "Ventas"
             }
         ));
         tblEstadisticas.setSelectionBackground(Color.decode("#EBDCB2"));
         jScrollPane1.setViewportView(tblEstadisticas);
 
-        add(jScrollPane1, new org.netbeans.lib.awtextra.AbsoluteConstraints(10, 207, 668, 339));
+        add(jScrollPane1, new org.netbeans.lib.awtextra.AbsoluteConstraints(10, 230, 668, 339));
 
         jLabel7.setBackground(new java.awt.Color(255, 255, 255));
         jLabel7.setFont(new java.awt.Font("Rockwell", 1, 18)); // NOI18N
         jLabel7.setForeground(Color.decode("#662E1C"));
         jLabel7.setText("Filtrar Estadisticas Por:");
-        add(jLabel7, new org.netbeans.lib.awtextra.AbsoluteConstraints(10, 60, -1, -1));
+        add(jLabel7, new org.netbeans.lib.awtextra.AbsoluteConstraints(20, 120, -1, -1));
 
         filtroEstadisticas.add(rbtnMes);
         rbtnMes.setFont(new java.awt.Font("Rockwell", 1, 14)); // NOI18N
         rbtnMes.setForeground(Color.decode("#662E1C"));
         rbtnMes.setText("Mes");
         rbtnMes.setOpaque(false);
-        add(rbtnMes, new org.netbeans.lib.awtextra.AbsoluteConstraints(230, 120, -1, -1));
+        rbtnMes.addMouseListener(new java.awt.event.MouseAdapter() {
+            public void mouseClicked(java.awt.event.MouseEvent evt) {
+                rbtnMesMouseClicked(evt);
+            }
+        });
+        add(rbtnMes, new org.netbeans.lib.awtextra.AbsoluteConstraints(160, 160, -1, -1));
 
         filtroEstadisticas.add(rbtnAnio);
         rbtnAnio.setFont(new java.awt.Font("Rockwell", 1, 14)); // NOI18N
         rbtnAnio.setForeground(Color.decode("#662E1C"));
         rbtnAnio.setText("Año");
         rbtnAnio.setOpaque(false);
-        add(rbtnAnio, new org.netbeans.lib.awtextra.AbsoluteConstraints(450, 120, -1, -1));
+        rbtnAnio.addMouseListener(new java.awt.event.MouseAdapter() {
+            public void mouseClicked(java.awt.event.MouseEvent evt) {
+                rbtnAnioMouseClicked(evt);
+            }
+        });
+        add(rbtnAnio, new org.netbeans.lib.awtextra.AbsoluteConstraints(260, 160, -1, -1));
 
         filtroEstadisticas.add(rbtnDia);
         rbtnDia.setFont(new java.awt.Font("Rockwell", 1, 14)); // NOI18N
         rbtnDia.setForeground(Color.decode("#662E1C"));
         rbtnDia.setText("Dia");
         rbtnDia.setOpaque(false);
-        add(rbtnDia, new org.netbeans.lib.awtextra.AbsoluteConstraints(20, 120, -1, -1));
-
-        cmbDia.setBackground(Color.decode("#C9A66B"));
-        cmbDia.setFont(new java.awt.Font("Rockwell", 1, 14)); // NOI18N
-        cmbDia.setForeground(Color.decode("#662E1C"));
-        add(cmbDia, new org.netbeans.lib.awtextra.AbsoluteConstraints(90, 120, 97, 34));
-
-        cmbMes.setBackground(Color.decode("#C9A66B"));
-        cmbMes.setFont(new java.awt.Font("Rockwell", 1, 14)); // NOI18N
-        cmbMes.setForeground(Color.decode("#662E1C"));
-        add(cmbMes, new org.netbeans.lib.awtextra.AbsoluteConstraints(290, 120, 106, 34));
-
-        cmbAño.setBackground(Color.decode("#C9A66B"));
-        cmbAño.setFont(new java.awt.Font("Rockwell", 1, 14)); // NOI18N
-        cmbAño.setForeground(Color.decode("#662E1C"));
-        add(cmbAño, new org.netbeans.lib.awtextra.AbsoluteConstraints(510, 120, 101, 34));
+        rbtnDia.addMouseListener(new java.awt.event.MouseAdapter() {
+            public void mouseClicked(java.awt.event.MouseEvent evt) {
+                rbtnDiaMouseClicked(evt);
+            }
+        });
+        add(rbtnDia, new org.netbeans.lib.awtextra.AbsoluteConstraints(40, 160, -1, -1));
 
         lblEstadisticas.setIcon(new javax.swing.ImageIcon(getClass().getResource("/Background/34_Spicy_Neutrals02.png"))); // NOI18N
         add(lblEstadisticas, new org.netbeans.lib.awtextra.AbsoluteConstraints(0, 0, 690, 710));
+
+        jLabel1.setText("jLabel1");
+        add(jLabel1, new org.netbeans.lib.awtextra.AbsoluteConstraints(380, 100, -1, -1));
     }// </editor-fold>//GEN-END:initComponents
+
+    private void rbtnDiaMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_rbtnDiaMouseClicked
+        SimpleDateFormat Formato = new SimpleDateFormat("yyy-MM-dd");
+        if (jdcCalendario.getDate() != null) {
+            String año = Integer.toString(jdcCalendario.getCalendar().get(Calendar.YEAR));
+            String mes = "0" + Integer.toString(jdcCalendario.getCalendar().get(Calendar.MONTH) + 1);
+            String dia = Integer.toString(jdcCalendario.getCalendar().get(Calendar.DAY_OF_MONTH));
+            //String fecha;
+            //fecha= dia+"-"+"0"+mes+"-"+año;
+            System.out.println(año);
+            System.out.println(mes);
+            System.out.println(dia);
+
+            if (rbtnDia.isSelected()) {
+                SimpleDateFormat formatoDelTexto = new SimpleDateFormat("yyyy-MM-dd");
+                String Fecha = año + "-" + mes + "-" + dia;
+                Date fecha = null;
+                try {
+
+                    fecha = new Date(formatoDelTexto.parse(Fecha).getTime());
+
+                } catch (ParseException ex) {
+
+                    ex.printStackTrace();
+
+                }
+                System.out.println(fecha);
+                try {
+                    modeloEstadistica.setRowCount(0);
+                    listaOrden = ManejadorOrdenes.obtenerVentas(fecha);
+                    Object[] vector = new Object[2];
+                    for (int i = 0; i < listaOrden.size(); i++) {
+
+                        vector[0] = listaOrden.get(i).fecha;
+                        vector[1] = listaOrden.get(i).total;
+                    }
+
+                    modeloEstadistica.addRow(vector);
+
+                } catch (ErrorAplicacion ex) {
+                    JOptionPane.showMessageDialog(null, ex.getMessage());
+                }
+
+            } else {
+                JOptionPane.showMessageDialog(null, "debe de elegir fecha");
+
+            }
+        }
+
+    }//GEN-LAST:event_rbtnDiaMouseClicked
+
+    private void rbtnMesMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_rbtnMesMouseClicked
+           SimpleDateFormat Formato = new SimpleDateFormat("yyy-MM-dd");
+        if (jdcCalendario.getDate() != null) {
+            String año = Integer.toString(jdcCalendario.getCalendar().get(Calendar.YEAR));
+            String mes = "0" + Integer.toString(jdcCalendario.getCalendar().get(Calendar.MONTH) + 1);
+            String dia = Integer.toString(jdcCalendario.getCalendar().get(Calendar.DAY_OF_MONTH));
+            //String fecha;
+            //fecha= dia+"-"+"0"+mes+"-"+año;
+            System.out.println(año);
+            System.out.println(mes);
+            System.out.println(dia);
+
+            if (rbtnMes.isSelected()) {
+
+                String dia1 = "01";
+                String dia2;
+                int m = Integer.parseInt(mes);
+                int a = Integer.parseInt(año);
+
+                String fecha1, fecha2;
+
+                int ultimoDiaMes = obtenerUltimoDiaMes(a, m);
+                dia2 = String.valueOf(ultimoDiaMes);
+
+                SimpleDateFormat formatoDelTexto = new SimpleDateFormat("yyyy-MM-dd");
+                String Fecha1 = año + "-" + mes + "-" + dia1;
+                String Fecha2 = año + "-" + mes + "-" + dia2;
+                Date fe1 = null;
+                Date fe2 = null;
+                try {
+
+                    fe1 = new Date(formatoDelTexto.parse(Fecha1).getTime());
+                    fe2 = new Date(formatoDelTexto.parse(Fecha2).getTime());
+
+                } catch (ParseException ex) {
+
+                    ex.printStackTrace();
+
+                }
+
+                try {
+                    String f = mes + "-" + año;
+                    modeloEstadistica.setRowCount(0);
+                    listaOrden = ManejadorOrdenes.obtenerVentas(fe1, fe2);
+                    Object[] vector = new Object[2];
+                    double total = 0;
+                    for (int i = 0; i < listaOrden.size(); i++) {
+                        total = total + listaOrden.get(i).total;
+                    }
+                    vector[0] = f;
+                    vector[1] = total;
+                    modeloEstadistica.addRow(vector);
+
+                } catch (ErrorAplicacion ex) {
+                    JOptionPane.showMessageDialog(null, ex.getMessage());
+                }
+            }
+
+        } else {
+            JOptionPane.showMessageDialog(null, "debe de elejir fecha");
+
+        }
+    }//GEN-LAST:event_rbtnMesMouseClicked
+
+    private void rbtnAnioMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_rbtnAnioMouseClicked
+        SimpleDateFormat Formato = new SimpleDateFormat("yyy-MM-dd");
+        if (jdcCalendario.getDate() != null) {
+            String año = Integer.toString(jdcCalendario.getCalendar().get(Calendar.YEAR));
+            String mes = "0" + Integer.toString(jdcCalendario.getCalendar().get(Calendar.MONTH) + 1);
+            String dia = Integer.toString(jdcCalendario.getCalendar().get(Calendar.DAY_OF_MONTH));
+            //String fecha;
+            //fecha= dia+"-"+"0"+mes+"-"+año;
+            System.out.println(año);
+            System.out.println(mes);
+            System.out.println(dia);
+
+            if (rbtnAnio.isSelected()) {
+
+                String dia1 = "01";
+                String dia2;
+                int m = Integer.parseInt("12");
+                int a = Integer.parseInt(año);
+
+                String fecha1, fecha2;
+
+                int ultimoDiaMes = obtenerUltimoDiaMes(a, m);
+                dia2 = String.valueOf(ultimoDiaMes);
+
+                SimpleDateFormat formatoDelTexto = new SimpleDateFormat("yyyy-MM-dd");
+                String Fecha1 = año + "-" + "01" + "-" + dia1;
+                String Fecha2 = año + "-" + "12" + "-" + dia2;
+                Date fe1 = null;
+                Date fe2 = null;
+                try {
+
+                    fe1 = new Date(formatoDelTexto.parse(Fecha1).getTime());
+                    fe2 = new Date(formatoDelTexto.parse(Fecha2).getTime());
+
+                } catch (ParseException ex) {
+
+                    ex.printStackTrace();
+
+                }
+                try {
+                    double[] vector2 = new double[12];
+
+                    modeloEstadistica.setRowCount(0);
+                    listaOrden = ManejadorOrdenes.obtenerVentas(fe1, fe2);
+
+                    ArrayList<String> guardarMes = new ArrayList<String>();
+                    for (int i = 0; i < listaOrden.size(); i++) {
+                        String ff = listaOrden.get(i).fecha.toString();
+                        String[] vec = ff.split("-");
+                        guardarMes.add(vec[0] + "-" + vec[1]);
+                    }
+
+                    for (int i = 0; i < guardarMes.size(); i++) {
+                        for (int j = 0; j < guardarMes.size() - 1; j++) {
+                            if (i != j) {
+                                if (guardarMes.get(i).equals(guardarMes.get(j))) {
+                                    guardarMes.set(i, "");
+                                }
+                            }
+                        }
+                    }
+
+                    ArrayList<String> cambio = new ArrayList<String>();
+                    int pos = 0;
+                    for (int k = 0; k <= guardarMes.size() - 1; k++) {
+                        if (guardarMes.get(k) != "") {
+                            cambio.add(guardarMes.get(k));
+                        } else {
+
+                        }
+                    }
+                    Object[] ca = new Object[cambio.size()];
+                    for (int i = 0; i < cambio.size(); i++) {
+                        ca[i] = cambio.get(i);
+                    }
+
+                    Arrays.sort(ca);
+
+                    Object[] prueba = new Object[2];
+
+                    double total = 0;
+                    for (int i = 0; i < listaOrden.size(); i++) {
+                        String ff = listaOrden.get(i).fecha.toString();
+                        String[] vec = ff.split("-");
+
+                        if ((vec[0] + "-" + vec[1]).equals(ca[0])) {
+                            vector2[0] = vector2[0] + listaOrden.get(i).total;
+                        }
+                        if ((vec[0] + "-" + vec[1]).equals(ca[1])) {
+                            vector2[1] = vector2[1] + listaOrden.get(i).total;
+                        }
+                        if ((vec[0] + "-" + vec[1]).equals(ca[2])) {
+                            vector2[2] = vector2[2] + listaOrden.get(i).total;
+                        }
+                        if ((vec[0] + "-" + vec[1]).equals(ca[3])) {
+                            vector2[3] = vector2[3] + listaOrden.get(i).total;
+                        }
+                        if ((vec[0] + "-" + vec[1]).equals(ca[4])) {
+                            vector2[4] = vector2[4] + listaOrden.get(i).total;
+                        }
+                        if ((vec[0] + "-" + vec[1]).equals(ca[5])) {
+                            vector2[5] = vector2[5] + listaOrden.get(i).total;
+                        }
+                        if ((vec[0] + "-" + vec[1]).equals(ca[6])) {
+                            vector2[6] = vector2[6] + listaOrden.get(i).total;
+                        }
+                        if ((vec[0] + "-" + vec[1]).equals(ca[7])) {
+                            vector2[7] = vector2[7] + listaOrden.get(i).total;
+                        }
+                        if ((vec[0] + "-" + vec[1]).equals(ca[8])) {
+                            vector2[8] = vector2[8] + listaOrden.get(i).total;
+                        }
+                        if ((vec[0] + "-" + vec[1]).equals(ca[9])) {
+                            vector2[9] = vector2[9] + listaOrden.get(i).total;
+                        }
+                        if ((vec[0] + "-" + vec[1]).equals(ca[10])) {
+                            vector2[10] = vector2[10] + listaOrden.get(i).total;
+                        }
+                        if ((vec[0] + "-" + vec[1]).equals(ca[11])) {
+                            vector2[11] = vector2[11] + listaOrden.get(i).total;
+                        }
+                    }
+
+                    Object[] vector = new Object[2];
+
+                    for (int i = 0; i < 12; i++) {
+                        vector[0] = ca[i];
+                        vector[1] = vector2[i];
+                        modeloEstadistica.addRow(vector);
+
+                    }
+
+                } catch (ErrorAplicacion ex) {
+                    JOptionPane.showMessageDialog(null, ex.getMessage());
+                }
+            }
+
+        } else {
+            JOptionPane.showMessageDialog(null, "debe de elegir fecha");
+        }
+    }//GEN-LAST:event_rbtnAnioMouseClicked
 
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
-    private javax.swing.JComboBox<String> cmbAño;
-    private javax.swing.JComboBox<String> cmbDia;
-    private javax.swing.JComboBox<String> cmbMes;
     private javax.swing.ButtonGroup filtroEstadisticas;
-    private javax.swing.JLabel jLabel10;
+    private javax.swing.JLabel jLabel1;
     private javax.swing.JLabel jLabel6;
     private javax.swing.JLabel jLabel7;
     private javax.swing.JLabel jLabel8;
-    private javax.swing.JLabel jLabel9;
     private javax.swing.JScrollPane jScrollPane1;
+    private com.toedter.calendar.JDateChooser jdcCalendario;
     private javax.swing.JLabel lblEstadisticas;
     private javax.swing.JRadioButton rbtnAnio;
     private javax.swing.JRadioButton rbtnDia;
     private javax.swing.JRadioButton rbtnMes;
-    private javax.swing.JTable tblEstadisticas;
+    public javax.swing.JTable tblEstadisticas;
     // End of variables declaration//GEN-END:variables
 }

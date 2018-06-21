@@ -27,41 +27,10 @@
     <Property name="useNullLayout" type="boolean" value="false"/>
   </Layout>
   <SubComponents>
-    <Component class="javax.swing.JLabel" name="jLabel10">
-      <Properties>
-        <Property name="background" type="java.awt.Color" editor="org.netbeans.beaninfo.editors.ColorEditor">
-          <Color blue="ff" green="ff" red="ff" type="rgb"/>
-        </Property>
-        <Property name="font" type="java.awt.Font" editor="org.netbeans.beaninfo.editors.FontEditor">
-          <Font name="Rockwell" size="14" style="1"/>
-        </Property>
-        <Property name="foreground" type="java.awt.Color" editor="org.netbeans.modules.form.RADConnectionPropertyEditor">
-          <Connection code="Color.decode(&quot;#AF4425&quot;)" type="code"/>
-        </Property>
-        <Property name="text" type="java.lang.String" value="Seleccione:"/>
-      </Properties>
+    <Component class="com.toedter.calendar.JDateChooser" name="jdcCalendario">
       <Constraints>
         <Constraint layoutClass="org.netbeans.modules.form.compat2.layouts.DesignAbsoluteLayout" value="org.netbeans.modules.form.compat2.layouts.DesignAbsoluteLayout$AbsoluteConstraintsDescription">
-          <AbsoluteConstraints x="420" y="80" width="-1" height="40"/>
-        </Constraint>
-      </Constraints>
-    </Component>
-    <Component class="javax.swing.JLabel" name="jLabel9">
-      <Properties>
-        <Property name="background" type="java.awt.Color" editor="org.netbeans.beaninfo.editors.ColorEditor">
-          <Color blue="ff" green="ff" red="ff" type="rgb"/>
-        </Property>
-        <Property name="font" type="java.awt.Font" editor="org.netbeans.beaninfo.editors.FontEditor">
-          <Font name="Rockwell" size="14" style="1"/>
-        </Property>
-        <Property name="foreground" type="java.awt.Color" editor="org.netbeans.modules.form.RADConnectionPropertyEditor">
-          <Connection code="Color.decode(&quot;#AF4425&quot;)" type="code"/>
-        </Property>
-        <Property name="text" type="java.lang.String" value="Seleccione:"/>
-      </Properties>
-      <Constraints>
-        <Constraint layoutClass="org.netbeans.modules.form.compat2.layouts.DesignAbsoluteLayout" value="org.netbeans.modules.form.compat2.layouts.DesignAbsoluteLayout$AbsoluteConstraintsDescription">
-          <AbsoluteConstraints x="210" y="80" width="-1" height="40"/>
+          <AbsoluteConstraints x="130" y="70" width="180" height="-1"/>
         </Constraint>
       </Constraints>
     </Component>
@@ -71,7 +40,7 @@
           <Color blue="ff" green="ff" red="ff" type="rgb"/>
         </Property>
         <Property name="font" type="java.awt.Font" editor="org.netbeans.beaninfo.editors.FontEditor">
-          <Font name="Rockwell" size="14" style="1"/>
+          <Font name="Rockwell" size="18" style="1"/>
         </Property>
         <Property name="foreground" type="java.awt.Color" editor="org.netbeans.modules.form.RADConnectionPropertyEditor">
           <Connection code="Color.decode(&quot;#AF4425&quot;)" type="code"/>
@@ -80,7 +49,7 @@
       </Properties>
       <Constraints>
         <Constraint layoutClass="org.netbeans.modules.form.compat2.layouts.DesignAbsoluteLayout" value="org.netbeans.modules.form.compat2.layouts.DesignAbsoluteLayout$AbsoluteConstraintsDescription">
-          <AbsoluteConstraints x="10" y="88" width="-1" height="30"/>
+          <AbsoluteConstraints x="10" y="60" width="-1" height="30"/>
         </Constraint>
       </Constraints>
     </Component>
@@ -109,7 +78,7 @@
       </AuxValues>
       <Constraints>
         <Constraint layoutClass="org.netbeans.modules.form.compat2.layouts.DesignAbsoluteLayout" value="org.netbeans.modules.form.compat2.layouts.DesignAbsoluteLayout$AbsoluteConstraintsDescription">
-          <AbsoluteConstraints x="10" y="207" width="668" height="339"/>
+          <AbsoluteConstraints x="10" y="230" width="668" height="339"/>
         </Constraint>
       </Constraints>
 
@@ -127,11 +96,9 @@
               <Color blue="ff" green="ff" red="ff" type="rgb"/>
             </Property>
             <Property name="model" type="javax.swing.table.TableModel" editor="org.netbeans.modules.form.editors2.TableModelEditor">
-              <Table columnCount="4" rowCount="4">
-                <Column editable="true" title="Title 1" type="java.lang.Object"/>
-                <Column editable="true" title="Title 2" type="java.lang.Object"/>
-                <Column editable="true" title="Title 3" type="java.lang.Object"/>
-                <Column editable="true" title="Title 4" type="java.lang.Object"/>
+              <Table columnCount="2" rowCount="4">
+                <Column editable="true" title="Fecha" type="java.lang.Object"/>
+                <Column editable="true" title="Ventas" type="java.lang.Object"/>
               </Table>
             </Property>
             <Property name="columnModel" type="javax.swing.table.TableColumnModel" editor="org.netbeans.modules.form.editors2.TableColumnModelEditor">
@@ -165,6 +132,9 @@
               <TableHeader reorderingAllowed="true" resizingAllowed="true"/>
             </Property>
           </Properties>
+          <AuxValues>
+            <AuxValue name="JavaCodeGenerator_VariableModifier" type="java.lang.Integer" value="1"/>
+          </AuxValues>
         </Component>
       </SubComponents>
     </Container>
@@ -183,7 +153,7 @@
       </Properties>
       <Constraints>
         <Constraint layoutClass="org.netbeans.modules.form.compat2.layouts.DesignAbsoluteLayout" value="org.netbeans.modules.form.compat2.layouts.DesignAbsoluteLayout$AbsoluteConstraintsDescription">
-          <AbsoluteConstraints x="10" y="60" width="-1" height="-1"/>
+          <AbsoluteConstraints x="20" y="120" width="-1" height="-1"/>
         </Constraint>
       </Constraints>
     </Component>
@@ -201,9 +171,12 @@
         <Property name="text" type="java.lang.String" value="Mes"/>
         <Property name="opaque" type="boolean" value="false"/>
       </Properties>
+      <Events>
+        <EventHandler event="mouseClicked" listener="java.awt.event.MouseListener" parameters="java.awt.event.MouseEvent" handler="rbtnMesMouseClicked"/>
+      </Events>
       <Constraints>
         <Constraint layoutClass="org.netbeans.modules.form.compat2.layouts.DesignAbsoluteLayout" value="org.netbeans.modules.form.compat2.layouts.DesignAbsoluteLayout$AbsoluteConstraintsDescription">
-          <AbsoluteConstraints x="230" y="120" width="-1" height="-1"/>
+          <AbsoluteConstraints x="160" y="160" width="-1" height="-1"/>
         </Constraint>
       </Constraints>
     </Component>
@@ -221,9 +194,12 @@
         <Property name="text" type="java.lang.String" value="A&#xf1;o"/>
         <Property name="opaque" type="boolean" value="false"/>
       </Properties>
+      <Events>
+        <EventHandler event="mouseClicked" listener="java.awt.event.MouseListener" parameters="java.awt.event.MouseEvent" handler="rbtnAnioMouseClicked"/>
+      </Events>
       <Constraints>
         <Constraint layoutClass="org.netbeans.modules.form.compat2.layouts.DesignAbsoluteLayout" value="org.netbeans.modules.form.compat2.layouts.DesignAbsoluteLayout$AbsoluteConstraintsDescription">
-          <AbsoluteConstraints x="450" y="120" width="-1" height="-1"/>
+          <AbsoluteConstraints x="260" y="160" width="-1" height="-1"/>
         </Constraint>
       </Constraints>
     </Component>
@@ -241,81 +217,12 @@
         <Property name="text" type="java.lang.String" value="Dia"/>
         <Property name="opaque" type="boolean" value="false"/>
       </Properties>
+      <Events>
+        <EventHandler event="mouseClicked" listener="java.awt.event.MouseListener" parameters="java.awt.event.MouseEvent" handler="rbtnDiaMouseClicked"/>
+      </Events>
       <Constraints>
         <Constraint layoutClass="org.netbeans.modules.form.compat2.layouts.DesignAbsoluteLayout" value="org.netbeans.modules.form.compat2.layouts.DesignAbsoluteLayout$AbsoluteConstraintsDescription">
-          <AbsoluteConstraints x="20" y="120" width="-1" height="-1"/>
-        </Constraint>
-      </Constraints>
-    </Component>
-    <Component class="javax.swing.JComboBox" name="cmbDia">
-      <Properties>
-        <Property name="background" type="java.awt.Color" editor="org.netbeans.modules.form.RADConnectionPropertyEditor">
-          <Connection code="Color.decode(&quot;#C9A66B&quot;)" type="code"/>
-        </Property>
-        <Property name="font" type="java.awt.Font" editor="org.netbeans.beaninfo.editors.FontEditor">
-          <Font name="Rockwell" size="14" style="1"/>
-        </Property>
-        <Property name="foreground" type="java.awt.Color" editor="org.netbeans.modules.form.RADConnectionPropertyEditor">
-          <Connection code="Color.decode(&quot;#662E1C&quot;)" type="code"/>
-        </Property>
-        <Property name="model" type="javax.swing.ComboBoxModel" editor="org.netbeans.modules.form.editors2.ComboBoxModelEditor">
-          <StringArray count="0"/>
-        </Property>
-      </Properties>
-      <AuxValues>
-        <AuxValue name="JavaCodeGenerator_TypeParameters" type="java.lang.String" value="&lt;String&gt;"/>
-      </AuxValues>
-      <Constraints>
-        <Constraint layoutClass="org.netbeans.modules.form.compat2.layouts.DesignAbsoluteLayout" value="org.netbeans.modules.form.compat2.layouts.DesignAbsoluteLayout$AbsoluteConstraintsDescription">
-          <AbsoluteConstraints x="90" y="120" width="97" height="34"/>
-        </Constraint>
-      </Constraints>
-    </Component>
-    <Component class="javax.swing.JComboBox" name="cmbMes">
-      <Properties>
-        <Property name="background" type="java.awt.Color" editor="org.netbeans.modules.form.RADConnectionPropertyEditor">
-          <Connection code="Color.decode(&quot;#C9A66B&quot;)" type="code"/>
-        </Property>
-        <Property name="font" type="java.awt.Font" editor="org.netbeans.beaninfo.editors.FontEditor">
-          <Font name="Rockwell" size="14" style="1"/>
-        </Property>
-        <Property name="foreground" type="java.awt.Color" editor="org.netbeans.modules.form.RADConnectionPropertyEditor">
-          <Connection code="Color.decode(&quot;#662E1C&quot;)" type="code"/>
-        </Property>
-        <Property name="model" type="javax.swing.ComboBoxModel" editor="org.netbeans.modules.form.editors2.ComboBoxModelEditor">
-          <StringArray count="0"/>
-        </Property>
-      </Properties>
-      <AuxValues>
-        <AuxValue name="JavaCodeGenerator_TypeParameters" type="java.lang.String" value="&lt;String&gt;"/>
-      </AuxValues>
-      <Constraints>
-        <Constraint layoutClass="org.netbeans.modules.form.compat2.layouts.DesignAbsoluteLayout" value="org.netbeans.modules.form.compat2.layouts.DesignAbsoluteLayout$AbsoluteConstraintsDescription">
-          <AbsoluteConstraints x="290" y="120" width="106" height="34"/>
-        </Constraint>
-      </Constraints>
-    </Component>
-    <Component class="javax.swing.JComboBox" name="cmbA&#xf1;o">
-      <Properties>
-        <Property name="background" type="java.awt.Color" editor="org.netbeans.modules.form.RADConnectionPropertyEditor">
-          <Connection code="Color.decode(&quot;#C9A66B&quot;)" type="code"/>
-        </Property>
-        <Property name="font" type="java.awt.Font" editor="org.netbeans.beaninfo.editors.FontEditor">
-          <Font name="Rockwell" size="14" style="1"/>
-        </Property>
-        <Property name="foreground" type="java.awt.Color" editor="org.netbeans.modules.form.RADConnectionPropertyEditor">
-          <Connection code="Color.decode(&quot;#662E1C&quot;)" type="code"/>
-        </Property>
-        <Property name="model" type="javax.swing.ComboBoxModel" editor="org.netbeans.modules.form.editors2.ComboBoxModelEditor">
-          <StringArray count="0"/>
-        </Property>
-      </Properties>
-      <AuxValues>
-        <AuxValue name="JavaCodeGenerator_TypeParameters" type="java.lang.String" value="&lt;String&gt;"/>
-      </AuxValues>
-      <Constraints>
-        <Constraint layoutClass="org.netbeans.modules.form.compat2.layouts.DesignAbsoluteLayout" value="org.netbeans.modules.form.compat2.layouts.DesignAbsoluteLayout$AbsoluteConstraintsDescription">
-          <AbsoluteConstraints x="510" y="120" width="101" height="34"/>
+          <AbsoluteConstraints x="40" y="160" width="-1" height="-1"/>
         </Constraint>
       </Constraints>
     </Component>
@@ -328,6 +235,16 @@
       <Constraints>
         <Constraint layoutClass="org.netbeans.modules.form.compat2.layouts.DesignAbsoluteLayout" value="org.netbeans.modules.form.compat2.layouts.DesignAbsoluteLayout$AbsoluteConstraintsDescription">
           <AbsoluteConstraints x="0" y="0" width="690" height="710"/>
+        </Constraint>
+      </Constraints>
+    </Component>
+    <Component class="javax.swing.JLabel" name="jLabel1">
+      <Properties>
+        <Property name="text" type="java.lang.String" value="jLabel1"/>
+      </Properties>
+      <Constraints>
+        <Constraint layoutClass="org.netbeans.modules.form.compat2.layouts.DesignAbsoluteLayout" value="org.netbeans.modules.form.compat2.layouts.DesignAbsoluteLayout$AbsoluteConstraintsDescription">
+          <AbsoluteConstraints x="380" y="100" width="-1" height="-1"/>
         </Constraint>
       </Constraints>
     </Component>
